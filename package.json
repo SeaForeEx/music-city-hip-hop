@@ -1,8 +1,8 @@
 {
-  "name": "next-firebase-starter",
+  "name": "music-city-hip-hop",
   "private": true,
   "version": "1.0.0",
-  "author": "Trinity Christiana",
+  "author": "Charles Bridgers IV",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -21,7 +21,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^5.1.3",
     "firebase": "^8.2.0",
-    "next": "12.0.7",
+    "next": "^12.3.4",
     "prop-types": "^15.7.2",
     "react": "17.0.2",
     "react-bootstrap": "^2.4.0",
