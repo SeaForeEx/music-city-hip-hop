@@ -6,7 +6,7 @@
     "date": "10/17/2022",
     "time": "2:29 PM",
     "price": "$9.34",
-    "artist_id": ""
+    "artist_id": "-NO_YyWY3QQ-VEcOd5bU"
   },
   "-NO_ospUUtCUhVRmizFB": {
     "firebaseKey": "-NO_ospUUtCUhVRmizFB",
@@ -14,7 +14,7 @@
     "date": "2/9/2023",
     "time": "6:32 PM",
     "price": "$4.34",
-    "artist_id": ""
+    "artist_id": "-NO_YyW_8Wg-lRkXQwqv"
   },
   "-NO_ospW4gfFYXNuLQOU": {
     "firebaseKey": "-NO_ospW4gfFYXNuLQOU",
@@ -22,7 +22,7 @@
     "date": "4/21/2022",
     "time": "1:03 PM",
     "price": "$3.63",
-    "artist_id": ""
+    "artist_id": "-NO_YyWbMTaImPW5gB_y"
   },
   "-NO_ospZEgKOxp8LGQWf": {
     "firebaseKey": "-NO_ospZEgKOxp8LGQWf",
@@ -30,7 +30,7 @@
     "date": "8/11/2022",
     "time": "9:43 AM",
     "price": "$4.08",
-    "artist_id": ""
+    "artist_id": "-NO_YyWcwgykR3tB6ram"
   },
   "-NO_ospaUle2_Np43ih_": {
     "firebaseKey": "-NO_ospaUle2_Np43ih_",
@@ -38,7 +38,7 @@
     "date": "6/11/2022",
     "time": "1:14 PM",
     "price": "$6.07",
-    "artist_id": ""
+    "artist_id": "-NO_YyWfeN9jSGUwb-Va"
   },
   "-NO_ospczG0zrFBEx4m1": {
     "firebaseKey": "-NO_ospczG0zrFBEx4m1",
@@ -46,7 +46,7 @@
     "date": "9/10/2022",
     "time": "10:27 AM",
     "price": "$3.67",
-    "artist_id": ""
+    "artist_id": "-NO_YyWhg-919TPyN-zA"
   },
   "-NO_ospfSjB23rSMZjLj": {
     "firebaseKey": "-NO_ospfSjB23rSMZjLj",
@@ -54,7 +54,7 @@
     "date": "12/8/2022",
     "time": "5:49 PM",
     "price": "$8.55",
-    "artist_id": ""
+    "artist_id": "-NO_YyWizB33fTNhwG0O"
   },
   "-NO_ospgRAckhxwSbLfi": {
     "firebaseKey": "-NO_ospgRAckhxwSbLfi",
@@ -62,7 +62,7 @@
     "date": "12/31/2022",
     "time": "9:03 PM",
     "price": "$3.03",
-    "artist_id": ""
+    "artist_id": "-NO_YyWkjsU7N4_HqhTf"
   },
   "-NO_ospi7ivy6wIZcOWt": {
     "firebaseKey": "-NO_ospi7ivy6wIZcOWt",
@@ -70,7 +70,7 @@
     "date": "5/29/2022",
     "time": "12:21 PM",
     "price": "$1.96",
-    "artist_id": ""
+    "artist_id": "-NO_YyWlqiF8lPb5d5Ic"
   },
   "-NO_ospjCzFg9gQk0A1r": {
     "firebaseKey": "-NO_ospjCzFg9gQk0A1r",
@@ -78,6 +78,6 @@
     "date": "7/6/2022",
     "time": "6:00 AM",
     "price": "$7.68",
-    "artist_id": ""
+    "artist_id": "-NO_YyWlqiF8lPb5d5Ic"
   }
 }
