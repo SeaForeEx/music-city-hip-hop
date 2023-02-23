@@ -21,7 +21,7 @@ export default function SearchBar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (setSearchBar !== '') router.push(`/searchbar/${searchBar}`);
+    if (searchBar !== '') router.push(`/searchbar/${searchBar}`);
     setSearchBar('');
   };
   // defines handleSubmit function that takes in event e as argument
