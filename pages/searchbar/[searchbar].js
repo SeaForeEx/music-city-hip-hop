@@ -12,12 +12,12 @@ export default function SearchBar() {
   const [searchUsers, setSearchUsers] = useState([]);
 
   const router = useRouter();
-  const { searchBar } = router.query;
+  const { searchbar } = router.query;
 
   const searchAllUsers = () => {
-    if (!searchBar) return;
+    if (!searchbar) return;
     getUser().then((users) => {
-      const filteredUsers = users.filter((user) => user.name.toLowerCase().includes(searchBar.toLowerCase()));
+      const filteredUsers = users.filter((user) => user.name.toLowerCase().includes(searchbar.toLowerCase()));
       setSearchUsers(filteredUsers);
       console.warn(filteredUsers);
     });
@@ -31,7 +31,7 @@ export default function SearchBar() {
       setSearchUsers([]);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchBar]);
+  }, [searchbar]);
 
   return (
     <>

@@ -21,6 +21,9 @@ export default function NavBar() {
               <Nav.Link>Artists</Nav.Link>
             </Link>
             <SearchBar />
+            <Link passHref href="/profile">
+              <Nav.Link>Profile</Nav.Link>
+            </Link>
             <Button variant="danger" onClick={signOut}>Sign Out</Button>
           </Nav>
         </Navbar.Collapse>
