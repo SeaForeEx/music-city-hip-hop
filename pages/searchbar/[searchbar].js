@@ -15,19 +15,18 @@ export default function SearchBar() {
   const { searchBar } = router.query;
 
   const searchAllUsers = () => {
-    // retrieves all users using getUser API
+    if (!searchBar) return;
     getUser().then((users) => {
-      const filteredUsers = users.filter((user) => user.name.toLowerCase().includes(searchBar));
-      // filters messages based on searchBar value
-
+      const filteredUsers = users.filter((user) => user.name.toLowerCase().includes(searchBar.toLowerCase()));
       setSearchUsers(filteredUsers);
+      console.warn(filteredUsers);
     });
   };
 
   useEffect(() => {
     // performs side effect when searchBar value changes
     searchAllUsers();
-    // called to update searchMessages state with new filtered messages
+    // called to update searchUsers state with new filtered users
     return () => {
       setSearchUsers([]);
     };

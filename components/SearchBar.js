@@ -43,14 +43,3 @@ export default function SearchBar() {
   // Used to render a text input
   // component has type prop set to text
 }
-
-// onChange is a React prop for input elements (ie text inputs) that triggers a function when input's value changes
-// handleChange is the function called when the value in the text input changes
-// onChange prop allows React components to respond to user interaction and update component's state accordingly
-// handleChange function will be called w/ updated input value
-// developer will be able to update component's state
-// and make changes to other parts of component based on new input value
-
-// SearchBar component called in NavBar
-// SearchBar sets up what SearchBar looks like and does
-// [searchbar].js routes the search results to the page
