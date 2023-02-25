@@ -8,6 +8,7 @@ import React, {
   useState,
 } from 'react';
 import { useRouter } from 'next/router';
+import { createUser, getUser } from '../../api/userData';
 import { firebase } from '../client';
 
 const AuthContext = createContext();
@@ -15,42 +16,46 @@ const AuthContext = createContext();
 AuthContext.displayName = 'AuthContext'; // Context object accepts a displayName string property. React DevTools uses this string to determine what to display for the context. https://reactjs.org/docs/context.html#contextdisplayname
 
 const AuthProvider = (props) => {
-  const [user, setUser] = useState(null);
   const router = useRouter();
+  const [user, setUser] = useState(null);
 
   // there are 3 states for the user:
   // null = application initial state, not yet loaded
   // false = user is not logged in, but the app has loaded
   // an object/value = user is logged in
 
-  const checkIfUserExists = async (uid) => {
-    const user = await getUser(uid); // will either return a user object or null
-    return user;
-  };
-
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((fbUser) => {
+    firebase.auth().onAuthStateChanged(async (fbUser) => {
       if (fbUser) {
-        checkIfUserExists(fbUser.uid).then((user) => {
-          if (user) {
-            setUser(user);
+        await getUser(fbUser.uid).then(async (response) => {
+          if (!response) {
+            const userCreate = {
+              uid: fbUser.uid,
+            };
+            await createUser(userCreate);
+            setUser(fbUser);
+            router.push('/users/new');
           } else {
-            createUser(fbUser).then((newUser) => {
-              setUser(newUser);
-              if (newUser.firstTimeLogin) {
-                router.push('/UserForm.js');
-              }
-            });
+            setUser(fbUser);
           }
         });
-        // check to see if user exists in database
-        // if true: setUser() with the value that either you got in your response from the API or from Google. As the engineer, it is up to your usecase.
-        // if false: create a new user in the DB and then setUser with the payload
       } else {
         setUser(false);
       }
     }); // creates a single global listener for auth state changed
-  }, []);
+  }, [router]);
+
+  // useEffect(() => {
+  //   firebase.auth().onAuthStateChanged((fbUser) => {
+  //     if (fbUser) {
+  //       // check to see if user exists in database
+  //       // if true: setUser() with the value that either you got in your response from the API or from Google. As the engineer, it is up to your usecase.
+  //       setUser(fbUser);
+  //     } else {
+  //       setUser(false);
+  //     }
+  //   }); // creates a single global listener for auth state changed
+  // }, []);
 
   const value = useMemo( // https://reactjs.org/docs/hooks-reference.html#usememo
     () => ({

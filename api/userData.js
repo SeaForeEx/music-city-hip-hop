@@ -15,8 +15,25 @@ const createUser = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getUser = () => new Promise((resolve, reject) => {
+const getArtist = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/users.json?orderBy="isArtist"&equalTo=true`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    }).catch(reject);
+});
+
+const getUser = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/users.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -71,6 +88,7 @@ const deleteUser = (firebaseKey) => new Promise((resolve, reject) => {
 
 export {
   createUser,
+  getArtist,
   getUser,
   getSingleUser,
   updateUser,
