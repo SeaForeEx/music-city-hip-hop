@@ -20,7 +20,7 @@ function Home() {
       <Head>
         <title>Welcome To MUSIC CITY HIP-HOP</title>
       </Head>
-      <h1>Hello {user.name}! </h1>
+      <h1>Hello {user.displayName}! </h1>
       <div className="text-center my-4">
         <div className="d-flex flex-wrap">
           {users.map((artist) => (
