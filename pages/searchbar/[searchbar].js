@@ -35,7 +35,7 @@ export default function SearchBar() {
 
   return (
     <>
-      <div>
+      <div className="d-flex flex-wrap">
         {searchUsers.map((emcee) => <UserCard key={emcee.firebaseKey} userObj={emcee} onUpdate={searchAllUsers} />)}
       </div>
     </>

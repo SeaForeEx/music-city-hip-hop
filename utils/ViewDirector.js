@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import Signin from '../components/Signin';
 import { useAuth } from './context/authContext';
 import Loading from '../components/Loading';
-import Signin from '../components/Signin';
+import UserForm from '../components/forms/UserForm';
 import NavBar from '../components/NavBar';
 
 const ViewDirectorBasedOnUserAuthStatus = ({ component: Component, pageProps }) => {
@@ -12,19 +13,23 @@ const ViewDirectorBasedOnUserAuthStatus = ({ component: Component, pageProps }) 
     return <Loading />;
   }
 
-  // what the user should see if they are logged in
-  if (user) {
-    return (
-      <>
-        <NavBar /> {/* NavBar only visible if user is logged in and is in every view */}
-        <div className="container">
-          <Component {...pageProps} />
-        </div>
-      </>
-    );
+  if (!user) {
+    return <Signin />;
   }
 
-  return <Signin />;
+  const hasUid = user && user.uid;
+
+  // what the user should see if they are logged in
+  return hasUid ? (
+    <>
+      <NavBar /> {/* NavBar only visible if user is logged in and is in every view */}
+      <div className="container">
+        <Component {...pageProps} />
+      </div>
+    </>
+  ) : (
+    <UserForm />
+  );
 };
 
 export default ViewDirectorBasedOnUserAuthStatus;
