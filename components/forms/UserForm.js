@@ -25,9 +25,10 @@ function UserForm({ obj }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    const newValue = name === 'isArtist' ? e.target.checked : value;
     setFormInput((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]: newValue,
     }));
   };
 
@@ -42,6 +43,7 @@ function UserForm({ obj }) {
         const patchPayload = { firebaseKey: name };
         updateUser(patchPayload).then(() => {
           router.push('/');
+          console.warn(user.uid);
         });
       });
     }
@@ -66,7 +68,7 @@ function UserForm({ obj }) {
         <Form.Control
           type="text"
           placeholder="Tell us about yourself"
-          name="role"
+          name="bio"
           value={formInput.bio}
           onChange={handleChange}
           required
@@ -90,12 +92,12 @@ function UserForm({ obj }) {
           name="isArtist"
           onChange={handleChange}
           className="mb-3"
-          value={formInput.isArtist ? 'true' : 'false'}
+          value={formInput.isArtist}
           required
         >
           <option value="">Which Are You?</option>
-          <option value="true">Artist</option>
-          <option value="false">Fan</option>
+          <option value>Artist</option>
+          <option value={false}>Fan</option>
         </Form.Select>
       </FloatingLabel>
 
@@ -110,6 +112,7 @@ UserForm.propTypes = {
     name: PropTypes.string,
     bio: PropTypes.string,
     firebaseKey: PropTypes.string,
+    isArtist: PropTypes.bool,
   }),
 };
 
