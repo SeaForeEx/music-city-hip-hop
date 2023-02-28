@@ -13,6 +13,9 @@ function UserCard({ userObj }) {
         <Link href={`/users/${userObj.firebaseKey}`} passHref>
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
+        <Link href={`/users/edit/${userObj.firebaseKey}`} passHref>
+          <Button variant="info">EDIT</Button>
+        </Link>
         {/* DYNAMIC LINK TO EDIT THE MEMBER DETAILS  */}
       </Card.Body>
     </Card>
@@ -23,6 +26,7 @@ UserCard.propTypes = {
   userObj: PropTypes.shape({
     image: PropTypes.string,
     name: PropTypes.string,
+    bio: PropTypes.string,
     firebaseKey: PropTypes.string,
   }).isRequired,
 };

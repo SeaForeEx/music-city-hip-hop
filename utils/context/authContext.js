@@ -8,7 +8,7 @@ import React, {
   useState,
 } from 'react';
 import { useRouter } from 'next/router';
-import { createUser, getUser } from '../../api/userData';
+import { getUser } from '../../api/userData';
 import { firebase } from '../client';
 
 const AuthContext = createContext();
@@ -29,12 +29,7 @@ const AuthProvider = (props) => {
       if (fbUser) {
         await getUser(fbUser.uid).then(async (response) => {
           if (!response) {
-            const userCreate = {
-              uid: fbUser.uid,
-            };
-            await createUser(userCreate);
-            setUser(fbUser);
-            router.push('/users/new');
+            setUser('NO USER');
           } else {
             setUser(fbUser);
           }
@@ -44,18 +39,6 @@ const AuthProvider = (props) => {
       }
     }); // creates a single global listener for auth state changed
   }, [router]);
-
-  // useEffect(() => {
-  //   firebase.auth().onAuthStateChanged((fbUser) => {
-  //     if (fbUser) {
-  //       // check to see if user exists in database
-  //       // if true: setUser() with the value that either you got in your response from the API or from Google. As the engineer, it is up to your usecase.
-  //       setUser(fbUser);
-  //     } else {
-  //       setUser(false);
-  //     }
-  //   }); // creates a single global listener for auth state changed
-  // }, []);
 
   const value = useMemo( // https://reactjs.org/docs/hooks-reference.html#usememo
     () => ({
