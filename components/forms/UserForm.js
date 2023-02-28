@@ -15,7 +15,10 @@ const initialState = {
 };
 
 function UserForm({ obj }) {
-  const [formInput, setFormInput] = useState(initialState);
+  const [formInput, setFormInput] = useState({
+    ...initialState,
+    uid: obj.uid,
+  });
   const router = useRouter();
   const { user } = useAuth();
 
@@ -43,7 +46,6 @@ function UserForm({ obj }) {
         const patchPayload = { firebaseKey: name };
         updateUser(patchPayload).then(() => {
           router.push('/');
-          console.warn(user.uid);
         });
       });
     }
@@ -113,6 +115,7 @@ UserForm.propTypes = {
     bio: PropTypes.string,
     firebaseKey: PropTypes.string,
     isArtist: PropTypes.bool,
+    uid: PropTypes.string,
   }),
 };
 

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useAuth } from './context/authContext';
+import UserForm from '../components/forms/UserForm';
 import Loading from '../components/Loading';
 import Signin from '../components/Signin';
 import NavBar from '../components/NavBar';
@@ -12,7 +13,9 @@ const ViewDirectorBasedOnUserAuthStatus = ({ component: Component, pageProps }) 
     return <Loading />;
   }
 
-  console.warn(user.lastSignInTime);
+  if (user === 'NO USER') {
+    return <UserForm user={user} />;
+  }
 
   // what the user should see if they are logged in
   if (user) {
