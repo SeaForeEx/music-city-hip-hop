@@ -5,7 +5,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
-import { createUser, updateUser } from '../../api/userData';
+import { createUser, updateUser, getUser } from '../../api/userData';
 
 const initialState = {
   name: '',
@@ -37,6 +37,7 @@ function UserForm({ obj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.warn('Form submitted');
     if (obj.firebaseKey) {
       updateUser(formInput)
         .then(() => router.push('/'));
@@ -45,7 +46,11 @@ function UserForm({ obj }) {
       createUser(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateUser(patchPayload).then(() => {
-          router.push('/');
+          getUser(user.uid)
+            .then((userData) => {
+              console.warn('User data:', userData);
+              router.push('/');
+            });
         });
       });
     }
