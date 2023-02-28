@@ -28,7 +28,7 @@ const AuthProvider = (props) => {
     firebase.auth().onAuthStateChanged(async (fbUser) => {
       if (fbUser) {
         await getUser(fbUser.uid).then(async (response) => {
-          if (!response) {
+          if (Object.keys(response).length === 0) {
             setUser('NO USER');
           } else {
             setUser(fbUser);
