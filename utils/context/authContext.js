@@ -44,6 +44,7 @@ const AuthProvider = (props) => {
     () => ({
       user,
       userLoading: user === null,
+      setUser,
       // as long as user === null, will be true
       // As soon as the user value !== null, value will be false
     }),
