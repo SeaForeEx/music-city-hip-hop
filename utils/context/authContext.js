@@ -7,7 +7,6 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { useRouter } from 'next/router';
 import { getUser } from '../../api/userData';
 import { firebase } from '../client';
 
@@ -16,8 +15,8 @@ const AuthContext = createContext();
 AuthContext.displayName = 'AuthContext'; // Context object accepts a displayName string property. React DevTools uses this string to determine what to display for the context. https://reactjs.org/docs/context.html#contextdisplayname
 
 const AuthProvider = (props) => {
-  const router = useRouter();
   const [user, setUser] = useState(null);
+  const [uid, setUid] = useState('');
 
   // there are 3 states for the user:
   // null = application initial state, not yet loaded
@@ -26,7 +25,9 @@ const AuthProvider = (props) => {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async (fbUser) => {
+      console.warn(fbUser);
       if (fbUser) {
+        setUid(fbUser.uid);
         await getUser(fbUser.uid).then(async (response) => {
           if (Object.keys(response).length === 0) {
             setUser('NO USER');
@@ -38,17 +39,18 @@ const AuthProvider = (props) => {
         setUser(false);
       }
     }); // creates a single global listener for auth state changed
-  }, [router]);
+  }, []);
 
   const value = useMemo( // https://reactjs.org/docs/hooks-reference.html#usememo
     () => ({
       user,
       userLoading: user === null,
+      uid,
       setUser,
       // as long as user === null, will be true
       // As soon as the user value !== null, value will be false
     }),
-    [user],
+    [user, uid],
   );
 
   return <AuthContext.Provider value={value} {...props} />;
