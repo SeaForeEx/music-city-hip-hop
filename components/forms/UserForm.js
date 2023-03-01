@@ -20,7 +20,7 @@ function UserForm({ obj }) {
     uid: obj.uid,
   });
   const router = useRouter();
-  const { user } = useAuth();
+  const { setUser, uid } = useAuth();
 
   useEffect(() => {
     if (obj.firebaseKey) setFormInput(obj);
@@ -42,13 +42,13 @@ function UserForm({ obj }) {
       updateUser(formInput)
         .then(() => router.push('/'));
     } else {
-      const payload = { ...formInput, uid: user.uid };
+      const payload = { ...formInput, uid };
       createUser(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateUser(patchPayload).then(() => {
-          getUser(user.uid)
+          getUser(uid)
             .then((userData) => {
-              console.warn('User data:', userData);
+              setUser(userData);
               router.push('/');
             });
         });
