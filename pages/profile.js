@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
 
 // I need user.image/name/bio to display but they are not showing up when I click on Profile
+// These are the data that are input in UserForm
 export default function UserProfile() {
   const { user, signOut } = useAuth();
   return (
