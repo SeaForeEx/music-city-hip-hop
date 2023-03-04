@@ -7,14 +7,16 @@ import viewUserDetails from '../../api/mergedData';
 
 export default function ViewUser() {
   // const [userDetails, setUserDetails] = useState({}); // useState & Effect are react
-  const [userLinks, setUserLinks] = useState({});
+  const [userLinks, setUserLinks] = useState([]);
   const router = useRouter(); // useRouter is next.js
   const { userFirebaseKey } = router.query;
 
   const onlyBuiltForUserLinks = () => {
     findUserByFBKey(userFirebaseKey).then((user) => {
-      viewUserDetails(user.uid).then(setUserLinks);
-      console.warn(setUserLinks);
+      viewUserDetails(user.uid).then((links) => {
+        console.warn(links);
+        setUserLinks(links);
+      });
     });
   };
 
