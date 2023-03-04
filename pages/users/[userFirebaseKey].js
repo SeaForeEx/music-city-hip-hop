@@ -1,30 +1,47 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { getSingleUser } from '../../api/userData';
+import LinkCard from '../../components/LinkCard';
+import { findUserByFBKey } from '../../api/userData';
+import viewUserLinks from '../../api/mergedData';
 
 export default function ViewUser() {
-  const [userDetails, setUserDetails] = useState({}); // useState & Effect are react
+  // const [userDetails, setUserDetails] = useState({}); // useState & Effect are react
+  const [userLinks, setUserLinks] = useState({});
   const router = useRouter(); // useRouter is next.js
-
   const { userFirebaseKey } = router.query;
 
-  useEffect(() => {
-    getSingleUser(userFirebaseKey).then((userData) => {
-      setUserDetails(userData);
+  const onlyBuiltForUserLinks = () => {
+    findUserByFBKey(userFirebaseKey).then((user) => {
+      viewUserLinks(user.uid).then(setUserLinks);
     });
+  };
+
+  useEffect(() => {
+    onlyBuiltForUserLinks();
   }, [userFirebaseKey]);
+
+  // useEffect(() => {
+  //   getSingleUser(userFirebaseKey).then((userData) => {
+  //     setUserDetails(userData);
+  //   });
+  // }, [userFirebaseKey]);
 
   return (
     <div className="mt-5 d-flex flex-wrap">
       <div className="d-flex flex-column">
-        <img src={userDetails.image} alt={userDetails.image} style={{ width: '300px' }} />
+        <img src={userLinks.image} alt={userLinks.image} style={{ width: '300px' }} />
       </div>
       <div className="text-white ms-5 details">
         <h5>
-          {userDetails.name}
+          {userLinks.name}
         </h5>
-        <p>Bio: {userDetails.bio}</p>
+        <p>Bio: {userLinks.bio}</p>
+      </div>
+      <div className="d-flex flex-wrap">
+        {userLinks.links?.map((link) => (
+          <LinkCard key={link.firebaseKey} linkObj={link} onUpdate={onlyBuiltForUserLinks} />
+        ))}
       </div>
     </div>
   );

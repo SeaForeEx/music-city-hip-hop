@@ -49,7 +49,9 @@ const getUser = (uid) => new Promise((resolve, reject) => {
     }).catch(reject);
 });
 
-const getSingleUser = (firebaseKey) => new Promise((resolve, reject) => {
+// getUser
+
+const findUserByFBKey = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/users/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
@@ -86,11 +88,24 @@ const deleteUser = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getUserLinks = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/links.json?orderBy="artistId"&equalTo="${uid}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
 export {
   createUser,
   getArtist,
   getUser,
-  getSingleUser,
+  findUserByFBKey,
   updateUser,
   deleteUser,
+  getUserLinks,
 };
