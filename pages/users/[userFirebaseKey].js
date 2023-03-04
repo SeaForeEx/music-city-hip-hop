@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import LinkCard from '../../components/LinkCard';
 import { findUserByFBKey } from '../../api/userData';
-import viewUserLinks from '../../api/mergedData';
+import viewUserDetails from '../../api/mergedData';
 
 export default function ViewUser() {
   // const [userDetails, setUserDetails] = useState({}); // useState & Effect are react
@@ -13,19 +13,14 @@ export default function ViewUser() {
 
   const onlyBuiltForUserLinks = () => {
     findUserByFBKey(userFirebaseKey).then((user) => {
-      viewUserLinks(user.uid).then(setUserLinks);
+      viewUserDetails(user.uid).then(setUserLinks);
+      console.warn(setUserLinks);
     });
   };
 
   useEffect(() => {
     onlyBuiltForUserLinks();
   }, [userFirebaseKey]);
-
-  // useEffect(() => {
-  //   getSingleUser(userFirebaseKey).then((userData) => {
-  //     setUserDetails(userData);
-  //   });
-  // }, [userFirebaseKey]);
 
   return (
     <div className="mt-5 d-flex flex-wrap">

@@ -37,7 +37,6 @@ function UserForm({ obj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.warn('Form submitted');
     if (obj.firebaseKey) {
       updateUser(formInput)
         .then(() => router.push('/'));

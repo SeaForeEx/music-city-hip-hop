@@ -49,8 +49,6 @@ const getUser = (uid) => new Promise((resolve, reject) => {
     }).catch(reject);
 });
 
-// getUser
-
 const findUserByFBKey = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/users/${firebaseKey}.json`, {
     method: 'GET',
