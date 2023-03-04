@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
 import { getUser } from '../api/userData';
+import { signOut } from '../utils/auth';
 
 // I need profileDetails.image/name/bio to display but they are not showing up when I click on Profile
 // These are the data that are input in UserForm
 export default function UserProfile() {
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
   const [profileDetails, setProfileDetails] = useState({});
 
   useEffect(() => {

@@ -86,8 +86,8 @@ const deleteUser = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getUserLinks = (uid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/links.json?orderBy="artistId"&equalTo="${uid}"`, {
+const getUserLinks = (artistId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/links.json?orderBy="artistId"&equalTo="${artistId}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
