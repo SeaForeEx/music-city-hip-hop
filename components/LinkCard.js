@@ -26,6 +26,7 @@ LinkCard.propTypes = {
     name: PropTypes.string,
     link: PropTypes.string,
     firebaseKey: PropTypes.string,
+    artistId: PropTypes.string,
   }).isRequired,
 };
 
