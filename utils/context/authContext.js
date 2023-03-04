@@ -25,7 +25,6 @@ const AuthProvider = (props) => {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async (fbUser) => {
-      console.warn(fbUser);
       if (fbUser) {
         setUid(fbUser.uid);
         await getUser(fbUser.uid).then(async (response) => {
