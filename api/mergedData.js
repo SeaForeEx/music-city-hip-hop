@@ -1,9 +1,9 @@
-import { getUser, getUserLinks } from './userData';
+import { getUser, getUserLinks, getUserEvents } from './userData';
 
 const viewUserDetails = (uid) => new Promise((resolve, reject) => {
-  Promise.all([getUser(uid), getUserLinks(uid)])
-    .then(([userObject, userLinksArray]) => {
-      resolve({ ...userObject, links: userLinksArray });
+  Promise.all([getUser(uid), getUserLinks(uid), getUserEvents(uid)])
+    .then(([userObject, userLinksArray, userEventsArray]) => {
+      resolve({ ...userObject, links: userLinksArray, events: userEventsArray });
     }).catch((error) => reject(error));
 });
 

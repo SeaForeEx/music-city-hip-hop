@@ -28,6 +28,7 @@ EventCard.propTypes = {
     time: PropTypes.string,
     price: PropTypes.string,
     firebaseKey: PropTypes.string,
+    artistId: PropTypes.string,
   }).isRequired,
 };
 
