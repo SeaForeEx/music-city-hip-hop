@@ -21,6 +21,13 @@ export default function UserProfile() {
         <img src={profileDetails.image} alt="yourmom" width="100px" height="100px" />
         <h1>Name: {profileDetails.name}</h1>
         <h2>Bio: {profileDetails.bio}</h2>
+
+        {profileDetails.isArtist && (
+        <>
+          Here are the links and events
+        </>
+        )}
+
         <Button variant="danger" onClick={signOut}> Sign Out</Button>
       </div>
     </>

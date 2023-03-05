@@ -49,6 +49,24 @@ const getUser = (uid) => new Promise((resolve, reject) => {
     }).catch(reject);
 });
 
+// need getUserLogin because "Object.values(data)[0]" screws up authContext code
+const getUserLogin = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/users.json?orderBy="uid"&equalTo="${uid}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    }).catch(reject);
+});
+
 const findUserByFBKey = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/users/${firebaseKey}.json`, {
     method: 'GET',
@@ -98,12 +116,26 @@ const getUserLinks = (artistId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getUserEvents = (artistId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/events.json?orderBy="artistId"&equalTo="${artistId}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
 export {
   createUser,
   getArtist,
   getUser,
+  getUserLogin,
   findUserByFBKey,
   updateUser,
   deleteUser,
   getUserLinks,
+  getUserEvents,
 };
