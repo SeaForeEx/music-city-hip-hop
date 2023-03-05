@@ -19,8 +19,8 @@ export default function UserProfile() {
     <>
       <div style={{ marginTop: '35px' }}>
         <img src={profileDetails.image} alt="yourmom" width="100px" height="100px" />
-        <h1>Name: {profileDetails.name}</h1>
-        <h2>Bio: {profileDetails.bio}</h2>
+        <h1>{profileDetails.name}</h1>
+        <h2>{profileDetails.bio}</h2>
 
         {profileDetails.isArtist && (
         <>
