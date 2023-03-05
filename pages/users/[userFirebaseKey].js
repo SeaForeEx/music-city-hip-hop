@@ -43,7 +43,7 @@ export default function ViewUser() {
         <h5>
           {userLinks.name}
         </h5>
-        <p>Bio: {userLinks.bio}</p>
+        <p>{userLinks.bio}</p>
       </div>
       <div className="d-flex flex-wrap">
         {userLinks.links?.map((link) => (
