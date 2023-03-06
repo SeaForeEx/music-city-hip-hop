@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
 import Link from 'next/link';
-import { deleteUser } from '../api/userData';
+import { deleteUserLinksAndEvents } from '../api/mergedData';
 
 function UserCard({ userObj, onUpdate }) {
   const deleteThisUser = () => {
     if (window.confirm(`Delete ${userObj.name}?`)) {
-      deleteUser(userObj.firebaseKey).then(() => onUpdate());
+      deleteUserLinksAndEvents(userObj.firebaseKey).then(() => onUpdate());
     }
   };
   return (
