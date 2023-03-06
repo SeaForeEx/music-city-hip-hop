@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import LinkCard from '../../components/LinkCard';
 import EventCard from '../../components/EventCard';
 import { findUserByFBKey } from '../../api/userData';
-import viewUserDetails from '../../api/mergedData';
+import { viewUserDetails } from '../../api/mergedData';
 
 export default function ViewUser() {
   // const [userDetails, setUserDetails] = useState({}); // useState & Effect are react

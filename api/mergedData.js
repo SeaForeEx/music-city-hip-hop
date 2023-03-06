@@ -11,22 +11,22 @@ const viewUserDetails = (uid) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-const deleteUserDetails = (uid) => {
-  const userLinksPromise = getUserLinks(uid).then((links) => {
-    // Delete all user links
-    const deletePromises = links.map((link) => deleteLink(link.id));
-    return Promise.all(deletePromises);
-  });
+// const deleteUserDetails = (artistId) => {
+//   const userLinksPromise = getUserLinks(artistId).then((links) => {
+//     // Delete all user links
+//     const deletePromises = links.map((link) => deleteLink(link.firebaseKey));
+//     return Promise.all(deletePromises);
+//   });
 
-  const userEventsPromise = getUserEvents(uid).then((events) => {
-    // Delete all user events
-    const deletePromises = events.map((event) => deleteEvent(event.firebaseKey));
-    return Promise.all(deletePromises);
-  });
+//   const userEventsPromise = getUserEvents(artistId).then((events) => {
+//     // Delete all user events
+//     const deletePromises = events.map((event) => deleteEvent(event.firebaseKey));
+//     return Promise.all(deletePromises);
+//   });
 
-  // Delete both user links and user events
-  return Promise.all([userLinksPromise, userEventsPromise]);
-};
+//   // Delete both user links and user events
+//   return Promise.all([userLinksPromise, userEventsPromise]);
+// };
 
 // const deleteUserLinks = (artistId) => new Promise((resolve, reject) => {
 //   getUserLinks(artistId).then((linksArray) => {
@@ -38,16 +38,27 @@ const deleteUserDetails = (uid) => {
 //   }).catch((error) => reject(error));
 // });
 
-// const deleteUserEvents = (artistId) => new Promise((resolve, reject) => {
-//   getUserEvents(artistId).then((eventsArray) => {
-//     const deleteEventPromises = eventsArray.map((event) => deleteEvent(event.firebaseKey));
+const deleteUserEvents = (artistId) => new Promise((resolve, reject) => {
+  getUserEvents(artistId).then((eventsArray) => {
+    const deleteEventPromises = eventsArray.map((event) => deleteEvent(event.firebaseKey));
 
-//     Promise.all(deleteEventPromises).then(() => {
-//       deleteUser(artistId).then(resolve);
-//     });
-//   }).catch((error) => reject(error));
-// });
+    Promise.all(deleteEventPromises).then(() => {
+      deleteUser(artistId).then(resolve);
+    });
+  }).catch((error) => reject(error));
+});
 
 // export { viewUserDetails, deleteUserLinks, deleteUserEvents };
 
-export { viewUserDetails, deleteUserDetails };
+const deleteUserLinksAndEvents = (artistId) => new Promise((resolve, reject) => {
+  getUserLinks(artistId).then((linksArray) => {
+    const deleteLinkPromises = linksArray.map((link) => deleteLink(link.firebaseKey));
+
+    Promise.all(deleteLinkPromises).then(() => {
+      // Call deleteUserEvents to delete the user's events
+      deleteUserEvents(artistId).then(resolve).catch(reject);
+    }).catch(reject);
+  }).catch((error) => reject(error));
+});
+
+export { viewUserDetails, deleteUserLinksAndEvents };
