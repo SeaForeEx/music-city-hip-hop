@@ -41,7 +41,7 @@ function EventForm({ obj }) {
       updateEvent(formInput)
         .then(() => router.push('/profile'));
     } else {
-      const payload = { ...formInput, uid: user.uid }; // spreading object data, appending uid
+      const payload = { ...formInput, artistId: user.uid, uid: user.uid }; // spreading object data, appending uid
       createEvent(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateEvent(patchPayload).then(() => {
@@ -81,7 +81,7 @@ function EventForm({ obj }) {
         <Form.Control
           type="text"
           placeholder="Event Time"
-          name="date"
+          name="time"
           value={formInput.time}
           onChange={handleChange}
           required

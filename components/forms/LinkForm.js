@@ -39,7 +39,7 @@ function LinkForm({ obj }) {
       updateLink(formInput)
         .then(() => router.push('/profile'));
     } else {
-      const payload = { ...formInput, uid: user.uid }; // spreading object data, appending uid
+      const payload = { ...formInput, artistId: user.uid, uid: user.uid }; // spreading object data, appending uid
       createLink(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateLink(patchPayload).then(() => {
@@ -51,9 +51,9 @@ function LinkForm({ obj }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.artistId ? 'Update Info In' : 'Join'} The Team!</h2>
+      <h2 className="text-white mt-5">{obj.artistId ? 'Update' : 'Create'} Link</h2>
 
-      <FloatingLabel controlId="floatingInput1" label="Code Name" className="mb-3">
+      <FloatingLabel controlId="floatingInput1" label="Website Name" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Website Name"
@@ -64,10 +64,10 @@ function LinkForm({ obj }) {
         />
       </FloatingLabel>
 
-      <FloatingLabel controlId="floatingInput2" label="Link" className="mb-3">
+      <FloatingLabel controlId="floatingInput2" label="URL" className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Website Link"
+          placeholder="URL"
           name="link"
           value={formInput.link}
           onChange={handleChange}
