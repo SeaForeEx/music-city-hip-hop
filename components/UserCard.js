@@ -7,7 +7,7 @@ import { deleteUserLinksAndEvents } from '../api/mergedData';
 function UserCard({ userObj, onUpdate }) {
   const deleteThisUser = () => {
     if (window.confirm(`Delete ${userObj.name}?`)) {
-      deleteUserLinksAndEvents(userObj.firebaseKey).then(() => onUpdate());
+      deleteUserLinksAndEvents(userObj.uid, userObj.firebaseKey).then(() => onUpdate());
     }
   };
   return (
@@ -36,6 +36,7 @@ UserCard.propTypes = {
     name: PropTypes.string,
     bio: PropTypes.string,
     firebaseKey: PropTypes.string,
+    uid: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

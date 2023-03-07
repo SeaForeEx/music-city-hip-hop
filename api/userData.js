@@ -49,7 +49,7 @@ const getUser = (uid) => new Promise((resolve, reject) => {
     }).catch(reject);
 });
 
-// need getUserLogin because "Object.values(data)[0]" screws up authContext code
+// need getUserLogin because "Object.values(data)[0]" from getUser screws up authContext code
 const getUserLogin = (uid) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/users.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
