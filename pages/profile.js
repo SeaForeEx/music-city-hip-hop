@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
+import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
 import { getUser } from '../api/userData';
 import { signOut } from '../utils/auth';
@@ -24,7 +25,12 @@ export default function UserProfile() {
 
         {profileDetails.isArtist && (
         <>
-          Here are the links and events
+          <Link href="/links/new" passHref>
+            <Button variant="success" className="m-2">NEW LINK</Button>
+          </Link>
+          <Link href="/events/new" passHref>
+            <Button variant="warning" className="m-2">NEW EVENT</Button>
+          </Link>
         </>
         )}
 
