@@ -4,20 +4,48 @@ import { Button } from 'react-bootstrap';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useAuth } from '../utils/context/authContext';
-import { getUser } from '../api/userData';
+import {
+  findUserByFBKey, getUser, getUserEvents, getUserLinks,
+} from '../api/userData';
 import { signOut } from '../utils/auth';
-import { deleteUserLinksAndEvents } from '../api/mergedData';
+import { viewUserDetails, deleteUserLinksAndEvents } from '../api/mergedData';
+import LinkCard from '../components/LinkCard';
+import EventCard from '../components/EventCard';
 
 export default function UserProfile({ onUpdate }) {
   const { user } = useAuth();
   const [profileDetails, setProfileDetails] = useState({});
+  const [userLinks, setUserLinks] = useState([]);
+  const [userEvents, setUserEvents] = useState([]);
   const router = useRouter();
 
+  const { userFirebaseKey } = router.query;
+
+  const onlyBuiltForUserLinks = () => {
+    findUserByFBKey(userFirebaseKey).then(() => {
+      viewUserDetails(user.uid).then((links) => {
+        setUserLinks(links);
+      });
+    });
+  };
+
+  const onlyBuiltForUserEvents = () => {
+    findUserByFBKey(userFirebaseKey).then(() => {
+      viewUserDetails(user.uid).then((events) => {
+        setUserEvents(events);
+      });
+    });
+  };
+
+  useEffect(() => {
+    onlyBuiltForUserLinks();
+    onlyBuiltForUserEvents();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userFirebaseKey]);
+
   const deleteThisUser = () => {
-    console.warn('onUpdate type:', typeof onUpdate);
     if (window.confirm(`Are You Sure, ${profileDetails.name}?`)) {
       deleteUserLinksAndEvents(profileDetails.uid, profileDetails.firebaseKey).then(() => {
-        console.warn('calling onUpdate');
         onUpdate();
         router.push('/signin');
       })
@@ -30,6 +58,12 @@ export default function UserProfile({ onUpdate }) {
   useEffect(() => {
     getUser(user.uid).then((profileData) => {
       setProfileDetails(profileData);
+      getUserLinks(profileData.uid).then((linksData) => {
+        setUserLinks(linksData);
+      });
+      getUserEvents(profileData.uid).then((eventsData) => {
+        setUserEvents(eventsData);
+      });
     });
   }, [user]);
 
@@ -42,9 +76,19 @@ export default function UserProfile({ onUpdate }) {
 
         {profileDetails.isArtist && (
         <>
+          <div className="d-flex flex-wrap">
+            {userLinks.links?.map((link) => (
+              <LinkCard key={link.firebaseKey} linkObj={link} onUpdate={onlyBuiltForUserLinks} />
+            ))}
+          </div>
           <Link href="/links/new" passHref>
             <Button variant="success" className="m-2">NEW LINK</Button>
           </Link>
+          <div className="d-flex flex-wrap">
+            {userEvents.events?.map((event) => (
+              <EventCard key={event.firebaseKey} eventObj={event} onUpdate={onlyBuiltForUserEvents} />
+            ))}
+          </div>
           <Link href="/events/new" passHref>
             <Button variant="warning" className="m-2">NEW EVENT</Button>
           </Link>
@@ -68,6 +112,7 @@ UserProfile.propTypes = {
     bio: PropTypes.string,
     firebaseKey: PropTypes.string,
     uid: PropTypes.string,
+    onUpdate: PropTypes.func.isRequired,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
