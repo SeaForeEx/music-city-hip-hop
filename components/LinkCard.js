@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
 import Link from 'next/link';
 import { deleteLink } from '../api/linkData';
+import { useAuth } from '../utils/context/authContext';
 
 function LinkCard({ linkObj, onUpdate }) {
   const deleteThisLink = () => {
@@ -10,6 +11,9 @@ function LinkCard({ linkObj, onUpdate }) {
       deleteLink(linkObj.firebaseKey).then(() => onUpdate());
     }
   };
+
+  const { user } = useAuth();
+
   return (
     <Card style={{ width: '18rem', margin: '10px' }}>
       <Card.Body>
@@ -19,11 +23,13 @@ function LinkCard({ linkObj, onUpdate }) {
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
         <Link href={`/links/edit/${linkObj.firebaseKey}`} passHref>
-          <Button variant="info">EDIT</Button>
+          {linkObj.artistId === user.uid ? (<Button variant="info">EDIT</Button>) : ''}
         </Link>
-        <Button variant="danger" onClick={deleteThisLink} className="m-2">
-          DELETE
-        </Button>
+        {linkObj.artistId === user.uid ? (
+          <Button variant="danger" onClick={deleteThisLink} className="m-2">
+            DELETE
+          </Button>
+        ) : ''}
       </Card.Body>
     </Card>
   );

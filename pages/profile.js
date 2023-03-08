@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -12,7 +12,7 @@ import { viewUserDetails, deleteUserLinksAndEvents } from '../api/mergedData';
 import LinkCard from '../components/LinkCard';
 import EventCard from '../components/EventCard';
 
-export default function UserProfile({ onUpdate }) {
+export default function UserProfile() {
   const { user } = useAuth();
   const [profileDetails, setProfileDetails] = useState({});
   const [userLinks, setUserLinks] = useState([]);
@@ -21,11 +21,24 @@ export default function UserProfile({ onUpdate }) {
 
   const { userFirebaseKey } = router.query;
 
+  const deleteThisUser = () => {
+    if (window.confirm(`Are You Sure, ${profileDetails.name}?`)) {
+      deleteUserLinksAndEvents(profileDetails.uid, profileDetails.firebaseKey).then(() => {
+        router.push('/signin');
+      })
+        .catch((error) => {
+          console.error('Error deleting user:', error);
+        });
+    }
+  };
+
   const onlyBuiltForUserLinks = () => {
     findUserByFBKey(userFirebaseKey).then(() => {
       viewUserDetails(user.uid).then((links) => {
         setUserLinks(links);
       });
+    }).catch((error) => {
+      console.error('Error fetching user links:', error);
     });
   };
 
@@ -34,26 +47,15 @@ export default function UserProfile({ onUpdate }) {
       viewUserDetails(user.uid).then((events) => {
         setUserEvents(events);
       });
+    }).catch((error) => {
+      console.error('Error fetching user links:', error);
     });
   };
-
-  useEffect(() => {
-    onlyBuiltForUserLinks();
-    onlyBuiltForUserEvents();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userFirebaseKey]);
-
-  const deleteThisUser = () => {
-    if (window.confirm(`Are You Sure, ${profileDetails.name}?`)) {
-      deleteUserLinksAndEvents(profileDetails.uid, profileDetails.firebaseKey).then(() => {
-        onUpdate();
-        router.push('/signin');
-      })
-        .catch((error) => {
-          console.error('Error deleting user:', error);
-        });
-    }
-  };
+  // useEffect(() => {
+  //   onlyBuiltForUserLinks();
+  //   onlyBuiltForUserEvents();
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [userFirebaseKey]);
 
   useEffect(() => {
     getUser(user.uid).then((profileData) => {
@@ -65,7 +67,11 @@ export default function UserProfile({ onUpdate }) {
         setUserEvents(eventsData);
       });
     });
-  }, [user]);
+    onlyBuiltForUserLinks();
+    onlyBuiltForUserEvents();
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, userFirebaseKey]);
 
   return (
     <>
@@ -73,6 +79,9 @@ export default function UserProfile({ onUpdate }) {
         <img src={profileDetails.image} alt="yourmom" width="100px" height="100px" />
         <h1>{profileDetails.name}</h1>
         <h2>{profileDetails.bio}</h2>
+        <Link href={`/users/edit/${profileDetails.firebaseKey}`} passHref>
+          <Button variant="info">EDIT PROFILE</Button>
+        </Link>
 
         {profileDetails.isArtist && (
         <>
@@ -105,14 +114,13 @@ export default function UserProfile({ onUpdate }) {
   );
 }
 
-UserProfile.propTypes = {
-  profileDetails: PropTypes.shape({
-    image: PropTypes.string,
-    name: PropTypes.string,
-    bio: PropTypes.string,
-    firebaseKey: PropTypes.string,
-    uid: PropTypes.string,
-    onUpdate: PropTypes.func.isRequired,
-  }).isRequired,
-  onUpdate: PropTypes.func.isRequired,
-};
+// UserProfile.propTypes = {
+//   profileDetails: PropTypes.shape({
+//     image: PropTypes.string,
+//     name: PropTypes.string,
+//     bio: PropTypes.string,
+//     firebaseKey: PropTypes.string,
+//     uid: PropTypes.string,
+//     isArtist: PropTypes.bool,
+//   }).isRequired,
+// };
