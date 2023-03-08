@@ -7,7 +7,6 @@ import { findUserByFBKey } from '../../api/userData';
 import { viewUserDetails } from '../../api/mergedData';
 
 export default function ViewUser() {
-  // const [userDetails, setUserDetails] = useState({}); // useState & Effect are react
   const [userLinks, setUserLinks] = useState([]);
   const [userEvents, setUserEvents] = useState([]);
   const router = useRouter(); // useRouter is next.js
@@ -32,6 +31,7 @@ export default function ViewUser() {
   useEffect(() => {
     onlyBuiltForUserLinks();
     onlyBuiltForUserEvents();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userFirebaseKey]);
 
   return (

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
 import Link from 'next/link';
 import { deleteUserLinksAndEvents } from '../api/mergedData';
+import { useAuth } from '../utils/context/authContext';
 
 function UserCard({ userObj, onUpdate }) {
   const deleteThisUser = () => {
@@ -10,6 +11,9 @@ function UserCard({ userObj, onUpdate }) {
       deleteUserLinksAndEvents(userObj.uid, userObj.firebaseKey).then(() => onUpdate());
     }
   };
+
+  const { user } = useAuth();
+
   return (
     <Card style={{ width: '18rem', margin: '10px' }}>
       <Card.Img variant="top" src={userObj.image} alt={userObj.name} style={{ height: '400px' }} />
@@ -20,11 +24,13 @@ function UserCard({ userObj, onUpdate }) {
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
         <Link href={`/users/edit/${userObj.firebaseKey}`} passHref>
-          <Button variant="info">EDIT</Button>
+          {userObj.uid === user.uid ? (<Button variant="info">EDIT</Button>) : ''}
         </Link>
-        <Button variant="danger" onClick={deleteThisUser} className="m-2">
-          DELETE
-        </Button>
+        {userObj.uid === user.uid ? (
+          <Button variant="danger" onClick={deleteThisUser} className="m-2">
+            DELETE
+          </Button>
+        ) : ''}
       </Card.Body>
     </Card>
   );

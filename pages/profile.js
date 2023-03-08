@@ -8,7 +8,7 @@ import { getUser } from '../api/userData';
 import { signOut } from '../utils/auth';
 import { deleteUserLinksAndEvents } from '../api/mergedData';
 
-export default function UserProfile({ onUpdate = () => {} }) {
+export default function UserProfile({ onUpdate }) {
   const { user } = useAuth();
   const [profileDetails, setProfileDetails] = useState({});
   const router = useRouter();
@@ -32,10 +32,6 @@ export default function UserProfile({ onUpdate = () => {} }) {
       setProfileDetails(profileData);
     });
   }, [user]);
-
-  // console.warn('profileDetails:', profileDetails);
-  console.warn('user:', user);
-  console.warn('onUpdate type:', typeof onUpdate);
 
   return (
     <>
