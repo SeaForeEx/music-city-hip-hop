@@ -8,7 +8,7 @@ import {
   getUser, getUserEvents, getUserLinks,
 } from '../api/userData';
 import { signOut } from '../utils/auth';
-import { deleteUserLinksAndEvents } from '../api/mergedData';
+import { viewUserDetails, deleteUserLinksAndEvents } from '../api/mergedData';
 import LinkCard from '../components/LinkCard';
 import EventCard from '../components/EventCard';
 
@@ -32,18 +32,30 @@ export default function UserProfile() {
     }
   };
 
-  useEffect(() => {
-    getUser(user.uid).then((profileData) => {
-      setProfileDetails(profileData);
-      getUserLinks(profileData.uid).then((linksData) => {
-        setUserLinks(linksData);
-      });
-      getUserEvents(profileData.uid).then((eventsData) => {
-        setUserEvents(eventsData);
-      });
+  const onlyBuiltForUserLinks = (artistId) => {
+    viewUserDetails(artistId).then((links) => {
+      setUserLinks(links);
     });
+  };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const onlyBuiltForUserEvents = (artistId) => {
+    viewUserDetails(artistId).then((events) => {
+      setUserEvents(events);
+    });
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const profileData = await getUser(user.uid);
+      setProfileDetails(profileData);
+      const linksData = await getUserLinks(profileData.uid);
+      setUserLinks(linksData);
+      const eventsData = await getUserEvents(profileData.uid);
+      setUserEvents(eventsData);
+      onlyBuiltForUserLinks(profileData.uid);
+      onlyBuiltForUserEvents(profileData.uid);
+    };
+    fetchData();
   }, [user, userFirebaseKey]);
 
   return (
@@ -60,7 +72,7 @@ export default function UserProfile() {
         <>
           <div className="d-flex flex-wrap">
             {userLinks.links?.map((link) => (
-              <LinkCard key={link.firebaseKey} linkObj={link} />
+              <LinkCard key={link?.firebaseKey} linkObj={link} onUpdate={onlyBuiltForUserLinks} />
             ))}
           </div>
           <Link href="/links/new" passHref>
@@ -68,7 +80,7 @@ export default function UserProfile() {
           </Link>
           <div className="d-flex flex-wrap">
             {userEvents.events?.map((event) => (
-              <EventCard key={event.firebaseKey} eventObj={event} />
+              <EventCard key={event?.firebaseKey} eventObj={event} onUpdate={onlyBuiltForUserEvents} />
             ))}
           </div>
           <Link href="/events/new" passHref>
