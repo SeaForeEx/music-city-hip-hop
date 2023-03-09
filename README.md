@@ -90,16 +90,32 @@ Click <a href="https://dbdiagram.io/d/63eae5b6296d97641d80aaa6">here</a> to chec
 
 Click <a href="https://www.figma.com/file/DyMq7NLL0ZbMvPpH8B6nOl/Music-City-Hip-Hop?node-id=0-1&t=sw5uU1Ns89NTVagC-0">here</a> to check out my Wireframes on Figma
 
-Link to Github tickets for Get Shit Done - MVP
+Click <a href="https://github.com/users/SeaForeEx/projects/1">here</a> to check out the tickets for my Capstone on my Project Board for MVP on GitHub
 
 <h2><a id="snippets">Code Snippets</a></h2>
-Dynamic Search Page
+Code I used to direct New Users to a Form to input their info
+<br><br>
 
+authContext.js
+<br>
+<img width="40%" alt="Screen Shot 2023-03-09 at 2 49 01 PM" src="https://user-images.githubusercontent.com/113273122/224154043-32ea9da4-0701-4223-a8a1-a2592c91cc82.png">
 
-Merged Data API Calls
+ViewDirector.js
+<br>
+<img width="40%" alt="Screen Shot 2023-03-09 at 2 50 52 PM" src="https://user-images.githubusercontent.com/113273122/224154573-6a950fd2-f9e4-4d2c-b4f3-597f8ed02e10.png">
 
+UserForm.js
+<br>
+<img width="395" alt="Screen Shot 2023-03-09 at 3 01 29 PM" src="https://user-images.githubusercontent.com/113273122/224156929-620e868a-8c2c-41bb-9ac9-a102d41c3ba8.png">
 
 <h2><a id="techstacks">Tech Stacks</a></h2>
-React nextjs Firebase CSS3 HTML5 Bootstrap Figma
-Contributors
-Eric Frey
+<li>React</li> 
+<li>nextjs</li> 
+<li>Firebase</li> 
+<li>CSS3</li> 
+<li>HTML5</li> 
+<li>Bootstrap</li> 
+<li>Figma</li>
+<br>
+<h2>Contributors</h2>
+<a href="https://github.com/SeaForeEx">Charles Bridgers IV</a>
