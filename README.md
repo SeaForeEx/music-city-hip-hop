@@ -5,7 +5,7 @@
 <h2>Topics</h2>
 <li><a href="#overview">Overview</a></li>
 <li><a href="#mvpfeatures">MVP Features</a></li>
-<li><a href="#trytheapp">Try the App Yourself</a></li>
+<li><a href="#checkitout">Check It Out Yourself</a></li>
 <li><a href="#planning">Planning The New Era of Music in Nashville</a></li>
 <li><a href="#snippets">Code Snippets</a></li>
 <li><a href="#techstacks">Tech Stacks for Music City Hip-Hop</a></li>
@@ -23,6 +23,7 @@
 <li>Users can read, update, and delete their profile at any time</li>
 <li>Users can Sign Out of the website on their profile</li>
 <br>
+
 <ul><em>Artists</em></ul>
 <li>Artists are a sub-category of Users</li>
 <li>Artists can also Create, Read, Update, and Delete Links and Events</li>
@@ -30,32 +31,38 @@
 <li>When you click on an event you see its venue, date, time, and price</li> 
 <li>Complete list of artists is shown on the main page to be browsed by everyone</li>
 <br>
+
 <ul><em>Fans</em></ul>
 <li>Fans are a sub-category of Users</li>
 <li>As of MVP, fans are not displayed on a page like artists</li>
 <li>Fans can see their own name, image, and bio on their profile</li>
 <br>
+
 <img width="40%" alt="Screen Shot 2023-03-09 at 12 36 44 PM" src="https://user-images.githubusercontent.com/113273122/224122933-0a723301-5a38-4428-8be9-49eb8255854f.png">
 </br>
+
 <ul><em>Links</em></ul>
 <li>Links are shown on ViewUser and Artist Profile pages</li>
 <li>Artists can post links to their own sites, albums on Spotify/Bandcamp, articles, etc.</li>
 <br>
+
 <ul><em>Events</em></ul>
 <li>Events are shown on ViewUser and Artist Profile pages</li>
 <li>Artists can post events for their fans to attend</li>
 <li>EventView page shows the following details for the event: venue, date, time, and price</li>
 <br>
+
 <img width="40%" alt="Screen Shot 2023-03-09 at 12 38 35 PM" src="https://user-images.githubusercontent.com/113273122/224123269-c947f348-461e-4662-bf76-8a67485d15c7.png">
 <br>
-Search:
 
-The Search input in the Navigation Bar allows the User to search for Projects by Project Name, Task Name, or Material Name.
-Any Projects that meet the search criteria are shown in the Search Query page, and can be navigated to by clicking the Project Folder or Name.
+<ul><em>Search Bar</em></ul>
+
+<li>The Search Bar in the Navigation Bar allows the User to search for Artists by Artist Name</li>
+<li>Any Artists that meet the search criteria are shown in the Search Query page, and can be navigated to by clicking the View Button</li>
 
 
-<h2><a id="trytheapp">Try The App Yourself</a></h2>
-Get Shit Done has been deployed on Netlify, and can be viewed here.
+<h2><a id="checkitout">Check It Out Yourself</a></h2>
+Music City Hip-Hop has been deployed on Netlify, and can be viewed <a href="https://music-city-hip-hop-c4.netlify.app">here</a>.
 
 <h2><a id="planning">Planning</a></h2>
 ERD for GSD MVP
