@@ -13,7 +13,9 @@
 <h2><a id="overview">Overview</a></h2>
 Get Shit Done is a Project Planning App that allows a User to Create, Read, Update and Delete a Project, and then maintain full CRUD on Tasks and Materials associated with the Project.
 
-Planning is hard. Maintaining details on several projects at once can easily lead to disorganization. GSD was designed to help organize details and maintain the scope of several projects at once, all in one place. Not only can Tasks be easily seen in the Project Details for initial planning and implementation, but also Materials are easliy assigned to Tasks, and also tallied up so the User can see the Estimated Cost of the Project.
+Music City Hip-Hop is a Social App that gives Nashville emcees/producers a platform to Create a profile and Read, Update, and Delete their information.  Artists can post their image, name, and bio along with links to their music and upcoming events they will be performing at.  Fans can also join the site by creating a profile and Read, Update and Delete their name, image, and bio while they search the page for artists they already enjoy and maybe discover some new ones.
+
+Let's face it, Nashville is mainly known for country music acts.  But we were first known as "Music City" because of the world-renowned Fisk Jubilee Singers.  There is a diverse music scene bubbling under the surface, and this App is dedicated to giving the burgeoning rap scene the spotlight.  Forget Broadway, Music City Hip-Hop is where it's at!
 
 <h2><a id="mvpfeatures">MVP Features</a></h2>
 Projects:
