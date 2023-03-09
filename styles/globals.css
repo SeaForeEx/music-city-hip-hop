@@ -21,3 +21,9 @@ body {
   background-color: #000000;
   color: rgb(220, 15, 15);
 }
+
+body {
+  background-image: url('../images/kortney-musselman-nashville-skyline.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
