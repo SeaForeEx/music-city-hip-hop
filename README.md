@@ -11,31 +11,38 @@
 <li><a href="#techstacks">Tech Stacks for Get Shit Done</a></li>
 
 <h2><a id="overview">Overview</a></h2>
-Get Shit Done is a Project Planning App that allows a User to Create, Read, Update and Delete a Project, and then maintain full CRUD on Tasks and Materials associated with the Project.
+<p>Music City Hip-Hop is a Social App that gives Nashville emcees/producers a platform to Create a profile and Read, Update, and Delete their information.  Artists can post their image, name, and bio along with links to their music and upcoming events they will be performing at.  Fans can also join the site by creating a profile and Read, Update and Delete their name, image, and bio while they search the page for artists they already enjoy and maybe discover some new ones.</p>
 
-Music City Hip-Hop is a Social App that gives Nashville emcees/producers a platform to Create a profile and Read, Update, and Delete their information.  Artists can post their image, name, and bio along with links to their music and upcoming events they will be performing at.  Fans can also join the site by creating a profile and Read, Update and Delete their name, image, and bio while they search the page for artists they already enjoy and maybe discover some new ones.
-
-Let's face it, Nashville is mainly known for country music acts.  But we were first known as "Music City" because of the world-renowned Fisk Jubilee Singers.  There is a diverse music scene bubbling under the surface, and this App is dedicated to giving the burgeoning rap scene the spotlight.  Forget Broadway, Music City Hip-Hop is where it's at!
+<p>Let's face it, Nashville is mainly known for country music acts.  But we were first known as "Music City" because of the world-renowned Fisk Jubilee Singers.  There is a diverse music scene bubbling under the surface, and this App is dedicated to giving the burgeoning rap scene the spotlight.  Forget Broadway, Music City Hip-Hop is where it's at!</p>
 
 <h2><a id="mvpfeatures">MVP Features</a></h2>
-Projects:
-
-Sign in via Google Authentication
-Add a new Project to see the project folder visible on the home page with all other open projects.
-Clicking the Project folder takes the User to the Project Details page which has the open Tasks and Materials associated with the Project. Also this page contains the Date Created, and Estimated Cost of the Project.
-The Actions dropdown has options for the User to Edit the Project Name, Delete the Project, Add a Task, or Add a Material.
-Deleting a Project also deletes all associated Tasks and Materials.
-
-
-
-
-Tasks:
-
-Task Cards on the Project Details page show the Status (not started, in progress, complete) an the Due Date.
-Clicking the dropdown has options for the User to view the Task Details page, Edit the Task, or Delete the Task.
-Clicking the Task Name also takes the User to the Task Details Page.
-The Task Details Page shows the associated Project, Date Created, Due Date, and the Task Details.
-The dropdown has options for the User to Edit or Delete the Task.
+<ul><em>Users</em></ul>
+<li>Sign in via Google Authentication</li>
+<li>If it is their first time visiting the site, users are directed to a form that lets them create their profile</li>
+<li>New users enter in a name, image, and bio of their choosing and then are directed to the main site</li>
+<li>Users can read, update, and delete their profile at any time</li>
+<li>Users can Sign Out of the website on their profile</li>
+<br>
+<ul><em>Artists</em></ul>
+<li>Artists are a sub-category of Users</li>
+<li>Artists can also Create, Read, Update, and Delete Links and Events</li>
+<li>When you click on a link you see its name and a URL</li>
+<li>When you click on an event you see its venue, date, time, and price</li> 
+<li>Complete list of artists is shown on the main page to be browsed by everyone</li>
+<br>
+<ul><em>Fans</em></ul>
+<li>Fans are a sub-category of Users</li>
+<li>As of MVP, fans are not displayed on a page like artists</li>
+<li>Fans can see their own name, image, and bio on their profile</li>
+<br>
+<div>
+<img width="40%" alt="Screen Shot 2023-03-09 at 12 36 44 PM" src="https://user-images.githubusercontent.com/113273122/224122933-0a723301-5a38-4428-8be9-49eb8255854f.png">
+<img width="40%" alt="Screen Shot 2023-03-09 at 12 38 35 PM" src="https://user-images.githubusercontent.com/113273122/224123269-c947f348-461e-4662-bf76-8a67485d15c7.png">
+</div>
+</br>
+<ul><em>Links</em></ul>
+<li>Links are shown on ViewUser and Artist Profile pages</li>
+<li>Artists can post links to their own sites, albums on Spotify/Bandcamp, articles, etc.</li>
 
 
 Materials:
