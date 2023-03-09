@@ -59,7 +59,9 @@
 
 <li>The Search Bar in the Navigation Bar allows the User to search for Artists by Artist Name</li>
 <li>Any Artists that meet the search criteria are shown in the Search Query page, and can be navigated to by clicking the View Button</li>
+<br>
 
+<img width="40%" alt="Screen Shot 2023-03-09 at 1 56 38 PM" src="https://user-images.githubusercontent.com/113273122/224139732-816715ec-3dca-48a4-8955-ac0b7e627552.png">
 
 <h2><a id="checkitout">Check It Out Yourself</a></h2>
 Music City Hip-Hop has been deployed on Netlify, and can be viewed <a href="https://music-city-hip-hop-c4.netlify.app">here</a>.
