@@ -76,15 +76,19 @@ Music City Hip-Hop has been deployed on Netlify, and can be viewed <a href="http
 <br>
 
 <h2><a id="planning">Planning</a></h2>
-ERD for GSD MVP
+ERD for MCHH MVP
+<br>
 
+<img width="50%" alt="Screen Shot 2023-03-09 at 2 23 39 PM" src="https://user-images.githubusercontent.com/113273122/224146957-a60164e2-33cf-40e4-bba4-b8a2a98459e8.png">
 
-Screenshot of Wireframe with Next JS Routes
+Wireframe for MCHH MVP
+<br>
 
+<img width="40%" alt="Screen Shot 2023-03-09 at 2 26 55 PM" src="https://user-images.githubusercontent.com/113273122/224147810-84ad8527-693b-4638-90ee-0caa64ee1666.png">
 
-Link to ERD
+Click <a href="https://dbdiagram.io/d/63eae5b6296d97641d80aaa6">here</a> to check out my ERD on dbdiagram
 
-Link to Figma Wireframe
+Click <a href="https://www.figma.com/file/DyMq7NLL0ZbMvPpH8B6nOl/Music-City-Hip-Hop?node-id=0-1&t=sw5uU1Ns89NTVagC-0">here</a> to check out my Wireframes on Figma
 
 Link to Github tickets for Get Shit Done - MVP
 
