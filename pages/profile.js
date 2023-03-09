@@ -74,7 +74,7 @@ export default function UserProfile() {
         <>
           <div className="d-flex flex-wrap">
             {userLinks.links?.map((link) => (
-              <LinkCard key={link?.firebaseKey} linkObj={link} onUpdate={fetchData} />
+              <LinkCard key={link.firebaseKey} linkObj={link} onUpdate={fetchData} />
             ))}
           </div>
           <Link href="/links/new" passHref>
@@ -82,7 +82,7 @@ export default function UserProfile() {
           </Link>
           <div className="d-flex flex-wrap">
             {userEvents.events?.map((event) => (
-              <EventCard key={event?.firebaseKey} eventObj={event} onUpdate={fetchData} />
+              <EventCard key={event.firebaseKey} eventObj={event} onUpdate={fetchData} />
             ))}
           </div>
           <Link href="/events/new" passHref>
