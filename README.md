@@ -62,7 +62,7 @@
 <img width="40%" alt="Screen Shot 2023-03-09 at 1 56 38 PM" src="https://user-images.githubusercontent.com/113273122/224139732-816715ec-3dca-48a4-8955-ac0b7e627552.png">
 
 <ul><em>Profile</em></ul>
-<li>Users can Read, Update, and Delete their Profile on this page</li
+<li>Users can Read, Update, and Delete their Profile on this page</li>
 <li>Fan Profile displays their name, image, and bio</li>
 <li>Artist Profile displays name, image, bio, links, and events</li>
 <li>Artists can Create, Read, Update, and Delete links on Profile</li>
