@@ -39,7 +39,6 @@
 <br>
 
 <img width="40%" alt="Screen Shot 2023-03-09 at 12 36 44 PM" src="https://user-images.githubusercontent.com/113273122/224122933-0a723301-5a38-4428-8be9-49eb8255854f.png">
-</br>
 
 <ul><em>Links</em></ul>
 <li>Links are shown on ViewUser and Artist Profile pages</li>
@@ -53,7 +52,6 @@
 <br>
 
 <img width="40%" alt="Screen Shot 2023-03-09 at 12 38 35 PM" src="https://user-images.githubusercontent.com/113273122/224123269-c947f348-461e-4662-bf76-8a67485d15c7.png">
-<br>
 
 <ul><em>Search Bar</em></ul>
 
@@ -63,8 +61,19 @@
 
 <img width="40%" alt="Screen Shot 2023-03-09 at 1 56 38 PM" src="https://user-images.githubusercontent.com/113273122/224139732-816715ec-3dca-48a4-8955-ac0b7e627552.png">
 
+<ul><em>Profile</em></ul>
+<li>Users can Read, Update, and Delete their Profile on this page</li
+<li>Fan Profile displays their name, image, and bio</li>
+<li>Artist Profile displays name, image, bio, links, and events</li>
+<li>Artists can Create, Read, Update, and Delete links on Profile</li>
+<li>Artists can Create, Read, Update, and Delete Events on Profile</li>
+<br>
+
+<img width="20%" alt="Screen Shot 2023-03-09 at 2 07 26 PM" src="https://user-images.githubusercontent.com/113273122/224142639-b45187ed-5a2f-4e95-890a-02185188cd3a.png">
+
 <h2><a id="checkitout">Check It Out Yourself</a></h2>
 Music City Hip-Hop has been deployed on Netlify, and can be viewed <a href="https://music-city-hip-hop-c4.netlify.app">here</a>.
+<br>
 
 <h2><a id="planning">Planning</a></h2>
 ERD for GSD MVP
