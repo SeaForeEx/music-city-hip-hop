@@ -6,9 +6,9 @@
 <li><a href="#overview">Overview</a></li>
 <li><a href="#mvpfeatures">MVP Features</a></li>
 <li><a href="#trytheapp">Try the App Yourself</a></li>
-<li><a href="#planning">Planning to Get Shit Done</a></li>
+<li><a href="#planning">Planning The New Era of Music in Nashville</a></li>
 <li><a href="#snippets">Code Snippets</a></li>
-<li><a href="#techstacks">Tech Stacks for Get Shit Done</a></li>
+<li><a href="#techstacks">Tech Stacks for Music City Hip-Hop</a></li>
 
 <h2><a id="overview">Overview</a></h2>
 <p>Music City Hip-Hop is a Social App that gives Nashville emcees/producers a platform to Create a profile and Read, Update, and Delete their information.  Artists can post their image, name, and bio along with links to their music and upcoming events they will be performing at.  Fans can also join the site by creating a profile and Read, Update and Delete their name, image, and bio while they search the page for artists they already enjoy and maybe discover some new ones.</p>
@@ -35,25 +35,19 @@
 <li>As of MVP, fans are not displayed on a page like artists</li>
 <li>Fans can see their own name, image, and bio on their profile</li>
 <br>
-<div>
 <img width="40%" alt="Screen Shot 2023-03-09 at 12 36 44 PM" src="https://user-images.githubusercontent.com/113273122/224122933-0a723301-5a38-4428-8be9-49eb8255854f.png">
-<img width="40%" alt="Screen Shot 2023-03-09 at 12 38 35 PM" src="https://user-images.githubusercontent.com/113273122/224123269-c947f348-461e-4662-bf76-8a67485d15c7.png">
-</div>
 </br>
 <ul><em>Links</em></ul>
 <li>Links are shown on ViewUser and Artist Profile pages</li>
 <li>Artists can post links to their own sites, albums on Spotify/Bandcamp, articles, etc.</li>
-
-
-Materials:
-
-Material Cards on the Project Details page show the Status (acquired, not acquired) and the associated Task.
-Clicking the dropdown has options for the User to view the Material Details page, Edit the Material, or Delete the Material.
-Clicking the Material Name also takes the User to the Material Details Page.
-The Material Details Page shows the Total Material Cost, associated Project and Task, Status, Price, and Quantity.
-The dropdown has options for the User to Edit or Delete the Material.
-
-
+<br>
+<ul><em>Events</em></ul>
+<li>Events are shown on ViewUser and Artist Profile pages</li>
+<li>Artists can post events for their fans to attend</li>
+<li>EventView page shows the following details for the event: venue, date, time, and price</li>
+<br>
+<img width="40%" alt="Screen Shot 2023-03-09 at 12 38 35 PM" src="https://user-images.githubusercontent.com/113273122/224123269-c947f348-461e-4662-bf76-8a67485d15c7.png">
+<br>
 Search:
 
 The Search input in the Navigation Bar allows the User to search for Projects by Project Name, Task Name, or Material Name.
