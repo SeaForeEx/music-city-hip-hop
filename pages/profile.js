@@ -44,18 +44,20 @@ export default function UserProfile() {
     });
   };
 
+  const fetchData = async () => {
+    const profileData = await getUser(user.uid);
+    setProfileDetails(profileData);
+    const linksData = await getUserLinks(profileData.uid);
+    setUserLinks(linksData);
+    const eventsData = await getUserEvents(profileData.uid);
+    setUserEvents(eventsData);
+    onlyBuiltForUserLinks(profileData.uid);
+    onlyBuiltForUserEvents(profileData.uid);
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const profileData = await getUser(user.uid);
-      setProfileDetails(profileData);
-      const linksData = await getUserLinks(profileData.uid);
-      setUserLinks(linksData);
-      const eventsData = await getUserEvents(profileData.uid);
-      setUserEvents(eventsData);
-      onlyBuiltForUserLinks(profileData.uid);
-      onlyBuiltForUserEvents(profileData.uid);
-    };
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, userFirebaseKey]);
 
   return (
@@ -72,7 +74,7 @@ export default function UserProfile() {
         <>
           <div className="d-flex flex-wrap">
             {userLinks.links?.map((link) => (
-              <LinkCard key={link?.firebaseKey} linkObj={link} onUpdate={onlyBuiltForUserLinks} />
+              <LinkCard key={link?.firebaseKey} linkObj={link} onUpdate={fetchData} />
             ))}
           </div>
           <Link href="/links/new" passHref>
@@ -80,7 +82,7 @@ export default function UserProfile() {
           </Link>
           <div className="d-flex flex-wrap">
             {userEvents.events?.map((event) => (
-              <EventCard key={event?.firebaseKey} eventObj={event} onUpdate={onlyBuiltForUserEvents} />
+              <EventCard key={event?.firebaseKey} eventObj={event} onUpdate={fetchData} />
             ))}
           </div>
           <Link href="/events/new" passHref>
