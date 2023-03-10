@@ -18,7 +18,6 @@ function EventCard({ eventObj, onUpdate }) {
     <Card style={{ width: '18rem', margin: '10px' }}>
       <Card.Body>
         <Card.Title>{eventObj.venue}</Card.Title>
-        {/* DYNAMIC LINK TO VIEW THE MEMBER DETAILS  */}
         <Link href={`/events/${eventObj.firebaseKey}`} passHref>
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
