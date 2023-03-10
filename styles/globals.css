@@ -1,11 +1,11 @@
 @import 'bootstrap/dist/css/bootstrap.css';
-@import url('https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Sedgwick Ave', cursive;
+  font-family: 'Poppins', sans-serif;
   font-size: 20px;
 }
 
@@ -47,4 +47,33 @@ a {
   object-fit: cover;
   border-radius: 50%;
   padding: 10px;
+}
+
+.hoverText:hover {
+  color: #ff9100;
+}
+
+.paperBG {
+  position: relative;
+}
+
+.paperBG::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 100%;
+  background-image: url("https://a.vsstatic.com/mobile/app/category/rap-hip-hop.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5; /* Adjust the opacity value as per your preference */
+  z-index: -1; /* Position the pseudo-element behind the content */
+  border-radius: 10px; /* Add border radius to round the edges */
+  box-shadow: 0px 0px 20px 10px rgba(255, 255, 255, 0.3);
+}
+
+.paperBG > div {
+  position: relative; /* Make the child elements position relative so that they stack on top of the pseudo-element */
+  z-index: 1; /* Position the child elements above the pseudo-element */
 }
