@@ -34,28 +34,52 @@ export default function ViewUser() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userFirebaseKey]);
 
+  // <div>
+  //       <img src={userLinks.image} width="25%" alt={userLinks.image} />
+  //     </div>
+  //     <div>
+  //       <h5>{userLinks.name}</h5>
+  //       <p>{userLinks.bio}</p>
+  //     </div>
+  //     <div>
+  //       <h5>LINKS</h5>
+  //       {userLinks.links?.map((link) => (
+  //         <LinkCard key={link.firebaseKey} linkObj={link} onUpdate={onlyBuiltForUserLinks} />
+  //       ))}
+  //     </div>
+  //     <div>
+  //       <h5>EVENTS</h5>
+  //       {userEvents.events?.map((event) => (
+  //         <EventCard key={event.firebaseKey} eventObj={event} onUpdate={onlyBuiltForUserEvents} />
+  //       ))}
+  //     </div>
+
   return (
-    <div className="mt-5 d-flex flex-wrap">
-      <div className="d-flex flex-column">
-        <img src={userLinks.image} alt={userLinks.image} style={{ width: '300px' }} />
-      </div>
-      <div className="text-white ms-5 details">
-        <h5>
-          {userLinks.name}
-        </h5>
-        <p>{userLinks.bio}</p>
-      </div>
-      <div className="d-flex flex-wrap">
-        {userLinks.links?.map((link) => (
-          <LinkCard key={link.firebaseKey} linkObj={link} onUpdate={onlyBuiltForUserLinks} />
-        ))}
-      </div>
-      <div className="d-flex flex-wrap">
-        {userEvents.events?.map((event) => (
-          <EventCard key={event.firebaseKey} eventObj={event} onUpdate={onlyBuiltForUserEvents} />
-        ))}
+    <>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+          <div style={{ marginTop: '16px' }}>
+            <img src={userLinks.image} width="50%" alt={userLinks.image} />
+          </div>
+          <div style={{ marginTop: '16px', marginLeft: '16px' }}>
+            <h5>{userLinks.name}</h5>
+            <p>{userLinks.bio}</p>
+          </div>
+        </div>
+        <div style={{ marginTop: '16px' }}>
+          <h5>LINKS</h5>
+          {userLinks.links?.map((link) => (
+            <LinkCard key={link.firebaseKey} linkObj={link} onUpdate={onlyBuiltForUserLinks} />
+          ))}
+        </div>
+        <div style={{ marginTop: '16px' }}>
+          <h5>EVENTS</h5>
+          {userEvents.events?.map((event) => (
+            <EventCard key={event.firebaseKey} eventObj={event} onUpdate={onlyBuiltForUserEvents} />
+          ))}
+        </div>
       </div>
 
-    </div>
+    </>
   );
 }
