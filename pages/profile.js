@@ -62,41 +62,47 @@ export default function UserProfile() {
 
   return (
     <>
-      <div style={{ marginTop: '35px' }}>
-        <img src={profileDetails.image} alt="yourmom" width="100px" height="100px" />
-        <h1>{profileDetails.name}</h1>
-        <h2>{profileDetails.bio}</h2>
-        <Link href={`/users/edit/${profileDetails.firebaseKey}`} passHref>
-          <Button variant="info">EDIT PROFILE</Button>
-        </Link>
+      <div style={{ display: 'flex', alignItems: 'center', marginTop: '16px' }}>
+        <div style={{ flex: 1 }}>
+          <img src={profileDetails.image} alt={profileDetails.image} width="200px" style={{ borderRadius: '50%' }} />
+        </div>
+        <div style={{ flex: 2 }}>
+          <h2>{profileDetails.name}</h2>
+          <p>{profileDetails.bio}</p>
+          <Link href={`/users/edit/${profileDetails.firebaseKey}`} passHref>
+            <Button variant="info">edit profile</Button>
+          </Link>
 
-        {profileDetails.isArtist && (
+          <Button variant="danger" onClick={signOut} style={{ marginLeft: '10px' }}> sign out</Button>
+
+          <Button variant="dark" onClick={deleteThisUser} className="m-2">
+            leave MCHH
+          </Button>
+        </div>
+      </div>
+
+      {profileDetails.isArtist && (
         <>
+          LINKS
+          <Link href="/links/new" passHref>
+            <Button variant="success" className="m-2">new link</Button>
+          </Link>
           <div className="d-flex flex-wrap">
             {userLinks.links?.map((link) => (
               <LinkCard key={link.firebaseKey} linkObj={link} onUpdate={fetchData} />
             ))}
           </div>
-          <Link href="/links/new" passHref>
-            <Button variant="success" className="m-2">NEW LINK</Button>
+          EVENTS
+          <Link href="/events/new" passHref>
+            <Button variant="warning" className="m-2">new event</Button>
           </Link>
           <div className="d-flex flex-wrap">
             {userEvents.events?.map((event) => (
               <EventCard key={event.firebaseKey} eventObj={event} onUpdate={fetchData} />
             ))}
           </div>
-          <Link href="/events/new" passHref>
-            <Button variant="warning" className="m-2">NEW EVENT</Button>
-          </Link>
         </>
-        )}
-
-        <Button variant="dark" onClick={deleteThisUser} className="m-2">
-          LEAVE MCHH
-        </Button>
-
-        <Button variant="danger" onClick={signOut}> Sign Out</Button>
-      </div>
+      )}
     </>
   );
 }

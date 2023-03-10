@@ -34,35 +34,15 @@ export default function ViewUser() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userFirebaseKey]);
 
-  // <div>
-  //       <img src={userLinks.image} width="25%" alt={userLinks.image} />
-  //     </div>
-  //     <div>
-  //       <h5>{userLinks.name}</h5>
-  //       <p>{userLinks.bio}</p>
-  //     </div>
-  //     <div>
-  //       <h5>LINKS</h5>
-  //       {userLinks.links?.map((link) => (
-  //         <LinkCard key={link.firebaseKey} linkObj={link} onUpdate={onlyBuiltForUserLinks} />
-  //       ))}
-  //     </div>
-  //     <div>
-  //       <h5>EVENTS</h5>
-  //       {userEvents.events?.map((event) => (
-  //         <EventCard key={event.firebaseKey} eventObj={event} onUpdate={onlyBuiltForUserEvents} />
-  //       ))}
-  //     </div>
-
   return (
     <>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <div style={{ display: 'flex', alignItems: 'flex-start' }}>
           <div style={{ marginTop: '16px' }}>
-            <img src={userLinks.image} width="50%" alt={userLinks.image} />
+            <img src={userLinks.image} width="200px" height="200px" alt={userLinks.image} style={{ borderRadius: '50%' }} />
           </div>
           <div style={{ marginTop: '16px', marginLeft: '16px' }}>
-            <h5>{userLinks.name}</h5>
+            <h2>{userLinks.name}</h2>
             <p>{userLinks.bio}</p>
           </div>
         </div>

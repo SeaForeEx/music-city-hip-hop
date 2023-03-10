@@ -10,7 +10,7 @@ function UserCard({ userObj }) {
       <Card.Body>
         <Card.Title>{userObj.name}</Card.Title>
         <Link href={`/users/${userObj.firebaseKey}`} passHref>
-          <Button variant="primary" className="m-2">VIEW</Button>
+          <Button variant="primary" className="m-2">view</Button>
         </Link>
       </Card.Body>
     </Card>
