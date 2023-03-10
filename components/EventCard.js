@@ -19,14 +19,14 @@ function EventCard({ eventObj, onUpdate }) {
       <Card.Body>
         <Card.Title>{eventObj.venue}</Card.Title>
         <Link href={`/events/${eventObj.firebaseKey}`} passHref>
-          <Button variant="primary" className="m-2">VIEW</Button>
+          <Button variant="primary" className="m-2">view</Button>
         </Link>
         <Link href={`/events/edit/${eventObj.firebaseKey}`} passHref>
-          {eventObj.artistId === user.uid ? (<Button variant="info">EDIT</Button>) : ''}
+          {eventObj.artistId === user.uid ? (<Button variant="info">edit</Button>) : ''}
         </Link>
         {eventObj.artistId === user.uid ? (
           <Button variant="danger" onClick={deleteThisEvent} className="m-2">
-            DELETE
+            delete
           </Button>
         ) : ''}
       </Card.Body>

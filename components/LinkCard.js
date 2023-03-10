@@ -20,14 +20,14 @@ function LinkCard({ linkObj, onUpdate }) {
         <Card.Title>{linkObj.name}</Card.Title>
         {/* DYNAMIC LINK TO VIEW THE MEMBER DETAILS  */}
         <Link href={`/links/${linkObj.firebaseKey}`} passHref>
-          <Button variant="primary" className="m-2">VIEW</Button>
+          <Button variant="primary" className="m-2">view</Button>
         </Link>
         <Link href={`/links/edit/${linkObj.firebaseKey}`} passHref>
-          {linkObj.artistId === user.uid ? (<Button variant="info">EDIT</Button>) : ''}
+          {linkObj.artistId === user.uid ? (<Button variant="info">edit</Button>) : ''}
         </Link>
         {linkObj.artistId === user.uid ? (
           <Button variant="danger" onClick={deleteThisLink} className="m-2">
-            DELETE
+            delete
           </Button>
         ) : ''}
       </Card.Body>
