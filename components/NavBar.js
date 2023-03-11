@@ -19,6 +19,9 @@ export default function NavBar() {
             <Link passHref href="/">
               <Nav.Link>Artists</Nav.Link>
             </Link>
+            <Link passHref href="/fans">
+              <Nav.Link>Fans</Nav.Link>
+            </Link>
             <SearchBar />
             <Link passHref href="/profile">
               <Nav.Link>Profile</Nav.Link>

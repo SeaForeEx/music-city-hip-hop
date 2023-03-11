@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 function UserCard({ userObj }) {
   return (
-    <Card className="userBG" style={{ width: '18rem', height: '5rem', margin: '10px' }}>
+    <Card className="userBG" style={{ width: '18rem', height: '5rem', margin: '5px' }}>
       <Row>
         <Col xs={4}>
           <Card.Img

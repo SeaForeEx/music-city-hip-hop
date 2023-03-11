@@ -32,6 +32,23 @@ const getArtist = () => new Promise((resolve, reject) => {
     }).catch(reject);
 });
 
+const getFans = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/users.json?orderBy="isArtist"&equalTo=false`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    }).catch(reject);
+});
+
 const getUser = (uid) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/users.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
@@ -131,6 +148,7 @@ const getUserEvents = (artistId) => new Promise((resolve, reject) => {
 export {
   createUser,
   getArtist,
+  getFans,
   getUser,
   getUserLogin,
   findUserByFBKey,
