@@ -18,12 +18,10 @@ function Home() {
       <Head>
         <title>Welcome To MUSIC CITY HIP-HOP</title>
       </Head>
-      <div className="text-center my-4">
-        <div className="d-flex flex-wrap">
-          {users.map((artist) => (
-            <UserCard key={artist.firebaseKey} userObj={artist} onUpdate={getAllTheArtists} />
-          ))}
-        </div>
+      <div className="d-flex flex-wrap justify-content-center" style={{ alignItems: 'flex-start', marginTop: '10px' }}>
+        {users.map((artist) => (
+          <UserCard key={artist.firebaseKey} userObj={artist} onUpdate={getAllTheArtists} />
+        ))}
       </div>
     </>
   );
