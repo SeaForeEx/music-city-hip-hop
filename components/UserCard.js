@@ -5,14 +5,14 @@ import Link from 'next/link';
 
 function UserCard({ userObj }) {
   return (
-    <Card style={{ width: '18rem', height: '5rem', margin: '10px' }}>
+    <Card className="userBG" style={{ width: '18rem', height: '5rem', margin: '10px' }}>
       <Row>
         <Col xs={4}>
           <Card.Img
             variant="top"
             src={userObj.image}
             alt={userObj.name}
-            style={{ height: '100px', width: '100px' }}
+            style={{ height: '5rem' }}
           />
         </Col>
         <Col xs={8} className="d-flex align-items-center justify-content-center">

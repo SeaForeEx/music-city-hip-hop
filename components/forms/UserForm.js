@@ -39,7 +39,7 @@ function UserForm({ obj }) {
     e.preventDefault();
     if (obj.firebaseKey) {
       updateUser(formInput)
-        .then(() => router.push('/'));
+        .then(() => router.push('/profile'));
     } else {
       const payload = { ...formInput, uid };
       createUser(payload).then(({ name }) => {
