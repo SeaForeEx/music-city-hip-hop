@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import LinkCard from '../../components/LinkCard';
 import EventCard from '../../components/EventCard';
@@ -36,6 +37,9 @@ export default function ViewUser() {
 
   return (
     <>
+      <Head>
+        <title>{userLinks.name}</title>
+      </Head>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <div className="userHeader" style={{ display: 'flex', alignItems: 'center', marginTop: '16px' }}>
           <div style={{ flex: 1 }}>
