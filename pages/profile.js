@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import Link from 'next/link';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useAuth } from '../utils/context/authContext';
 import {
@@ -62,6 +63,9 @@ export default function UserProfile() {
 
   return (
     <>
+      <Head>
+        <title>{profileDetails.name}&apos;s Profile</title>
+      </Head>
       <div className="userHeader" style={{ display: 'flex', alignItems: 'center', marginTop: '16px' }}>
         <div style={{ flex: 1 }}>
           <img src={profileDetails.image} alt={profileDetails.image} width="200px" style={{ borderRadius: '50%' }} />

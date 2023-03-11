@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'; // provides access to Next.js router that navigates to different pages in the app
 import React, { useState } from 'react'; // useState hook manages state of component
+import Head from 'next/head';
 import { Form, FormControl } from 'react-bootstrap'; // these components used to create search bar form
 
 export default function SearchBar() {
@@ -31,9 +32,14 @@ export default function SearchBar() {
   // setSearchBar('') sets value of searchBar in component's state to empty string
 
   return (
-    <Form className="searchbar" onSubmit={handleSubmit}>
-      <FormControl type="text" placeholder="Search Music City Hip-Hop" onChange={handleChange} value={searchBar} style={{ width: '700px' }} />
-    </Form>
+    <>
+      <Head>
+        <title>Search Results</title>
+      </Head>
+      <Form className="searchbar" onSubmit={handleSubmit}>
+        <FormControl type="text" placeholder="Search Music City Hip-Hop" onChange={handleChange} value={searchBar} style={{ width: '700px' }} />
+      </Form>
+    </>
   );
   // return statement declares what will be rendered in UI
   // creates a Form component from react-bootstrap library
