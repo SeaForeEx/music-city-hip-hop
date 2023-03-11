@@ -34,7 +34,7 @@ a {
 .card {
   background-color: transparent; 
   color: white; 
-  margin: 10px;
+  margin: 0px;
 }
 
 .card-title {
@@ -64,7 +64,6 @@ a {
   background-position: center;
   opacity: 0.5; /* Adjust the opacity value as per your preference */
   z-index: -1; /* Position the pseudo-element behind the content */
-  border-radius: 10px; /* Add border radius to round the edges */
   box-shadow: 0px 0px 20px 10px rgba(255, 255, 255, 0.3);
 }
 
@@ -75,6 +74,7 @@ a {
 
 .userBG {
   position: relative;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .userBG::before {
@@ -89,7 +89,6 @@ a {
   background-position: center;
   opacity: 0.5; /* Adjust the opacity value as per your preference */
   z-index: -1; /* Position the pseudo-element behind the content */
-  border-radius: 10px; /* Add border radius to round the edges */
   box-shadow: 0px 0px 20px 10px rgba(255, 255, 255, 0.3);
 }
 
@@ -116,7 +115,6 @@ a {
   background-position: center;
   opacity: 0.5; /* Adjust the opacity value as per your preference */
   z-index: -1; /* Position the pseudo-element behind the content */
-  border-radius: 10px; /* Add border radius to round the edges */
   box-shadow: 0px 0px 20px 10px rgba(255, 255, 255, 0.3);
 }
 
