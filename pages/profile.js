@@ -62,7 +62,7 @@ export default function UserProfile() {
 
   return (
     <>
-      <div style={{ display: 'flex', alignItems: 'center', marginTop: '16px' }}>
+      <div className="userHeader" style={{ display: 'flex', alignItems: 'center', marginTop: '16px' }}>
         <div style={{ flex: 1 }}>
           <img src={profileDetails.image} alt={profileDetails.image} width="200px" style={{ borderRadius: '50%' }} />
         </div>
@@ -82,26 +82,32 @@ export default function UserProfile() {
       </div>
 
       {profileDetails.isArtist && (
-        <>
-          LINKS
-          <Link href="/links/new" passHref>
-            <Button variant="success" className="m-2">new link</Button>
-          </Link>
-          <div className="d-flex flex-wrap">
+      <div className="linkeventBG" style={{ display: 'flex', flexDirection: 'column' }}>
+        <div>
+          <h5 style={{ marginTop: '1%', marginLeft: '1%' }}>LINKS
+            <Link href="/links/new" passHref>
+              <Button variant="success" className="m-2 btn-transparent">new link</Button>
+            </Link>
+          </h5>
+          <div className="d-flex flex-wrap flex-column">
             {userLinks.links?.map((link) => (
               <LinkCard key={link.firebaseKey} linkObj={link} onUpdate={fetchData} />
             ))}
           </div>
-          EVENTS
-          <Link href="/events/new" passHref>
-            <Button variant="warning" className="m-2">new event</Button>
-          </Link>
-          <div className="d-flex flex-wrap">
+        </div>
+        <div>
+          <h5 style={{ marginTop: '1%', marginLeft: '1%' }}>EVENTS
+            <Link href="/links/new" passHref>
+              <Button variant="success" className="m-2 btn-transparent">new event</Button>
+            </Link>
+          </h5>
+          <div className="d-flex flex-wrap flex-column">
             {userEvents.events?.map((event) => (
               <EventCard key={event.firebaseKey} eventObj={event} onUpdate={fetchData} />
             ))}
           </div>
-        </>
+        </div>
+      </div>
       )}
     </>
   );

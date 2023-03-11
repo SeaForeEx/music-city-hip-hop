@@ -37,16 +37,16 @@ export default function ViewUser() {
   return (
     <>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-          <div style={{ marginTop: '16px' }}>
-            <img src={userLinks.image} width="200px" height="200px" alt={userLinks.image} style={{ borderRadius: '50%', marginBottom: '10%' }} />
+        <div className="userHeader" style={{ display: 'flex', alignItems: 'center', marginTop: '16px' }}>
+          <div style={{ flex: 1 }}>
+            <img src={userLinks.image} width="200px" height="200px" alt={userLinks.image} style={{ borderRadius: '50%' }} />
           </div>
-          <div style={{ marginTop: '1%', marginLeft: '1%' }}>
+          <div style={{ flex: 2 }}>
             <h2>{userLinks.name}</h2>
             <p>{userLinks.bio}</p>
           </div>
         </div>
-        <div className="paperBG">
+        <div className="linkeventBG">
           <div>
             <h5 style={{ marginTop: '1%', marginLeft: '1%' }}>LINKS</h5>
             {userLinks.links?.map((link) => (
@@ -61,7 +61,6 @@ export default function ViewUser() {
           </div>
         </div>
       </div>
-
     </>
   );
 }

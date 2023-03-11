@@ -32,8 +32,8 @@ a {
 }
 
 .card {
-  background-color: rgba(50, 47, 47, 0.7); /* black background with 70% opacity */
-  color: white; /* white text color */
+  background-color: transparent; 
+  color: white; 
   margin: 10px;
 }
 
@@ -41,30 +41,23 @@ a {
   text-shadow: 2px 2px 2px black; /* add a subtle text shadow */
 }
 
-.card-img-top {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  padding: 10px;
-}
-
 .hoverText:hover {
   color: #ff9100;
 }
 
-.paperBG {
+.linkeventBG {
   position: relative;
+  overflow: hidden;
 }
 
-.paperBG::before {
+.linkeventBG::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 30%;
+  width: 40%;
   height: 100%;
-  background-image: url("https://a.vsstatic.com/mobile/app/category/rap-hip-hop.jpg");
+  background-image: url("https://www.bostonglobe.com/resizer/mabTzpsqhNHeru_pyZ4if0lfisc=/arc-anglerfish-arc2-prod-bostonglobe/public/M7VW5P5CXBAK3IXQQ2OZAZJ5GY.jpeg");
   background-size: cover;
   background-position: center;
   opacity: 0.5; /* Adjust the opacity value as per your preference */
@@ -73,7 +66,70 @@ a {
   box-shadow: 0px 0px 20px 10px rgba(255, 255, 255, 0.3);
 }
 
-.paperBG > div {
+.linkeventBG > div {
   position: relative; /* Make the child elements position relative so that they stack on top of the pseudo-element */
   z-index: 1; /* Position the child elements above the pseudo-element */
+}
+
+.userBG {
+  position: relative;
+}
+
+.userBG::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://images.squarespace-cdn.com/content/v1/5d7b97c9bb3da80933da8897/1568433030946-5MCCFWAQSEMKP4NHX569/image-asset.png?format=2500w");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5; /* Adjust the opacity value as per your preference */
+  z-index: -1; /* Position the pseudo-element behind the content */
+  border-radius: 10px; /* Add border radius to round the edges */
+  box-shadow: 0px 0px 20px 10px rgba(255, 255, 255, 0.3);
+}
+
+.userBG > div {
+  position: relative; /* Make the child elements position relative so that they stack on top of the pseudo-element */
+  z-index: 1; /* Position the child elements above the pseudo-element */
+}
+
+.userHeader {
+  position: relative;
+  padding: 15px 15px 15px 15px;
+}
+
+.userHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://www.rollingstone.com/wp-content/uploads/2019/09/shutterstock_1242494212.jpg?w=1581&h=1054&crop=1");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5; /* Adjust the opacity value as per your preference */
+  z-index: -1; /* Position the pseudo-element behind the content */
+  border-radius: 10px; /* Add border radius to round the edges */
+  box-shadow: 0px 0px 20px 10px rgba(255, 255, 255, 0.3);
+}
+
+.userHeader > div {
+  position: relative; /* Make the child elements position relative so that they stack on top of the pseudo-element */
+  z-index: 1; /* Position the child elements above the pseudo-element */
+}
+
+.btn-transparent {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  margin-left: 20px;
+}
+
+.btn-transparent:hover {
+  background-color: #fff;
+  color: #000;
 }
