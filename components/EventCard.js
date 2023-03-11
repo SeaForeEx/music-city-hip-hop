@@ -1,7 +1,11 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable react/jsx-no-comment-textnodes */
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
 import Link from 'next/link';
+import EventModal from './EventModal';
 import { deleteEvent } from '../api/eventData';
 import { useAuth } from '../utils/context/authContext';
 
@@ -13,21 +17,27 @@ function EventCard({ eventObj, onUpdate }) {
   };
 
   const { user } = useAuth();
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
       <Card style={{ width: '18rem', margin: '1px' }}>
+        {/* // eslint-disable-next-line react/jsx-no-comment-textnodes */}
         <Card.Body>
+          {/* // eslint-disable-next-line react/jsx-no-comment-textnodes */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Link href={`/events/${eventObj.firebaseKey}`} passHref>
-              <span style={{ cursor: 'pointer' }} className="hoverText">{eventObj.venue}</span>
-            </Link>
+            <span
+              style={{ cursor: 'pointer' }}
+              className="hoverText"
+              onClick={() => setShowModal(true)}
+            >
+              {eventObj.venue}
+            </span>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
               <Link href={`/events/edit/${eventObj.firebaseKey}`} passHref>
                 <span style={{ cursor: 'pointer' }} className="hoverText">{eventObj.artistId === user.uid ? 'edit' : ''}</span>
               </Link>
               {eventObj.artistId === user.uid ? (
-                // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
                 <span className="m-2 hoverText" style={{ cursor: 'pointer', marginLeft: '10px' }} onClick={deleteThisEvent}>
                   delete
                 </span>
@@ -36,6 +46,13 @@ function EventCard({ eventObj, onUpdate }) {
           </div>
         </Card.Body>
       </Card>
+
+      <EventModal
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        eventObj={eventObj}
+      />
+
     </>
   );
 }
