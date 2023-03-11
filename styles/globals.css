@@ -1,5 +1,5 @@
 @import 'bootstrap/dist/css/bootstrap.css';
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 html,
 body {
@@ -12,7 +12,7 @@ body {
 body {
   background-color: #000000;
   color: white; /* white text color */
-  text-shadow: 2px 2px 2px black; /* add a subtle text shadow */
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 body {
@@ -48,6 +48,8 @@ a {
 .linkeventBG {
   position: relative;
   overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.4);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 .linkeventBG::before {
@@ -55,7 +57,7 @@ a {
   position: absolute;
   top: 0;
   left: 0;
-  width: 40%;
+  width: 18rem;
   height: 100%;
   background-image: url("https://www.bostonglobe.com/resizer/mabTzpsqhNHeru_pyZ4if0lfisc=/arc-anglerfish-arc2-prod-bostonglobe/public/M7VW5P5CXBAK3IXQQ2OZAZJ5GY.jpeg");
   background-size: cover;
@@ -99,6 +101,7 @@ a {
 .userHeader {
   position: relative;
   padding: 15px 15px 15px 15px;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .userHeader::before {
@@ -123,13 +126,35 @@ a {
 }
 
 .btn-transparent {
-  background-color: transparent;
-  color: #fff;
-  border: 2px solid #fff;
+  background-color: rgba(34, 34, 34, 0.6); 
+  color: #ffffff;
+  border: 2px solid #ffffff;
   margin-left: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  font-size: 18px;
+  padding: 10px 20px;
 }
 
 .btn-transparent:hover {
-  background-color: #fff;
-  color: #000;
+  background-color: rgba(34, 34, 34, 0.6); 
+  color: #ff9100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  border-color: #ff9100;
+}
+
+.btn-signout {
+  background-color: rgba(34, 34, 34, 0.6); 
+  color: #ffffff;
+  border: 2px solid #d01d1d;
+  margin-left: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+.btn-signout:hover {
+  background-color: rgba(34, 34, 34, 0.6); 
+  color: #d01d1d;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  border-color: #d01d1d;
 }
