@@ -50,6 +50,7 @@ export default function ViewUser() {
             <p>{userLinks.bio}</p>
           </div>
         </div>
+        {userLinks.isArtist && (
         <div className="linkeventBG">
           <div>
             <h5 style={{ marginTop: '1%', marginLeft: '1%' }}>LINKS</h5>
@@ -64,6 +65,7 @@ export default function ViewUser() {
             ))}
           </div>
         </div>
+        )}
       </div>
     </>
   );
