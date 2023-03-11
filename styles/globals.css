@@ -156,3 +156,18 @@ a {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   border-color: #d01d1d;
 }
+
+.event-modal .modal-header {
+  background-color: #de7402;
+  color: white;
+  background: linear-gradient(to right, rgb(255, 115, 0), white);
+}
+
+.modal-header button.close {
+  color: white;
+}
+
+.event-modal .modal-body {
+  font-size: 24px;
+  background-image: url("https://cdn.vox-cdn.com/thumbor/G58mfK9d2Zo7vupbAy4HIx3VcWY=/433x136:1800x820/fit-in/1200x600/cdn.vox-cdn.com/uploads/chorus_asset/file/23635627/shutterstock_1652120377.jpg");
+}
