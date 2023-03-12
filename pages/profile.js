@@ -101,7 +101,7 @@ export default function UserProfile() {
         </div>
         <div>
           <h5 style={{ marginTop: '1%', marginLeft: '1%' }}>EVENTS
-            <Link href="/links/new" passHref>
+            <Link href="/events/new" passHref>
               <Button variant="success" className="m-2 btn-transparent">new event</Button>
             </Link>
           </h5>

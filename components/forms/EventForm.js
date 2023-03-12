@@ -53,7 +53,7 @@ function EventForm({ obj }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.artistId ? 'Update' : 'Create'} Event</h2>
+      <h2 className="text-white mt-5">{obj.artistId ? 'Need To Change the Deets?  Great!' : 'Tell Us About Your New Gig'}</h2>
 
       <FloatingLabel controlId="floatingInput1" label="Venue" className="mb-3">
         <Form.Control
@@ -99,7 +99,7 @@ function EventForm({ obj }) {
         />
       </FloatingLabel>
 
-      <Button type="submit">{obj.artistId ? 'Edit' : 'Create'} Event</Button>
+      <Button className="m-2 btn-transparent" type="submit">{obj.artistId ? 'Edit' : 'Create'} Event</Button>
     </Form>
   );
 }
