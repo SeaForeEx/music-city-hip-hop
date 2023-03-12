@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
@@ -20,6 +21,7 @@ function UserForm({ obj }) {
     ...initialState,
     uid: obj.uid,
   });
+
   const router = useRouter();
   const { setUser, uid } = useAuth();
 
@@ -34,6 +36,18 @@ function UserForm({ obj }) {
       ...prevState,
       [name]: newValue,
     }));
+  };
+
+  const handleImageChange = (e) => {
+    const imageFile = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(imageFile);
+    reader.onload = () => {
+      setFormInput((prevState) => ({
+        ...prevState,
+        image: reader.result,
+      }));
+    };
   };
 
   const handleSubmit = (e) => {
@@ -82,16 +96,24 @@ function UserForm({ obj }) {
         />
       </FloatingLabel>
 
-      <FloatingLabel controlId="floatingInput3" label="Image" className="mb-3">
-        <Form.Control
-          type="url"
-          placeholder="Give us your Headshot"
-          name="image"
-          value={formInput.image}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
+      <Form.Group className="mb-3">
+        <Form.Label>Image</Form.Label>
+        <div className="d-flex align-items-center">
+          <Form.Control
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+            className="me-3"
+          />
+          {formInput.image && (
+            <img
+              src={formInput.image}
+              alt="profile"
+              style={{ height: '250px', width: '250px', borderRadius: '50%' }}
+            />
+          )}
+        </div>
+      </Form.Group>
 
       <FloatingLabel controlId="floatingSelect" label="AorF">
         <Form.Select
