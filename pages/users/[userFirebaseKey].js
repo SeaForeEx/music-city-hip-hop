@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import LinkCard from '../../components/LinkCard';
 import EventCard from '../../components/EventCard';
-import { findUserByFBKey } from '../../api/userData';
+import { getUserByFBKey } from '../../api/userData';
 import { viewUserDetails } from '../../api/mergedData';
 
 export default function ViewUser() {
@@ -14,7 +14,7 @@ export default function ViewUser() {
   const { userFirebaseKey } = router.query;
 
   const onlyBuiltForUserLinks = () => {
-    findUserByFBKey(userFirebaseKey).then((user) => {
+    getUserByFBKey(userFirebaseKey).then((user) => {
       viewUserDetails(user.uid).then((links) => {
         setUserLinks(links);
       });
@@ -22,7 +22,7 @@ export default function ViewUser() {
   };
 
   const onlyBuiltForUserEvents = () => {
-    findUserByFBKey(userFirebaseKey).then((user) => {
+    getUserByFBKey(userFirebaseKey).then((user) => {
       viewUserDetails(user.uid).then((events) => {
         setUserEvents(events);
       });

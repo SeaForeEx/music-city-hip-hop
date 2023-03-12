@@ -25,7 +25,7 @@ export default function UserProfile() {
   const deleteThisUser = () => {
     if (window.confirm(`Are You Sure, ${profileDetails.name}?`)) {
       deleteUserLinksAndEvents(profileDetails.uid, profileDetails.firebaseKey).then(() => {
-        router.push('/signin');
+        router.push('/');
       })
         .catch((error) => {
           console.error('Error deleting user:', error);
@@ -77,7 +77,7 @@ export default function UserProfile() {
             <Button className="m-2 btn-transparent">edit profile</Button>
           </Link>
 
-          <Button className="m-2 btn-signout" onClick={deleteThisUser}>
+          <Button className="m-2 btn-signout" onClick={() => { deleteThisUser(); signOut(); }}>
             leave MCHH
           </Button>
 

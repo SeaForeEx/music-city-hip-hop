@@ -84,7 +84,7 @@ const getUserLogin = (uid) => new Promise((resolve, reject) => {
     }).catch(reject);
 });
 
-const findUserByFBKey = (firebaseKey) => new Promise((resolve, reject) => {
+const getUserByFBKey = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/users/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
@@ -151,7 +151,7 @@ export {
   getFans,
   getUser,
   getUserLogin,
-  findUserByFBKey,
+  getUserByFBKey,
   updateUser,
   deleteUser,
   getUserLinks,
