@@ -41,6 +41,11 @@ a {
   text-shadow: 2px 2px 2px black; /* add a subtle text shadow */
 }
 
+.FloatingLabel .Form.Control {
+  background-color: transparent;
+  /* any other styling you want */
+}
+
 .hoverText:hover {
   color: #ff9100;
 }

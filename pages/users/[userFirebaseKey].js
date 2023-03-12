@@ -42,8 +42,11 @@ export default function ViewUser() {
       </Head>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <div className="userHeader" style={{ display: 'flex', alignItems: 'center', marginTop: '16px' }}>
-          <div style={{ flex: 1 }}>
-            <img src={userLinks.image} width="200px" height="200px" alt={userLinks.image} style={{ borderRadius: '50%' }} />
+          <div style={{
+            flex: 1, alignItems: 'center', justifyContent: 'center', display: 'flex',
+          }}
+          >
+            <img src={userLinks.image} width="250px" height="250px" alt={userLinks.image} style={{ borderRadius: '50%' }} />
           </div>
           <div style={{ flex: 2 }}>
             <h2>{userLinks.name}</h2>

@@ -99,7 +99,7 @@ function EventForm({ obj }) {
         />
       </FloatingLabel>
 
-      <Button type="submit">{obj.artistId ? 'Edit' : 'Create'} Event</Button>
+      <Button className="m-2 btn-transparent" type="submit">{obj.artistId ? 'Edit' : 'Create'} Event</Button>
     </Form>
   );
 }
