@@ -6,7 +6,10 @@ import UserCard from '../components/UserCard';
 function Home() {
   const [users, setUsers] = useState([]);
   const getAllTheFans = () => {
-    getFans().then(setUsers);
+    getFans().then((data) => {
+      const sortedFans = data.sort((a, b) => a.name.localeCompare(b.name));
+      setUsers(sortedFans);
+    });
   };
 
   useEffect(() => {
