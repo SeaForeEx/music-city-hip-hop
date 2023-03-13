@@ -75,7 +75,7 @@ function LinkForm({ obj }) {
         />
       </FloatingLabel>
 
-      <Button type="submit" className="m-2 btn-transparent">{obj.artistId ? 'Edit' : 'Create'} Link</Button>
+      <Button type="submit" className="m-2 btn-transparent">{obj.artistId ? 'Make A Change' : 'Show Us Your Link'}</Button>
     </Form>
   );
 }
