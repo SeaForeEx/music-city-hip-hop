@@ -17,13 +17,14 @@ function Home() {
   }, []);
 
   return (
-    <>
+    <div className="regBG">
       <Head>
         <title>Welcome To MUSIC CITY HIP-HOP</title>
       </Head>
-      <h2 style={{
-        marginTop: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center',
-      }}
+      <h2
+        style={{
+          marginTop: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}
       >DISCOVER A NEW ARTIST
       </h2>
       <div className="d-flex flex-wrap justify-content-center" style={{ alignItems: 'flex-start', marginTop: '10px' }}>
@@ -31,7 +32,7 @@ function Home() {
           <UserCard key={artist.firebaseKey} userObj={artist} onUpdate={getAllTheArtists} />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -96,6 +96,24 @@ const getUserByFBKey = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getAllUsers = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/users.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
+
 const updateUser = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/users/${payload.firebaseKey}.json`, {
     method: 'PATCH',
@@ -152,6 +170,7 @@ export {
   getUser,
   getUserLogin,
   getUserByFBKey,
+  getAllUsers,
   updateUser,
   deleteUser,
   getUserLinks,

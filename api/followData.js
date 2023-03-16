@@ -3,8 +3,8 @@ import { clientCredentials } from '../utils/client';
 const endpoint = clientCredentials.databaseURL;
 
 // GET ALL FOLLOWS
-const getFollows = (followerId) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/follows.json?orderBy="followerId"&equalTo="${followerId}"`, {
+const getFollowsByFBKey = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/follows.json?orderBy="followerId"&equalTo="${firebaseKey}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -13,6 +13,40 @@ const getFollows = (followerId) => new Promise((resolve, reject) => {
     .then((response) => response.json())
     .then((data) => resolve(Object.values(data)))
     .catch(reject);
+});
+
+const getFollowsByReceiverId = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/follows.json?orderBy="receiverId"&equalTo="${firebaseKey}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    }).catch(reject);
+});
+
+const getFollowsByFollowerId = (followerId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/follows.json?orderBy="followerId"&equalTo="${followerId}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    }).catch(reject);
 });
 
 // CREATE FOLLOW
@@ -68,7 +102,9 @@ const updateFollow = (payload) => new Promise((resolve, reject) => {
 });
 
 export {
-  getFollows,
+  getFollowsByFBKey,
+  getFollowsByReceiverId,
+  getFollowsByFollowerId,
   getSingleFollow,
   deleteSingleFollow,
   updateFollow,
