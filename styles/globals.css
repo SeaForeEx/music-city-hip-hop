@@ -10,7 +10,6 @@ body {
 }
 
 body {
-  background-color: #000000;
   color: white; /* white text color */
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
@@ -20,6 +19,14 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+}
+
+.signinBG {
+  background-image: url('../images/MCHHLogoBG.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100vh;
 }
 
 a {
