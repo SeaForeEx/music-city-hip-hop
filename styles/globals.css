@@ -15,14 +15,14 @@ body {
 }
 
 body {
-  background-image: url('../images/kortney-musselman-nashville-skyline.jpg');
+  background-image: url('https://i.imgur.com/MQgRZbZ.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
 
 .signinBG {
-  background-image: url('../images/MCHHLogoBG.png');
+  background-image: url('https://i.imgur.com/NsabKhL.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
