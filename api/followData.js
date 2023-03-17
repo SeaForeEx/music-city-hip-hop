@@ -32,8 +32,8 @@ const getFollowsByReceiverId = (firebaseKey) => new Promise((resolve, reject) =>
     }).catch(reject);
 });
 
-const getFollowsByFollowerId = (followerId) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/follows.json?orderBy="followerId"&equalTo="${followerId}"`, {
+const getFollowsByFollowerId = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/follows.json?orderBy="followerId"&equalTo="${firebaseKey}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

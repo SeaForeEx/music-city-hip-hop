@@ -55,6 +55,12 @@ export default function ViewUser() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userFirebaseKey]);
 
+  useEffect(() => {
+    follows.forEach((follow) => {
+      console.warn('This is a warning message for', follow);
+    });
+  }, [follows]);
+
   // CHECK IF PROFILE VIEWER FOLLOWS PROFILE OWNER
   const [userRelationship, setUserRelationship] = useState(false);
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -85,9 +91,7 @@ export default function ViewUser() {
   const unfollowUser = () => {
     getFollowsByFBKey(profileViewer.firebaseKey).then((followRelationships) => {
       const userFollowRelationship = followRelationships.find((relationship) => relationship.receiverId === profileOwner.firebaseKey && relationship.followerId === profileViewer.firebaseKey);
-      console.warn(userFollowRelationship.firebaseKey);
       deleteSingleFollow(userFollowRelationship.firebaseKey);
-      console.warn(userFollowRelationship.firebaseKey);
       window.location.reload(); // reload the page
     });
   };
