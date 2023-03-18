@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
@@ -7,7 +8,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useAuth } from '../utils/context/authContext';
 import {
-  getAllUsers, getUser, getUserEvents, getUserLinks, getUserByFBKey,
+  getUser, getUserEvents, getUserLinks,
 } from '../api/userData';
 import { signOut } from '../utils/auth';
 import { viewUserDetails, deleteUserLinksAndEvents, getUserFollows } from '../api/mergedData';
@@ -22,40 +23,11 @@ export default function UserProfile() {
   const [userLinks, setUserLinks] = useState([]);
   const [userEvents, setUserEvents] = useState([]);
   const router = useRouter();
-
   const { userFirebaseKey } = router.query;
-  const [profileOwner, setProfileOwner] = useState({});
-  const getProfileOwner = () => {
-    getUserByFBKey(userFirebaseKey).then(setProfileOwner);
-  };
-  useEffect(() => {
-    getProfileOwner();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userFirebaseKey]);
 
-  // SET THE PROFILE VIEWER - THE USER VIEWING ANOTHER USER'S PROFILE
-  const [, setProfileViewer] = useState({});
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const getProfileViewer = () => {
-    getAllUsers().then((userArray) => {
-      const appUser = userArray.find((userObj) => userObj.uid === user.uid);
-      setProfileViewer(appUser);
-    });
-  };
-  useEffect(() => {
-    getProfileViewer();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
-
-  // GET ALL THE OTHER USERS THE USER FOLLOWS
   const [follows, setFollows] = useState([]);
-  const getAllFollows = () => {
-    getUserFollows(userFirebaseKey).then(setFollows);
-    console.warn(follows);
-  };
   useEffect(() => {
-    getAllFollows();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    getUserFollows(userFirebaseKey).then(setFollows);
   }, [userFirebaseKey]);
 
   const deleteThisUser = () => {
@@ -94,7 +66,6 @@ export default function UserProfile() {
 
   useEffect(() => {
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, userFirebaseKey]);
 
   return (
@@ -154,7 +125,7 @@ export default function UserProfile() {
           <h2>FOLLOWS</h2>
           <div>
             {follows.map((follow) => (
-              <FollowCard key={follow.firebaseKey} followObj={follow} onUpdate={getAllFollows} appUser={profileOwner} />
+              <FollowCard key={follow.firebaseKey} followObj={follow} />
             ))}
           </div>
         </aside>
