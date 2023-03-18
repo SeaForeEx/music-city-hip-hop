@@ -7,12 +7,14 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useAuth } from '../utils/context/authContext';
 import {
-  getUser, getUserEvents, getUserLinks,
+  getAllUsers, getUser, getUserEvents, getUserLinks, getUserByFBKey,
 } from '../api/userData';
 import { signOut } from '../utils/auth';
-import { viewUserDetails, deleteUserLinksAndEvents } from '../api/mergedData';
+import { viewUserDetails, deleteUserLinksAndEvents, getUserFollows } from '../api/mergedData';
 import LinkCard from '../components/LinkCard';
 import EventCard from '../components/EventCard';
+import FollowCard from '../components/FollowCard';
+// import { getFollowsByFBKey } from '../api/followData';
 
 export default function UserProfile() {
   const { user } = useAuth();
@@ -22,6 +24,39 @@ export default function UserProfile() {
   const router = useRouter();
 
   const { userFirebaseKey } = router.query;
+  const [profileOwner, setProfileOwner] = useState({});
+  const getProfileOwner = () => {
+    getUserByFBKey(userFirebaseKey).then(setProfileOwner);
+  };
+  useEffect(() => {
+    getProfileOwner();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userFirebaseKey]);
+
+  // SET THE PROFILE VIEWER - THE USER VIEWING ANOTHER USER'S PROFILE
+  const [, setProfileViewer] = useState({});
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const getProfileViewer = () => {
+    getAllUsers().then((userArray) => {
+      const appUser = userArray.find((userObj) => userObj.uid === user.uid);
+      setProfileViewer(appUser);
+    });
+  };
+  useEffect(() => {
+    getProfileViewer();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
+
+  // GET ALL THE OTHER USERS THE USER FOLLOWS
+  const [follows, setFollows] = useState([]);
+  const getAllFollows = () => {
+    getUserFollows(userFirebaseKey).then(setFollows);
+    console.warn(follows);
+  };
+  useEffect(() => {
+    getAllFollows();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userFirebaseKey]);
 
   const deleteThisUser = () => {
     if (window.confirm(`Are You Sure, ${profileDetails.name}?`)) {
@@ -67,12 +102,12 @@ export default function UserProfile() {
       <Head>
         <title>{profileDetails.name}&apos;s Profile</title>
       </Head>
-      <div className="userHeader" style={{ display: 'flex', alignItems: 'center', marginTop: '16px' }}>
+      <section className="userHeader" style={{ display: 'flex', alignItems: 'center', marginTop: '16px' }}>
         <div style={{
           alignItems: 'center', justifyContent: 'center', display: 'flex', marginRight: '32px',
         }}
         >
-          <img src={profileDetails.image} alt={profileDetails.image} width="200px" style={{ borderRadius: '50%' }} />
+          <img src={profileDetails.image} alt={profileDetails.image} width="250px" style={{ borderRadius: '50%' }} />
         </div>
         <div style={{ flex: 2 }}>
           <h2>{profileDetails.name}</h2>
@@ -87,36 +122,43 @@ export default function UserProfile() {
 
           <Button className="m-2 btn-signout" onClick={signOut} style={{ marginLeft: '10px' }}> sign out</Button>
         </div>
-      </div>
+      </section>
 
-      {profileDetails.isArtist && (
-      <div className="linkeventBG" style={{ display: 'flex', flexDirection: 'column' }}>
-        <div>
-          <h5 style={{ marginTop: '1%', marginLeft: '1%' }}>LINKS
-            <Link href="/links/new" passHref>
-              <Button variant="success" className="m-2 btn-transparent">new link</Button>
-            </Link>
-          </h5>
-          <div className="d-flex flex-wrap flex-column">
-            {userLinks.links?.map((link) => (
-              <LinkCard key={link.firebaseKey} linkObj={link} onUpdate={fetchData} />
+      <div style={{ display: 'flex' }}>
+        <section style={{ flex: '1' }}>
+          {profileDetails.isArtist && (
+          <div className="linkeventBG">
+            <div>
+              <h2 style={{ marginTop: '1%', marginLeft: '1%' }}>LINKS</h2>
+              <Link href="/links/new" passHref>
+                <Button variant="success" className="m-2 btn-transparent">new link</Button>
+              </Link>
+              {userLinks.links?.map((link) => (
+                <LinkCard key={link.firebaseKey} linkObj={link} onUpdate={fetchData} />
+              ))}
+            </div>
+            <div style={{ marginTop: '1%' }}>
+              <h2 style={{ marginTop: '1%', marginLeft: '1%' }}>EVENTS</h2>
+              <Link href="/events/new" passHref>
+                <Button variant="success" className="m-2 btn-transparent">new event</Button>
+              </Link>
+              {userEvents.events?.map((event) => (
+                <EventCard key={event.firebaseKey} eventObj={event} onUpdate={fetchData} />
+              ))}
+            </div>
+          </div>
+          )}
+        </section>
+
+        <aside className="followBG" style={{ flex: '1', display: 'flex', flexDirection: 'column' }}>
+          <h2>FOLLOWS</h2>
+          <div>
+            {follows.map((follow) => (
+              <FollowCard key={follow.firebaseKey} followObj={follow} onUpdate={getAllFollows} appUser={profileOwner} />
             ))}
           </div>
-        </div>
-        <div>
-          <h5 style={{ marginTop: '1%', marginLeft: '1%' }}>EVENTS
-            <Link href="/events/new" passHref>
-              <Button variant="success" className="m-2 btn-transparent">new event</Button>
-            </Link>
-          </h5>
-          <div className="d-flex flex-wrap flex-column">
-            {userEvents.events?.map((event) => (
-              <EventCard key={event.firebaseKey} eventObj={event} onUpdate={fetchData} />
-            ))}
-          </div>
-        </div>
+        </aside>
       </div>
-      )}
     </>
   );
 }
