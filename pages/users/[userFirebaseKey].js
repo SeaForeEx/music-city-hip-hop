@@ -49,17 +49,12 @@ export default function ViewUser() {
   const [follows, setFollows] = useState([]);
   const getAllFollows = () => {
     getUserFollows(userFirebaseKey).then(setFollows);
+    console.warn(follows);
   };
   useEffect(() => {
     getAllFollows();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userFirebaseKey]);
-
-  useEffect(() => {
-    follows.forEach((follow) => {
-      console.warn('This is a warning message for', follow);
-    });
-  }, [follows]);
 
   // CHECK IF PROFILE VIEWER FOLLOWS PROFILE OWNER
   const [userRelationship, setUserRelationship] = useState(false);

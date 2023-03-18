@@ -8,7 +8,9 @@ import { deleteSingleFollow, getFollowsByFBKey, getFollowsByFollowerId } from '.
 const getUserFollows = (firebaseKey) => new Promise((resolve, reject) => {
   getFollowsByFBKey(firebaseKey).then((followArray) => {
     const userFollowsArray = followArray.map((follow) => getUserByFBKey(follow.receiverId));
-    Promise.all(userFollowsArray);
+    return Promise.all(userFollowsArray); // return the Promise.all() call
+  }).then((userObjects) => {
+    resolve(userObjects); // resolve with the array of user objects
   }).catch(reject);
 });
 

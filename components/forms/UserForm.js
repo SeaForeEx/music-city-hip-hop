@@ -14,7 +14,6 @@ const initialState = {
   image: '',
   bio: '',
   isArtist: true,
-  follow: false,
 };
 
 function UserForm({ obj }) {
@@ -162,7 +161,6 @@ UserForm.propTypes = {
     bio: PropTypes.string,
     firebaseKey: PropTypes.string,
     isArtist: PropTypes.bool,
-    follow: PropTypes.bool,
     uid: PropTypes.string,
   }),
 };
