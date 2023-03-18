@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
@@ -11,7 +12,13 @@ export default function NavBar() {
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="navbar-text">
       <Container id="mchh-navbar">
         <Link passHref href="/">
-          <Navbar.Brand>MCHH</Navbar.Brand>
+          <img
+            src="https://i.imgur.com/HSl84mq.png"
+            alt="mchh-logo"
+            style={{
+              maxWidth: '10%', marginRight: '10px', marginTop: '5px', marginBottom: '5px',
+            }}
+          />
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">

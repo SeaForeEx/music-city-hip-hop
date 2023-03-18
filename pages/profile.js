@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
@@ -67,7 +68,10 @@ export default function UserProfile() {
         <title>{profileDetails.name}&apos;s Profile</title>
       </Head>
       <div className="userHeader" style={{ display: 'flex', alignItems: 'center', marginTop: '16px' }}>
-        <div style={{ flex: 1 }}>
+        <div style={{
+          alignItems: 'center', justifyContent: 'center', display: 'flex', marginRight: '32px',
+        }}
+        >
           <img src={profileDetails.image} alt={profileDetails.image} width="200px" style={{ borderRadius: '50%' }} />
         </div>
         <div style={{ flex: 2 }}>

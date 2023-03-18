@@ -118,43 +118,49 @@ export default function ViewUser() {
       <Head>
         <title>{userLinks.name}</title>
       </Head>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <div className="userHeader" style={{ display: 'flex', alignItems: 'center', marginTop: '16px' }}>
-          <div style={{
-            flex: 1, alignItems: 'center', justifyContent: 'center', display: 'flex',
-          }}
-          >
-            <img src={userLinks.image} width="250px" height="250px" alt={userLinks.image} style={{ borderRadius: '50%' }} />
-          </div>
-          <div style={{ flex: 2 }}>
-            <h2>{userLinks.name}</h2>
-            <p>{userLinks.bio}</p>
-            {userRelationship === true && profileOwner.firebaseKey !== profileViewer.firebaseKey ? (<Button variant="outline-dark" className="m-2 btn-transparent" onClick={unfollowUser}>Unfollow</Button>) : ''}
-            {userRelationship === false && profileOwner.firebaseKey !== profileViewer.firebaseKey ? (<Button variant="outline-dark" className="m-2 btn-transparent" onClick={followUser}>Follow</Button>) : ''}
-          </div>
+      <section className="userHeader" style={{ display: 'flex', alignItems: 'center', marginTop: '16px' }}>
+        <div style={{
+          alignItems: 'center', justifyContent: 'center', display: 'flex', marginRight: '32px',
+        }}
+        >
+          <img src={userLinks.image} width="250px" height="250px" alt={userLinks.image} style={{ borderRadius: '50%' }} />
         </div>
-        {userLinks.isArtist && (
-        <div className="linkeventBG">
+        <div>
+          <h2>{userLinks.name}</h2>
+          <p>{userLinks.bio}</p>
+          {userRelationship === true && profileOwner.firebaseKey !== profileViewer.firebaseKey ? (<Button variant="outline-dark" className="m-2 btn-transparent" onClick={unfollowUser}>Unfollow</Button>) : ''}
+          {userRelationship === false && profileOwner.firebaseKey !== profileViewer.firebaseKey ? (<Button variant="outline-dark" className="m-2 btn-transparent" onClick={followUser}>Follow</Button>) : ''}
+        </div>
+      </section>
+
+      <div style={{ display: 'flex' }}>
+        <section style={{ flex: '1' }}>
+          {userLinks.isArtist && (
+          <div className="linkeventBG">
+            <div>
+              <h2 style={{ marginTop: '1%', marginLeft: '1%' }}>LINKS</h2>
+              {userLinks.links?.map((link) => (
+                <LinkCard key={link.firebaseKey} linkObj={link} onUpdate={onlyBuiltForUserLinks} />
+              ))}
+            </div>
+            <div style={{ marginTop: '1%' }}>
+              <h2 style={{ marginTop: '1%', marginLeft: '1%' }}>EVENTS</h2>
+              {userEvents.events?.map((event) => (
+                <EventCard key={event.firebaseKey} eventObj={event} onUpdate={onlyBuiltForUserEvents} />
+              ))}
+            </div>
+          </div>
+          )}
+        </section>
+
+        <aside className="followBG" style={{ flex: '1', display: 'flex', flexDirection: 'column' }}>
+          <h2>FOLLOWS</h2>
           <div>
-            <h5 style={{ marginTop: '1%', marginLeft: '1%' }}>LINKS</h5>
-            {userLinks.links?.map((link) => (
-              <LinkCard key={link.firebaseKey} linkObj={link} onUpdate={onlyBuiltForUserLinks} />
+            {follows.map((follow) => (
+              <FollowCard key={follow.firebaseKey} followObj={follow} onUpdate={getAllFollows} appUser={profileOwner} />
             ))}
           </div>
-          <div style={{ marginTop: '1%' }}>
-            <h5 style={{ marginTop: '1%', marginLeft: '1%' }}>EVENTS</h5>
-            {userEvents.events?.map((event) => (
-              <EventCard key={event.firebaseKey} eventObj={event} onUpdate={onlyBuiltForUserEvents} />
-            ))}
-          </div>
-        </div>
-        )}
-      </div>
-      <h3>follows</h3>
-      <div>
-        {follows.map((follow) => (
-          <FollowCard key={follow.firebaseKey} followObj={follow} onUpdate={getAllFollows} appUser={profileOwner} />
-        ))}
+        </aside>
       </div>
     </>
   );
