@@ -49,7 +49,6 @@ export default function ViewUser() {
   const [follows, setFollows] = useState([]);
   const getAllFollows = () => {
     getUserFollows(userFirebaseKey).then(setFollows);
-    console.warn(follows);
   };
   useEffect(() => {
     getAllFollows();

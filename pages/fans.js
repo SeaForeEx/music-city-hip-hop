@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { getFans } from '../api/userData';
 import UserCard from '../components/UserCard';
 
-function Home() {
+function Fans() {
   const [users, setUsers] = useState([]);
   const getAllTheFans = () => {
     getFans().then((data) => {
@@ -35,4 +35,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Fans;

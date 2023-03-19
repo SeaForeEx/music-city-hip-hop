@@ -15,7 +15,6 @@ import { viewUserDetails, deleteUserLinksAndEvents, getUserFollows } from '../ap
 import LinkCard from '../components/LinkCard';
 import EventCard from '../components/EventCard';
 import FollowCard from '../components/FollowCard';
-// import { getFollowsByFBKey } from '../api/followData';
 
 export default function UserProfile() {
   const { user } = useAuth();
@@ -23,12 +22,15 @@ export default function UserProfile() {
   const [userLinks, setUserLinks] = useState([]);
   const [userEvents, setUserEvents] = useState([]);
   const router = useRouter();
-  const { userFirebaseKey } = router.query;
 
   const [follows, setFollows] = useState([]);
+  const getAllFollows = () => {
+    getUserFollows(user.firebaseKey).then(setFollows);
+  };
   useEffect(() => {
-    getUserFollows(userFirebaseKey).then(setFollows);
-  }, [userFirebaseKey]);
+    getUserFollows();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user.firebaseKey]);
 
   const deleteThisUser = () => {
     if (window.confirm(`Are You Sure, ${profileDetails.name}?`)) {
@@ -66,7 +68,7 @@ export default function UserProfile() {
 
   useEffect(() => {
     fetchData();
-  }, [user, userFirebaseKey]);
+  }, [user, user.firebaseKey]);
 
   return (
     <>
@@ -125,7 +127,7 @@ export default function UserProfile() {
           <h2>FOLLOWS</h2>
           <div>
             {follows.map((follow) => (
-              <FollowCard key={follow.firebaseKey} followObj={follow} />
+              <FollowCard key={follow.firebaseKey} followObj={follow} onUpdate={getAllFollows} />
             ))}
           </div>
         </aside>

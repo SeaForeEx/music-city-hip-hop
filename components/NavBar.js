@@ -35,7 +35,7 @@ export default function NavBar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto navText" style={{ display: 'flex', alignItems: 'center' }}>
-            <Link passHref href="/">
+            <Link passHref href="/artists">
               <Nav.Link>Artists</Nav.Link>
             </Link>
             <Link passHref href="/fans">
