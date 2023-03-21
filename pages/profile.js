@@ -22,14 +22,15 @@ export default function UserProfile() {
   const [userLinks, setUserLinks] = useState([]);
   const [userEvents, setUserEvents] = useState([]);
   const router = useRouter();
-
   const [follows, setFollows] = useState([]);
+
   const getAllFollows = () => {
-    getUserFollows(user.firebaseKey).then(setFollows);
+    getUser(user.uid).then((fbUser) => {
+      getUserFollows(fbUser.firebaseKey).then(setFollows);
+    });
   };
   useEffect(() => {
-    getUserFollows();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    getAllFollows();
   }, [user.firebaseKey]);
 
   const deleteThisUser = () => {

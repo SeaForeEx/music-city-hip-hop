@@ -28,7 +28,7 @@ function Home() {
 
           It's raw.<br />
           It's passionate.<br />
-          And most important?<br />
+          And most important?<br /><br />
 
           <p>It's real.</p>
 
