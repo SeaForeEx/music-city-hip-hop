@@ -13,13 +13,12 @@ const initialState = {
   name: '',
   image: '',
   bio: '',
-  isArtist: true,
+  isArtist: false,
 };
 
 function UserForm({ obj }) {
   const [formInput, setFormInput] = useState({
     ...initialState,
-    uid: obj.uid,
   });
 
   const router = useRouter();
@@ -31,10 +30,9 @@ function UserForm({ obj }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const newValue = name === 'isArtist' ? e.target.checked : value;
     setFormInput((prevState) => ({
       ...prevState,
-      [name]: newValue,
+      [name]: value,
     }));
   };
 

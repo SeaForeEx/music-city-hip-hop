@@ -23,7 +23,6 @@ export default function UserProfile() {
   const [userEvents, setUserEvents] = useState([]);
   const router = useRouter();
   const [follows, setFollows] = useState([]);
-
   const getAllFollows = () => {
     getUser(user.uid).then((fbUser) => {
       getUserFollows(fbUser.firebaseKey).then(setFollows);
@@ -35,7 +34,7 @@ export default function UserProfile() {
 
   const deleteThisUser = () => {
     if (window.confirm(`Are You Sure, ${profileDetails.name}?`)) {
-      deleteUserLinksAndEvents(profileDetails.uid, profileDetails.firebaseKey).then(() => {
+      deleteUserLinksAndEvents(profileDetails.firebaseKey, profileDetails.uid).then(() => {
         router.push('/');
       })
         .catch((error) => {
