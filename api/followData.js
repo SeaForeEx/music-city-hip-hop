@@ -2,7 +2,7 @@ import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
-// GET ALL FOLLOWS
+// ALL THE PEOPLE THE USER FOLLOWS
 const getFollowsByFBKey = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/follows.json?orderBy="followerId"&equalTo="${firebaseKey}"`, {
     method: 'GET',
@@ -15,6 +15,7 @@ const getFollowsByFBKey = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// ALL THE PEOPLE WHO FOLLOW USER
 const getFollowsByReceiverId = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/follows.json?orderBy="receiverId"&equalTo="${firebaseKey}"`, {
     method: 'GET',

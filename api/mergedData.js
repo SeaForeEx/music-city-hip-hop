@@ -53,28 +53,4 @@ const deleteUserLinksAndEvents = (userFirebaseKey, uid) => new Promise((resolve,
     .catch((error) => reject(error));
 });
 
-// const deleteUserLinksAndEvents = (artistId, userFirebaseKey, firebaseKey) => new Promise((resolve, reject) => {
-//   getUserLinks(artistId)
-//     .then((linksArray) => {
-//       const deleteLinkPromises = linksArray.map((link) => deleteLink(link.firebaseKey));
-
-//       return Promise.all(deleteLinkPromises);
-//     })
-//     .then(() => getUserEvents(artistId))
-//     .then((eventsArray) => {
-//       const deleteEventPromises = eventsArray.map((event) => deleteEvent(event.firebaseKey));
-
-//       return Promise.all(deleteEventPromises);
-//     })
-//     .then(() => getUserFollows(firebaseKey))
-//     .then((followsArray) => {
-//       const deleteFollowPromises = followsArray.map((follow) => deleteSingleFollow(follow.firebaseKey));
-
-//       return Promise.all(deleteFollowPromises);
-//     })
-//     .then(() => deleteUser(userFirebaseKey))
-//     .then(resolve)
-//     .catch((error) => reject(error));
-// });
-
 export { viewUserDetails, deleteUserLinksAndEvents, getUserFollows };
