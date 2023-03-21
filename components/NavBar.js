@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
@@ -18,7 +16,6 @@ export default function NavBar() {
 
   useEffect(() => {
     getProfilePic();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="navbar-text">
