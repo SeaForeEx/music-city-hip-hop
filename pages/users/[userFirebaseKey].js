@@ -60,7 +60,6 @@ export default function ViewUser() {
       const userFollowRelationship = followRelationships.find((relationship) => relationship.receiverId === profileOwner.firebaseKey && relationship.followerId === profileViewer.firebaseKey);
       if (userFollowRelationship) setUserRelationship(true);
       else setUserRelationship(false);
-      console.warn(followRelationships);
     });
   };
   useEffect(() => {
@@ -78,13 +77,11 @@ export default function ViewUser() {
       updateFollow(patchPayload).then(getUserRelationship);
     });
   };
-
   // CLICK EVENT FOR UNFOLLOWING A USER
   const unfollowUser = () => {
     getFollowsByFBKey(profileViewer.firebaseKey).then((followRelationships) => {
       const userFollowRelationship = followRelationships.find((relationship) => relationship.receiverId === profileOwner.firebaseKey && relationship.followerId === profileViewer.firebaseKey);
       deleteSingleFollow(userFollowRelationship.firebaseKey);
-      console.warn(userFollowRelationship);
     }).then(getUserRelationship);
   };
 
