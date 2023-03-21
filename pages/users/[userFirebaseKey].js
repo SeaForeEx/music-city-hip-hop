@@ -28,12 +28,12 @@ export default function ViewUser() {
   };
   useEffect(() => {
     getProfileOwner();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userFirebaseKey]);
 
   // SET THE PROFILE VIEWER - THE USER VIEWING ANOTHER USER'S PROFILE
+
+  // getUser by UID
   const [profileViewer, setProfileViewer] = useState({});
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getProfileViewer = () => {
     getAllUsers().then((userArray) => {
       const appUser = userArray.find((userObj) => userObj.uid === user.uid);
@@ -42,7 +42,6 @@ export default function ViewUser() {
   };
   useEffect(() => {
     getProfileViewer();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   // GET ALL THE OTHER USERS THE USER FOLLOWS
@@ -52,21 +51,21 @@ export default function ViewUser() {
   };
   useEffect(() => {
     getAllFollows();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userFirebaseKey]);
 
   // CHECK IF PROFILE VIEWER FOLLOWS PROFILE OWNER
   const [userRelationship, setUserRelationship] = useState(false);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getUserRelationship = () => {
     getFollowsByFBKey(profileViewer.firebaseKey).then((followRelationships) => {
       const userFollowRelationship = followRelationships.find((relationship) => relationship.receiverId === profileOwner.firebaseKey && relationship.followerId === profileViewer.firebaseKey);
       if (userFollowRelationship) setUserRelationship(true);
+      else setUserRelationship(false);
+      console.warn(followRelationships);
     });
   };
   useEffect(() => {
     getUserRelationship();
-  }, [profileOwner, profileViewer, getUserRelationship]);
+  }, [profileOwner, profileViewer]);
 
   // CLICK EVENT FOR FOLLOWING A USER
   const followUser = () => {
@@ -76,8 +75,7 @@ export default function ViewUser() {
     };
     createFollow(payload).then(({ name }) => {
       const patchPayload = { firebaseKey: name };
-      updateFollow(patchPayload);
-      window.location.reload(); // reload the page
+      updateFollow(patchPayload).then(getUserRelationship);
     });
   };
 
@@ -86,8 +84,8 @@ export default function ViewUser() {
     getFollowsByFBKey(profileViewer.firebaseKey).then((followRelationships) => {
       const userFollowRelationship = followRelationships.find((relationship) => relationship.receiverId === profileOwner.firebaseKey && relationship.followerId === profileViewer.firebaseKey);
       deleteSingleFollow(userFollowRelationship.firebaseKey);
-      window.location.reload(); // reload the page
-    });
+      console.warn(userFollowRelationship);
+    }).then(getUserRelationship);
   };
 
   const onlyBuiltForUserLinks = () => {
@@ -109,7 +107,6 @@ export default function ViewUser() {
   useEffect(() => {
     onlyBuiltForUserLinks();
     onlyBuiltForUserEvents();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userFirebaseKey]);
 
   return (
