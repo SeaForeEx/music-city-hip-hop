@@ -18,6 +18,12 @@ body {
   color: white; /* white text color */
 }
 
+.formTextStyle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  color: darkslategray;
+}
+
 h2 {
   font-family: 'Permanent Marker', cursive;
   -webkit-text-stroke: 1px black;
@@ -67,14 +73,14 @@ body {
   color: #ff9100;
 }
 
-.linkeventBG {
+.linkeventBackground {
   position: relative;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.5);
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
-.linkeventBG::before {
+.linkeventBackground::before {
   content: '';
   position: absolute;
   top: 0;
@@ -89,17 +95,17 @@ body {
   box-shadow: 0px 0px 20px 10px rgba(255, 255, 255, 0.3);
 }
 
-.linkeventBG > div {
+.linkeventBackground > div {
   position: relative; /* Make the child elements position relative so that they stack on top of the pseudo-element */
   z-index: 1; /* Position the child elements above the pseudo-element */
 }
 
-.userBG {
+.userBackground {
   position: relative;
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.userBG::before {
+.userBackground::before {
   content: '';
   position: absolute;
   top: 0;
@@ -114,7 +120,7 @@ body {
   box-shadow: 0px 0px 20px 10px rgba(255, 255, 255, 0.3);
 }
 
-.userBG > div {
+.userBackground > div {
   position: relative; /* Make the child elements position relative so that they stack on top of the pseudo-element */
   z-index: 1; /* Position the child elements above the pseudo-element */
 }
@@ -145,13 +151,13 @@ body {
   z-index: 1; /* Position the child elements above the pseudo-element */
 }
 
-.followBG {
+.followBackground {
   position: relative;
   background-color: rgba(0, 0, 0, 0.5);
   text-shadow: 10px 5px 10px 5px rgba(0, 0, 0, 0.5);
 }
 
-.followBG::before {
+.followBackground::before {
   content: '';
   position: absolute;
   top: 0;
@@ -165,7 +171,7 @@ body {
   z-index: -1; /* Position the pseudo-element behind the content */
 }
 
-.followBG > div {
+.followBackground > div {
   position: relative; /* Make the child elements position relative so that they stack on top of the pseudo-element */
   z-index: 1; /* Position the child elements above the pseudo-element */
 }

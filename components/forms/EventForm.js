@@ -52,7 +52,7 @@ function EventForm({ obj }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className="formTextStyle">
       <h2 className="text-white mt-5">{obj.artistId ? 'Need To Change the Deets?  Great!' : 'Tell Us About Your New Gig'}</h2>
 
       <FloatingLabel controlId="floatingInput1" label="Venue" className="mb-3">

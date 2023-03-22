@@ -100,7 +100,7 @@ export default function UserProfile() {
       <div style={{ display: 'flex' }}>
         <section style={{ flex: '1' }}>
           {profileDetails.isArtist && (
-          <div className="linkeventBG">
+          <div className="linkeventBackground">
             <div>
               <h2 style={{ marginTop: '1%', marginLeft: '1%' }}>LINKS</h2>
               <Link href="/links/new" passHref>
@@ -123,7 +123,7 @@ export default function UserProfile() {
           )}
         </section>
 
-        <aside className="followBG" style={{ flex: '1', display: 'flex', flexDirection: 'column' }}>
+        <aside className="followBackground" style={{ flex: '1', display: 'flex', flexDirection: 'column' }}>
           <h2>FOLLOWS</h2>
           <div>
             {follows.map((follow) => (

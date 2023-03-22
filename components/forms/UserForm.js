@@ -79,7 +79,7 @@ function UserForm({ obj }) {
       <Head>
         <title>{obj.firebaseKey ? 'Change is Good' : 'A New Era has Dawned'}</title>
       </Head>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} className="formTextStyle">
         <h2 className="text-white mt-5">{obj.firebaseKey ? 'Change is Good, Change Brings Growth' : 'A New Era has Dawned in Music City'}</h2>
 
         <FloatingLabel controlId="floatingInput1" label="Name" className="mb-3">

@@ -50,7 +50,7 @@ function LinkForm({ obj }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className="formTextStyle">
       <h2 className="text-white mt-5">{obj.artistId ? 'Need To Change the Deets?  Great!' : 'Let Us Hear Your New Music'}</h2>
 
       <FloatingLabel controlId="floatingInput1" label="Website Name" className="mb-3">
@@ -75,7 +75,7 @@ function LinkForm({ obj }) {
         />
       </FloatingLabel>
 
-      <Button type="submit" className="m-2 btn-transparent">{obj.artistId ? 'Make A Change' : 'Show Us Your Link'}</Button>
+      <Button type="submit" className="m-2 whiteButton">{obj.artistId ? 'Make A Change' : 'Show Us Your Link'}</Button>
     </Form>
   );
 }
