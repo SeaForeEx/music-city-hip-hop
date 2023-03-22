@@ -9,7 +9,7 @@ function Home() {
       <Head>
         <title>Welcome To MUSIC CITY HIP-HOP</title>
       </Head>
-      <div style={{ display: 'flex' }}>
+      <div className="textStyle" style={{ display: 'flex' }}>
         <div style={{
           flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.7)', padding: '20px', opacity: '0.9',
         }}

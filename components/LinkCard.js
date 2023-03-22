@@ -24,10 +24,10 @@ function LinkCard({ linkObj, onUpdate }) {
   }
 
   return (
-    <Card style={{ width: '18rem', margin: '1px' }}>
+    <Card className="textStyle" style={{ width: '18rem', margin: '1px' }}>
       <Card.Body>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <a href={url} target="_blank" rel="noopener noreferrer" className="hoverText">{linkObj.name}</a>
+          <a href={url} target="_blank" rel="noopener noreferrer" className="hoverText textStyle linkStyle">{linkObj.name}</a>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
             <Link href={`/links/edit/${linkObj.firebaseKey}`} passHref>
               <span style={{ cursor: 'pointer' }} className="hoverText">{linkObj.artistId === user.uid ? 'edit' : ''}</span>

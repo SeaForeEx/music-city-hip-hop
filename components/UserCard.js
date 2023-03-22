@@ -17,7 +17,7 @@ function UserCard({ userObj }) {
         </Col>
         <Col xs={8} className="d-flex align-items-center justify-content-center">
           <Link href={`/users/${userObj.firebaseKey}`} passHref>
-            <Card.Link className="hoverText">{userObj.name}</Card.Link>
+            <Card.Link className="hoverText linkStyle">{userObj.name}</Card.Link>
           </Link>
         </Col>
       </Row>

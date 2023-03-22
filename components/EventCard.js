@@ -21,7 +21,7 @@ function EventCard({ eventObj, onUpdate }) {
 
   return (
     <>
-      <Card style={{ width: '18rem', margin: '1px' }}>
+      <Card className="textStyle" style={{ width: '18rem', margin: '1px' }}>
         {/* // eslint-disable-next-line react/jsx-no-comment-textnodes */}
         <Card.Body>
           {/* // eslint-disable-next-line react/jsx-no-comment-textnodes */}
