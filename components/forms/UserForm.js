@@ -146,7 +146,7 @@ function UserForm({ obj }) {
         </FloatingLabel>
         )}
 
-        <Button type="submit" className="m-2 btn-transparent">{obj.firebaseKey ? 'Make A Change' : 'Join MCHH'}</Button>
+        <Button type="submit" className="m-2 whiteButton">{obj.firebaseKey ? 'Make A Change' : 'Join MCHH'}</Button>
       </Form>
     </>
   );

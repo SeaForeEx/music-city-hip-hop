@@ -170,7 +170,7 @@ body {
   z-index: 1; /* Position the child elements above the pseudo-element */
 }
 
-.btn-transparent {
+.whiteButton {
   background-color: rgba(34, 34, 34, 0.6); 
   color: #ffffff;
   border: 2px solid #ffffff;
@@ -180,14 +180,14 @@ body {
   padding: 10px 20px;
 }
 
-.btn-transparent:hover {
+.whiteButton:hover {
   background-color: rgba(34, 34, 34, 0.6); 
   color: #ff9100;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   border-color: #ff9100;
 }
 
-.btn-signout {
+.redButton {
   background-color: rgba(34, 34, 34, 0.6); 
   color: #ffffff;
   border: 2px solid #d01d1d;
@@ -197,7 +197,7 @@ body {
   padding: 10px 20px;
 }
 
-.btn-signout:hover {
+.redButton:hover {
   background-color: rgba(34, 34, 34, 0.6); 
   color: #d01d1d;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);

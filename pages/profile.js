@@ -86,14 +86,14 @@ export default function UserProfile() {
           <h2>{profileDetails.name}</h2>
           <p>{profileDetails.bio}</p>
           <Link href={`/users/edit/${profileDetails.firebaseKey}`} passHref>
-            <Button className="m-2 btn-transparent">edit profile</Button>
+            <Button className="m-2 whiteButton">edit profile</Button>
           </Link>
 
-          <Button className="m-2 btn-signout" onClick={() => { deleteThisUser(); signOut(); }}>
+          <Button className="m-2 redButton" onClick={() => { deleteThisUser(); signOut(); }}>
             leave MCHH
           </Button>
 
-          <Button className="m-2 btn-signout" onClick={signOut} style={{ marginLeft: '10px' }}> sign out</Button>
+          <Button className="m-2 redButton" onClick={signOut} style={{ marginLeft: '10px' }}> sign out</Button>
         </div>
       </section>
 
@@ -104,7 +104,7 @@ export default function UserProfile() {
             <div>
               <h2 style={{ marginTop: '1%', marginLeft: '1%' }}>LINKS</h2>
               <Link href="/links/new" passHref>
-                <Button variant="success" className="m-2 btn-transparent">new link</Button>
+                <Button variant="success" className="m-2 whiteButton">new link</Button>
               </Link>
               {userLinks.links?.map((link) => (
                 <LinkCard key={link.firebaseKey} linkObj={link} onUpdate={fetchData} />
@@ -113,7 +113,7 @@ export default function UserProfile() {
             <div style={{ marginTop: '1%' }}>
               <h2 style={{ marginTop: '1%', marginLeft: '1%' }}>EVENTS</h2>
               <Link href="/events/new" passHref>
-                <Button variant="success" className="m-2 btn-transparent">new event</Button>
+                <Button variant="success" className="m-2 whiteButton">new event</Button>
               </Link>
               {userEvents.events?.map((event) => (
                 <EventCard key={event.firebaseKey} eventObj={event} onUpdate={fetchData} />
