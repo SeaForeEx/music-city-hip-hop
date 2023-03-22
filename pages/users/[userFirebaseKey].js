@@ -111,7 +111,7 @@ export default function ViewUser() {
       <Head>
         <title>{userLinks.name}</title>
       </Head>
-      <section className="userHeader" style={{ display: 'flex', alignItems: 'center', marginTop: '16px' }}>
+      <section className="userHeader textStyle" style={{ display: 'flex', alignItems: 'center', marginTop: '16px' }}>
         <div style={{
           alignItems: 'center', justifyContent: 'center', display: 'flex', marginRight: '32px',
         }}
@@ -129,7 +129,7 @@ export default function ViewUser() {
       <div style={{ display: 'flex' }}>
         <section style={{ flex: '1' }}>
           {userLinks.isArtist && (
-          <div className="linkeventBG">
+          <div className="linkeventBackground">
             <div>
               <h2 style={{ marginTop: '1%', marginLeft: '1%' }}>LINKS</h2>
               {userLinks.links?.map((link) => (
@@ -146,7 +146,7 @@ export default function ViewUser() {
           )}
         </section>
 
-        <aside className="followBG" style={{ flex: '1', display: 'flex', flexDirection: 'column' }}>
+        <aside className="followBackground" style={{ flex: '1', display: 'flex', flexDirection: 'column' }}>
           <h2>FOLLOWS</h2>
           <div>
             {follows.map((follow) => (
