@@ -86,14 +86,14 @@ export default function UserProfile() {
           <h2>{profileDetails.name}</h2>
           <p>{profileDetails.bio}</p>
           <Link href={`/users/edit/${profileDetails.firebaseKey}`} passHref>
-            <Button className="m-2 whiteButton">edit profile</Button>
+            <Button className="whiteButton">edit profile</Button>
           </Link>
 
-          <Button className="m-2 redButton" onClick={() => { deleteThisUser(); signOut(); }}>
+          <Button className="redButton" onClick={() => { deleteThisUser(); signOut(); }}>
             leave MCHH
           </Button>
 
-          <Button className="m-2 redButton" onClick={signOut} style={{ marginLeft: '10px' }}> sign out</Button>
+          <Button className="redButton" onClick={signOut} style={{ marginLeft: '10px' }}> sign out</Button>
         </div>
       </section>
 
