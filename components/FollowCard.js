@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function FollowCard({ followObj }) {
   return (
-    <Card className="userBG" style={{ width: '18rem', height: '5rem', margin: '5px' }}>
+    <Card className="userBG textStyle" style={{ width: '18rem', height: '5rem', margin: '5px' }}>
       <Row>
         <Col xs={4}>
           <Card.Img
@@ -17,7 +17,7 @@ export default function FollowCard({ followObj }) {
         </Col>
         <Col xs={8} className="d-flex align-items-center justify-content-center">
           <Link href={`/users/${followObj.firebaseKey}`} passHref>
-            <Card.Link className="hoverText">{followObj.name}</Card.Link>
+            <Card.Link className="hoverText linkStyle">{followObj.name}</Card.Link>
           </Link>
         </Col>
       </Row>

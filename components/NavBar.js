@@ -18,7 +18,7 @@ export default function NavBar() {
     getProfilePic();
   }, [user]);
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="navbar-text">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="navbar-text textStyle">
       <Container id="mchh-navbar">
         <Link passHref href="/">
           <img

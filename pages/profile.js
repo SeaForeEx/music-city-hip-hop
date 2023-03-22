@@ -75,7 +75,7 @@ export default function UserProfile() {
       <Head>
         <title>{profileDetails.name}&apos;s Profile</title>
       </Head>
-      <section className="userHeader" style={{ display: 'flex', alignItems: 'center', marginTop: '16px' }}>
+      <section className="userHeader textStyle" style={{ display: 'flex', alignItems: 'center', marginTop: '16px' }}>
         <div style={{
           alignItems: 'center', justifyContent: 'center', display: 'flex', marginRight: '32px',
         }}
