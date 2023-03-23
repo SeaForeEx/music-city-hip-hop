@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 
 function EventModal(props) {
   const { show, onHide, eventObj } = props;
+  const {
+    venue, date, time, price,
+  } = eventObj;
+  console.warn(date && date.toString());
 
   return (
     <Modal show={show} onHide={onHide} className="event-modal">
@@ -11,10 +15,10 @@ function EventModal(props) {
         <Modal.Title>Event</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div>{eventObj.venue}</div>
-        <div>{eventObj.date}</div>
-        <div>{eventObj.time}</div>
-        <div>{eventObj.price}</div>
+        <div>{venue}</div>
+        <div>{date}</div>
+        <div>{time}</div>
+        <div>{price}</div>
       </Modal.Body>
     </Modal>
   );
@@ -26,7 +30,7 @@ EventModal.propTypes = {
   eventObj: PropTypes.shape({
     firebaseKey: PropTypes.string.isRequired,
     artistId: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
+    date: PropTypes.instanceOf(Date),
     venue: PropTypes.string.isRequired,
     time: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
