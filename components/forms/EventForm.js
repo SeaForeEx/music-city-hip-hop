@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
+import DatePicker from 'react-datepicker';
 import { useAuth } from '../../utils/context/authContext';
 import { createEvent, updateEvent } from '../../api/eventData';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const initialState = {
   venue: '',
-  date: '',
+  date: new Date(),
   time: '',
   price: '',
   artistId: '',
@@ -41,7 +43,9 @@ function EventForm({ obj }) {
       updateEvent(formInput)
         .then(() => router.push('/profile'));
     } else {
-      const payload = { ...formInput, artistId: user.uid, uid: user.uid }; // spreading object data, appending uid
+      const payload = {
+        ...formInput, artistId: user.uid, uid: user.uid,
+      }; // spreading object data, appending uid
       createEvent(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateEvent(patchPayload).then(() => {
@@ -67,12 +71,11 @@ function EventForm({ obj }) {
       </FloatingLabel>
 
       <FloatingLabel controlId="floatingInput2" label="Date" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Event Date"
+        <DatePicker
+          placeholderText="Event Date"
           name="date"
-          value={formInput.date}
-          onChange={handleChange}
+          selected={formInput.date}
+          onChange={(date) => setFormInput((prevState) => ({ ...prevState, date }))}
           required
         />
       </FloatingLabel>
@@ -107,7 +110,7 @@ function EventForm({ obj }) {
 EventForm.propTypes = {
   obj: PropTypes.shape({
     venue: PropTypes.string,
-    date: PropTypes.string,
+    date: PropTypes.instanceOf(Date),
     time: PropTypes.string,
     price: PropTypes.string,
     artistId: PropTypes.string,

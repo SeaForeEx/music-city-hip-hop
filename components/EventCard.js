@@ -60,7 +60,7 @@ function EventCard({ eventObj, onUpdate }) {
 EventCard.propTypes = {
   eventObj: PropTypes.shape({
     venue: PropTypes.string,
-    date: PropTypes.string,
+    date: PropTypes.instanceOf(Date),
     time: PropTypes.string,
     price: PropTypes.string,
     firebaseKey: PropTypes.string,
