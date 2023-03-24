@@ -38,13 +38,11 @@ const deleteUserLinksAndEvents = (userFirebaseKey, uid) => new Promise((resolve,
     })
     .then(() => getFollowsByFBKey(userFirebaseKey))
     .then((followsArray) => {
-      console.warn('follows array', followsArray);
       const deleteFollowPromises = followsArray.map((follow) => deleteSingleFollow(follow.firebaseKey));
       return Promise.all(deleteFollowPromises);
     })
     .then(() => getFollowsByReceiverId(userFirebaseKey))
     .then((followsArray) => {
-      console.warn('receivers array', followsArray);
       const deleteFollowPromises = followsArray.map((follow) => deleteSingleFollow(follow.firebaseKey));
       return Promise.all(deleteFollowPromises);
     })

@@ -7,10 +7,9 @@ function EventModal(props) {
   const {
     venue, date, time, price,
   } = eventObj;
-  console.warn(date && date.toString());
 
   return (
-    <Modal show={show} onHide={onHide} className="event-modal">
+    <Modal show={show} onHide={onHide} className="event-modal textStyle">
       <Modal.Header closeButton>
         <Modal.Title>Event</Modal.Title>
       </Modal.Header>

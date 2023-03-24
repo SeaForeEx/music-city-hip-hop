@@ -25,7 +25,7 @@ const getArtist = () => new Promise((resolve, reject) => {
     .then((response) => response.json())
     .then((data) => {
       if (data) {
-        resolve(Object.values(data));
+        resolve(Object.values(data)).then(console.warn(data));
       } else {
         resolve([]);
       }
@@ -42,7 +42,7 @@ const getFans = () => new Promise((resolve, reject) => {
     .then((response) => response.json())
     .then((data) => {
       if (data) {
-        resolve(Object.values(data));
+        resolve(Object.values(data)).then(console.warn(data));
       } else {
         resolve([]);
       }

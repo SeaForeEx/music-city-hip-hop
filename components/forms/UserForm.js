@@ -139,7 +139,7 @@ function UserForm({ obj }) {
             value={formInput.isArtist}
             required
           >
-            <option value="">Which Are You?</option>
+            <option value="" selected>Which Are You?</option>
             <option value>Artist</option>
             <option value={false}>Fan</option>
           </Form.Select>
