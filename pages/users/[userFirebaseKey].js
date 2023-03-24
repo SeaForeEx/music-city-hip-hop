@@ -121,7 +121,7 @@ export default function ViewUser() {
         <div>
           <h2>{userLinks.name}</h2>
           <p>{userLinks.bio}</p>
-          {userRelationship === true && profileOwner.firebaseKey !== profileViewer.firebaseKey ? (<Button variant="outline-dark" className="m-2 whiteButton" onClick={unfollowUser}>Unfollow</Button>) : ''}
+          {userRelationship === true && profileOwner.firebaseKey !== profileViewer.firebaseKey ? (<Button variant="outline-light" className="m-2 whiteButton" onClick={unfollowUser}>Unfollow</Button>) : ''}
           {userRelationship === false && profileOwner.firebaseKey !== profileViewer.firebaseKey ? (<Button variant="outline-dark" className="m-2 whiteButton" onClick={followUser}>Follow</Button>) : ''}
         </div>
       </section>

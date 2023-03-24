@@ -9,6 +9,7 @@ function Artists() {
     getArtist().then((data) => {
       const sortedUsers = data.sort((a, b) => a.name.localeCompare(b.name));
       setUsers(sortedUsers);
+      console.warn(sortedUsers);
     });
   };
 

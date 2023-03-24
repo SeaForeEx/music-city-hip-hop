@@ -9,6 +9,7 @@ function Fans() {
     getFans().then((data) => {
       const sortedFans = data.sort((a, b) => a.name.localeCompare(b.name));
       setUsers(sortedFans);
+      console.warn(sortedFans);
     });
   };
 
