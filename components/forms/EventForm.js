@@ -4,14 +4,12 @@ import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
-import DatePicker from 'react-datepicker';
 import { useAuth } from '../../utils/context/authContext';
 import { createEvent, updateEvent } from '../../api/eventData';
-import 'react-datepicker/dist/react-datepicker.css';
 
 const initialState = {
   venue: '',
-  date: new Date(),
+  date: '',
   time: '',
   price: '',
   artistId: '',
@@ -29,12 +27,21 @@ function EventForm({ obj }) {
   // useEffect(() => {function callback}, [dependency array])
   // dependency arrays trigger hook to run when they are changed
 
-  const handleChange = (e) => { // handling change of input
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormInput((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+
+    // handle changes to the date picker
+    if (name === 'date') {
+      setFormInput((prevState) => ({
+        ...prevState,
+        date: value,
+      }));
+    } else {
+      setFormInput((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = (e) => {
@@ -71,11 +78,12 @@ function EventForm({ obj }) {
       </FloatingLabel>
 
       <FloatingLabel controlId="floatingInput2" label="Date" className="mb-3">
-        <DatePicker
+        <Form.Control
           placeholderText="Event Date"
           name="date"
-          selected={formInput.date}
-          onChange={(date) => setFormInput((prevState) => ({ ...prevState, date }))}
+          type="date"
+          value={formInput.date}
+          onChange={handleChange}
           required
         />
       </FloatingLabel>
@@ -110,7 +118,7 @@ function EventForm({ obj }) {
 EventForm.propTypes = {
   obj: PropTypes.shape({
     venue: PropTypes.string,
-    date: PropTypes.instanceOf(Date),
+    date: PropTypes.string,
     time: PropTypes.string,
     price: PropTypes.string,
     artistId: PropTypes.string,
