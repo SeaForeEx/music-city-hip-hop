@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-boolean-value */
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
@@ -13,7 +14,7 @@ const initialState = {
   name: '',
   image: '',
   bio: '',
-  isArtist: false,
+  isArtist: null,
 };
 
 function UserForm({ obj }) {
@@ -34,6 +35,12 @@ function UserForm({ obj }) {
       ...prevState,
       [name]: value,
     }));
+  };
+
+  const handleBooleanChange = (event) => {
+    const { name, value } = event.target;
+    const newValue = value === 'null' ? null : value === 'true';
+    setFormInput((prevState) => ({ ...prevState, [name]: newValue }));
   };
 
   const handleImageChange = (e) => {
@@ -130,17 +137,17 @@ function UserForm({ obj }) {
         </Form.Group>
 
         {!obj.firebaseKey && (
-        <FloatingLabel controlId="floatingSelect" label="AorF">
+        <FloatingLabel controlId="floatingSelect" label="Artist or Fan">
           <Form.Select
             aria-label="Artist-Or-Fan"
             name="isArtist"
-            onChange={handleChange}
+            onChange={handleBooleanChange}
             className="mb-3"
             value={formInput.isArtist}
             required
           >
-            <option value="" selected>Which Are You?</option>
-            <option value>Artist</option>
+            <option value={null}>Which Are You?</option>
+            <option value={true}>Artist</option>
             <option value={false}>Fan</option>
           </Form.Select>
         </FloatingLabel>
