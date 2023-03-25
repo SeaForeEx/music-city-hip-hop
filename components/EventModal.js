@@ -29,7 +29,7 @@ EventModal.propTypes = {
   eventObj: PropTypes.shape({
     firebaseKey: PropTypes.string.isRequired,
     artistId: PropTypes.string.isRequired,
-    date: PropTypes.instanceOf(Date),
+    date: PropTypes.string,
     venue: PropTypes.string.isRequired,
     time: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,

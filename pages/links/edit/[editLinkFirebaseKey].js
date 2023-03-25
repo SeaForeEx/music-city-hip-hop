@@ -9,7 +9,11 @@ export default function EditLink() {
   const { editLinkFirebaseKey } = router.query;
 
   useEffect(() => {
-    getSingleLink(editLinkFirebaseKey).then(setEditItem);
+    getSingleLink(editLinkFirebaseKey)
+      .then((item) => {
+        const newItem = { ...item, date: new Date(item.date) };
+        setEditItem(newItem);
+      });
   }, [editLinkFirebaseKey]);
 
   return (<LinkForm obj={editItem} />);
