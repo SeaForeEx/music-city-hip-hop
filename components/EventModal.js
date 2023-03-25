@@ -2,6 +2,19 @@ import React from 'react';
 import { Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
+function formatDate(date) {
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const dateObj = new Date(date);
+  return dateObj.toLocaleDateString(undefined, options);
+}
+
+function formatTime(time) {
+  const [hour, minute] = time.split(':');
+  const period = hour < 12 ? 'AM' : 'PM';
+  const hour12 = hour % 12 || 12;
+  return `${hour12}:${minute} ${period}`;
+}
+
 function EventModal(props) {
   const { show, onHide, eventObj } = props;
   const {
@@ -15,8 +28,8 @@ function EventModal(props) {
       </Modal.Header>
       <Modal.Body>
         <div>{venue}</div>
-        <div>{date}</div>
-        <div>{time}</div>
+        <div>{formatDate(date)}</div>
+        <div>{formatTime(time)}</div>
         <div>{price}</div>
       </Modal.Body>
     </Modal>
