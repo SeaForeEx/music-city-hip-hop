@@ -90,12 +90,13 @@ function EventForm({ obj }) {
 
       <FloatingLabel controlId="floatingInput3" label="Time" className="mb-3">
         <Form.Control
-          type="text"
+          type="time"
           placeholder="Event Time"
           name="time"
           value={formInput.time}
           onChange={handleChange}
           required
+          format="hh:mm A"
         />
       </FloatingLabel>
 
