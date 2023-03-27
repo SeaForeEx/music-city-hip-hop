@@ -24,7 +24,7 @@ function LinkCard({ linkObj, onUpdate }) {
   }
 
   return (
-    <Card className="textStyle" style={{ width: '18rem', margin: '1px' }}>
+    <Card className="textStyle transParent" style={{ width: '18rem', margin: '1px' }}>
       <Card.Body>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <a href={url} target="_blank" rel="noopener noreferrer" className="hoverText textStyle linkStyle">{linkObj.name}</a>
