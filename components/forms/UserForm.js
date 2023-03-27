@@ -112,13 +112,13 @@ function UserForm({ obj }) {
         </FloatingLabel>
 
         <Form.Group className="mb-3">
-          <Form.Label>Image</Form.Label>
           <div className="d-flex align-items-center">
             <Form.Control
               type="file"
               accept="image/*"
               onChange={handleImageChange}
               className="me-3"
+              required
             />
             {/* type="file" - This sets the input type to "file", which allows the user to select a file from their local file system */}
             {/* accept="image/*": This attribute limits the types of files that the user can select to image files only. The * is a wildcard that allows any file type that starts with "image/" to be accepted. For example, "image/jpeg" or "image/png". */}
@@ -127,7 +127,9 @@ function UserForm({ obj }) {
             <img
               src={formInput.image}
               alt="profile"
-              style={{ height: '250px', width: '250px', borderRadius: '50%' }}
+              style={{
+                height: '250px', width: '250px', borderRadius: '50%', objectFit: 'cover',
+              }}
             />
             )}
             {/* {formInput.image &&: This is a conditional rendering statement that checks if formInput.image is truthy. If formInput.image is truthy, the code inside the parentheses is executed. */}
