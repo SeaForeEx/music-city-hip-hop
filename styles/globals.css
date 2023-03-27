@@ -176,37 +176,37 @@ body {
 }
 
 .whiteButton {
-  background-color: rgba(34, 34, 34, 0.6); 
-  color: #ffffff;
-  border: 2px solid #ffffff;
+  background-color: rgba(34, 34, 34, 0.6) !important; 
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
   margin-left: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  font-size: 18px;
-  padding: 10px 20px;
+  font-size: 18px !important;
+  padding: 10px 20px !important;
 }
 
 .whiteButton:hover {
-  background-color: rgba(34, 34, 34, 0.6); 
-  color: #ff9100;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  border-color: #ff9100;
+  background-color: rgba(34, 34, 34, 0.6) !important; 
+  color: #ff9100 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+  border-color: #ff9100 !important;
 }
 
 .redButton {
-  background-color: rgba(34, 34, 34, 0.6); 
-  color: #ffffff;
-  border: 2px solid #d01d1d;
-  margin-left: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  font-size: 18px;
-  padding: 10px 20px;
+  background-color: rgba(34, 34, 34, 0.6) !important; 
+  color: #ffffff !important;
+  border: 2px solid #d01d1d !important;
+  margin-left: 10px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+  font-size: 18px !important;
+  padding: 10px 20px !important;
 }
 
 .redButton:hover {
-  background-color: rgba(34, 34, 34, 0.6); 
-  color: #d01d1d;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  border-color: #d01d1d;
+  background-color: rgba(34, 34, 34, 0.6) !important; 
+  color: #d01d1d !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+  border-color: #d01d1d !important;
 }
 
 .event-modal .modal-header {
