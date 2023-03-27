@@ -107,16 +107,16 @@ export default function UserProfile() {
                 <Button variant="success" className="m-2 whiteButton">new link</Button>
               </Link>
               {userLinks.links?.map((link) => (
-                <LinkCard key={link.firebaseKey} linkObj={link} onUpdate={fetchData} />
+                <LinkCard key={link.firebaseKey} linkObj={link} className="linkeventBackground" onUpdate={fetchData} />
               ))}
             </div>
             <div style={{ marginTop: '1%' }}>
               <h2 style={{ marginTop: '1%', marginLeft: '1%' }}>EVENTS</h2>
               <Link href="/events/new" passHref>
-                <Button variant="success" className="m-2 whiteButton">new event</Button>
+                <Button className="m-2 whiteButton">new event</Button>
               </Link>
               {userEvents.events?.map((event) => (
-                <EventCard key={event.firebaseKey} eventObj={event} onUpdate={fetchData} />
+                <EventCard key={event.firebaseKey} eventObj={event} className="linkeventBackground" onUpdate={fetchData} />
               ))}
             </div>
           </div>
