@@ -54,10 +54,10 @@ body {
   box-sizing: border-box;
 }
 
-.card {
-  background-color: transparent; 
+.transParent {
+  background-color: transparent !important; 
   color: white; 
-  margin: 0px;
+  margin: 0px !important;
 }
 
 .card-title {
