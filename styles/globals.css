@@ -74,10 +74,10 @@ body {
 }
 
 .linkeventBackground {
-  position: relative;
+  position: relative !important;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.5);
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5) !important;
 }
 
 .linkeventBackground::before {
