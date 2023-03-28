@@ -3,49 +3,45 @@ import React, { useState } from 'react'; // useState hook manages state of compo
 import Head from 'next/head';
 import { Form, FormControl } from 'react-bootstrap'; // these components used to create search bar form
 
+// SearchBar component definition
 export default function SearchBar() {
+  // Initialize searchBar state to empty string
   const [searchBar, setSearchBar] = useState('');
-  // declares searchBar state variable using useState hook
-  // initialized as an empty string ''
-  // setSearchBar func updates value of searchBar in component's state
 
+  // Get the router instance from Next.js
   const router = useRouter();
-  // declares constant router initialized with value returned by useRouter hook
-  // gives component access to Next.js router
 
+  // Event handler for when the user types in the search bar
   const handleChange = (e) => {
+    // Update the searchBar state to the input value in lowercase
     setSearchBar(e.target.value.toLowerCase());
   };
-  // defines handleChange function w/ e as argument
-  // updates value of searchBar in component's state
-  // by calling setSearchBar with lowercase value of e.target.value
 
+  // Event handler for when the user submits the search bar form
   const handleSubmit = (e) => {
+    // Prevent the form from submitting normally
     e.preventDefault();
-    if (searchBar !== '') router.push(`/searchbar/${searchBar}`);
+    // If the searchBar is not empty, navigate to the search results page
+    if (searchBar !== '') {
+      // Use Next.js router to navigate to the search results page with the searchBar value as the query parameter
+      router.push(`/searchbar/${searchBar}`);
+    }
+    // Reset the searchBar state to an empty string
     setSearchBar('');
   };
-  // defines handleSubmit function that takes in event e as argument
-  // e.preventDefault() prevents default form behavior
-  // if() checks if value of searchBar is not an empty string
-  // if condition is true, calls push method on router object to navigate to /searchbar/ URL followed by value of searchBar
-  // setSearchBar('') sets value of searchBar in component's state to empty string
 
+  // Return the JSX for the SearchBar component
   return (
     <>
+      {/* Set the page title to "Search Results" using Next.js Head component */}
       <Head>
         <title>Search Results</title>
       </Head>
+      {/* Render the search bar form */}
       <Form className="searchbar" onSubmit={handleSubmit}>
+        {/* Render the input field for the search bar */}
         <FormControl type="text" placeholder="Search Music City Hip-Hop" onChange={handleChange} value={searchBar} style={{ width: '300px' }} />
       </Form>
     </>
   );
-  // return statement declares what will be rendered in UI
-  // creates a Form component from react-bootstrap library
-  // className is searchbar and onSubmit prop that is set to handleSubmit function
-
-  // FormControl component is setup from react-bootstrap library
-  // Used to render a text input
-  // component has type prop set to text
 }
