@@ -1,58 +1,65 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import React, { useEffect, useState } from 'react'; // import React library and necessary hooks for functional component
+import { useRouter } from 'next/router'; // import hook for routing pages
+import PropTypes from 'prop-types'; // import library for typechecking
+import FloatingLabel from 'react-bootstrap/FloatingLabel'; // import React Bootstrap components
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
-import { useAuth } from '../../utils/context/authContext';
-import { createLink, updateLink } from '../../api/linkData';
+import { useAuth } from '../../utils/context/authContext'; // import custom hook for authentication context
+import { createLink, updateLink } from '../../api/linkData'; // import functions for creating and updating links from API
 
-const initialState = {
+const initialState = { // define initial state for form input
   name: '',
   link: '',
   artistId: '',
 };
 
-function LinkForm({ obj }) {
-  const [formInput, setFormInput] = useState(initialState);
-  const router = useRouter(); // router travels pages
-  const { user } = useAuth();
+// formInput is an object that contains the current values of the form inputs.
+// The initial values are defined in the initialState object.
+// handleChange is a function that will be called when the user changes the value of an input field.
+function LinkForm({ obj }) { // define functional component and pass in props
+  const [formInput, setFormInput] = useState(initialState); // declare state for form input and update function
+  const router = useRouter(); // declare router variable using useRouter hook
+  const { user } = useAuth(); // declare user variable using useAuth hook
 
-  useEffect(() => { // what happens when the component mounts
-    if (obj.artistId) setFormInput(obj); // if obj prop is true (has a key), form input is set to the object
-  }, [obj]); // if anything in obj changes (user) run it again
+  useEffect(() => { // define effect for when the component mounts
+    if (obj.artistId) setFormInput(obj); // if the obj prop is true (has an artistId key), set form input state to the object
+  }, [obj]); // run the effect whenever obj changes
 
-  // useEffect(() => {function callback}, [dependency array])
-  // dependency arrays trigger hook to run when they are changed
-
-  const handleChange = (e) => { // handling change of input
-    const { name, value } = e.target;
-    setFormInput((prevState) => ({
+  const handleChange = (e) => { // define function to handle changes to form input
+    const { name, value } = e.target; // declare variables for name and value of input
+    setFormInput((prevState) => ({ // update form input state using previous state
       ...prevState,
       [name]: value,
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (obj.artistId) {
+  const handleSubmit = (e) => { // define function to handle form submission
+    e.preventDefault(); // prevent default form submission behavior
+    if (obj.artistId) { // if obj has an artistId key, update existing link in API
       updateLink(formInput)
-        .then(() => router.push('/profile'));
-    } else {
-      const payload = { ...formInput, artistId: user.uid, uid: user.uid }; // spreading object data, appending uid
-      createLink(payload).then(({ name }) => {
-        const patchPayload = { firebaseKey: name };
-        updateLink(patchPayload).then(() => {
-          router.push('/profile');
+        .then(() => router.push('/profile')); // push user to profile page after updating link
+    } else { // otherwise, create new link in API
+      const payload = { ...formInput, artistId: user.uid, uid: user.uid }; // create payload with form input data and user ID
+      createLink(payload).then(({ name }) => { // create new link and obtain name from response
+        const patchPayload = { firebaseKey: name }; // create patch payload with firebaseKey equal to name
+        updateLink(patchPayload).then(() => { // update link with patch payload in API
+          router.push('/profile'); // push user to profile page after updating link
         });
       });
     }
   };
 
+  // This is the JSX code for the LinkForm component.
+  // When the form is submitted, handleSubmit will be called.
+  // The className "formTextStyle" is applied to the form element.
   return (
     <Form onSubmit={handleSubmit} className="formTextStyle">
+      {/* This displays a heading depending on whether obj.artistId exists or not. */}
       <h2 className="text-white mt-5">{obj.artistId ? 'Need To Change the Deets?  Great!' : 'Let Us Hear Your New Music'}</h2>
 
+      {/* This is a Bootstrap component that creates a label and input field with floating labels. */}
+      {/* The label text is "Website Name" and the input field value is taken from formInput.name. */}
+      {/* handleChange will be called when the user changes the value of this input field. */}
       <FloatingLabel controlId="floatingInput1" label="Website Name" className="mb-3">
         <Form.Control
           type="text"
@@ -64,6 +71,9 @@ function LinkForm({ obj }) {
         />
       </FloatingLabel>
 
+      {/* This is another Bootstrap component that creates a label and input field with floating labels. */}
+      {/* The label text is "URL" and the input field value is taken from formInput.link. */}
+      {/* handleChange will be called when the user changes the value of this input field. */}
       <FloatingLabel controlId="floatingInput2" label="URL" className="mb-3">
         <Form.Control
           type="text"
@@ -75,6 +85,9 @@ function LinkForm({ obj }) {
         />
       </FloatingLabel>
 
+      {/* This is a Bootstrap component that creates a button. */}
+      {/* The text on the button depends on whether obj.artistId exists or not. */}
+      {/* When the button is clicked, handleSubmit will be called. */}
       <Button type="submit" className="m-2 whiteButton">{obj.artistId ? 'Make A Change' : 'Show Us Your Link'}</Button>
     </Form>
   );
@@ -92,7 +105,5 @@ LinkForm.propTypes = {
 LinkForm.defaultProps = {
   obj: initialState,
 };
-
-// work on vocab, explain code
 
 export default LinkForm;
