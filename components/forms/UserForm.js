@@ -10,35 +10,46 @@ import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import { createUser, updateUser, getUser } from '../../api/userData';
 
+// Define the initial state for the form
 const initialState = {
   name: '',
   image: '',
   bio: '',
-  isArtist: null,
+  isArtist: true,
 };
 
+// Define a functional component called UserForm which accepts an object as a prop
 function UserForm({ obj }) {
+  // Declare a state variable called formInput using the useState hook and initialize it with the initial state
   const [formInput, setFormInput] = useState({
     ...initialState,
   });
 
+  // Get the router object using the useRouter hook
   const router = useRouter();
+
+  // Get the setUser and uid functions from the authContext using the useAuth hook
   const { setUser, uid } = useAuth();
 
+  // Use the useEffect hook to update the form input state with the obj prop when it changes
   useEffect(() => {
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj]);
 
+  // Define a handleChange function to handle changes to the form inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // Update the form input state using the setFormInput function and the previous state
     setFormInput((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
 
+  // Define a handleBooleanChange function to handle changes to boolean form inputs
   const handleBooleanChange = (event) => {
     const { name, value } = event.target;
+    // Convert the value to a boolean and update the form input state using the setFormInput function and the previous state
     const newValue = value === 'null' ? null : value === 'true';
     setFormInput((prevState) => ({ ...prevState, [name]: newValue }));
   };
@@ -61,35 +72,44 @@ function UserForm({ obj }) {
     };
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (obj.firebaseKey) {
-      updateUser(formInput)
-        .then(() => router.push('/profile'));
-    } else {
-      const payload = { ...formInput, uid };
-      createUser(payload).then(({ name }) => {
-        const patchPayload = { firebaseKey: name };
-        updateUser(patchPayload).then(() => {
-          getUser(uid)
-            .then((userData) => {
-              setUser(userData);
-              router.push('/');
+  const handleSubmit = (e) => { // defines a function that will be called when the form is submitted
+    e.preventDefault(); // prevents the default form submission behavior, which would cause the page to refresh
+    if (obj.firebaseKey) { // checks if the form data already has a `firebaseKey` property, which indicates an existing user
+      updateUser(formInput) // calls the `updateUser` function with the updated form data
+        .then(() => router.push('/profile')); // if the update is successful, redirects the user to their profile page
+    } else { // if the form data does not have a `firebaseKey` property, which indicates a new user
+      const payload = { ...formInput, uid }; // creates a new object with the form data and the current user's `uid`
+      createUser(payload) // calls the `createUser` function with the new user data
+        .then(({ name }) => { // if the user creation is successful, extracts the `name` property from the response
+          const patchPayload = { firebaseKey: name }; // creates a new object with the `firebaseKey` property set to the new user's name
+          updateUser(patchPayload) // calls the `updateUser` function with the new user's `firebaseKey`
+            .then(() => { // if the update is successful,
+              getUser(uid) // calls the `getUser` function with the current user's `uid`
+                .then((userData) => { // if the user retrieval is successful, extracts the user data from the response
+                  setUser(userData); // sets the user data in the app's authentication context
+                  router.push('/'); // redirects the user to the home page
+                });
             });
         });
-      });
     }
   };
 
   return (
     <>
+      {/* The Head component is a part of the Next.js framework and is used to manage the document's head section, which includes the page title. */}
       <Head>
+        {/* The title is dynamically set depending on whether obj.firebaseKey is truthy or falsy. */}
         <title>{obj.firebaseKey ? 'Change is Good' : 'A New Era has Dawned'}</title>
       </Head>
+      {/* The Form component is a part of the react-bootstrap library and is used to manage forms in React. */}
       <Form onSubmit={handleSubmit} className="formTextStyle">
-        <h2 className="text-white mt-5">{obj.firebaseKey ? 'Change is Good, Change Brings Growth' : 'A New Era has Dawned in Music City'}</h2>
-
+        {/* The h2 element displays a message depending on whether obj.firebaseKey is truthy or falsy. */}
+        <h2 className="text-white mt-5">
+          {obj.firebaseKey ? 'Change is Good, Change Brings Growth' : 'A New Era has Dawned in Music City'}
+        </h2>
+        {/* The FloatingLabel component is a part of the react-bootstrap library and is used to display a label that "floats" above a form control. */}
         <FloatingLabel controlId="floatingInput1" label="Name" className="mb-3">
+          {/* The Form.Control component is a part of the react-bootstrap library and is used to create form controls like text fields. */}
           <Form.Control
             type="text"
             placeholder="What is your Name?"
@@ -100,6 +120,7 @@ function UserForm({ obj }) {
           />
         </FloatingLabel>
 
+        {/* Another FloatingLabel component with similar properties to the previous one. */}
         <FloatingLabel controlId="floatingInput2" label="Bio" className="mb-3">
           <Form.Control
             type="text"
@@ -124,13 +145,13 @@ function UserForm({ obj }) {
             {/* accept="image/*": This attribute limits the types of files that the user can select to image files only. The * is a wildcard that allows any file type that starts with "image/" to be accepted. For example, "image/jpeg" or "image/png". */}
             {/* onChange={handleImageChange}: This sets the onChange event handler for the input element to the handleImageChange function. This function is called when the user selects a file using the input element. */}
             {formInput.image && (
-            <img
-              src={formInput.image}
-              alt="profile"
-              style={{
-                height: '250px', width: '250px', borderRadius: '50%', objectFit: 'cover',
-              }}
-            />
+              <img
+                src={formInput.image}
+                alt="profile"
+                style={{
+                  height: '250px', width: '250px', borderRadius: '50%', objectFit: 'cover',
+                }}
+              />
             )}
             {/* {formInput.image &&: This is a conditional rendering statement that checks if formInput.image is truthy. If formInput.image is truthy, the code inside the parentheses is executed. */}
             {/* <img: This is the HTML img element that is being rendered conditionally. */}
@@ -139,16 +160,22 @@ function UserForm({ obj }) {
         </Form.Group>
 
         {!obj.firebaseKey && (
+        // This is a conditional rendering statement that checks if obj.firebaseKey is falsy. If it's falsy, the code inside the parentheses is executed.
         <FloatingLabel controlId="floatingSelect" label="Artist or Fan">
+          {/* This is a Bootstrap component that renders a form control with a floating label */}
           <Form.Select
+        // This sets the aria-label attribute to "Artist-Or-Fan", which describes the purpose of the form control for assistive technologies.
             aria-label="Artist-Or-Fan"
             name="isArtist"
+        // This sets the onChange event handler to the handleBooleanChange function, which updates the value of the "isArtist" property in the formInput state object when the user selects an option.
             onChange={handleBooleanChange}
             className="mb-3"
+        // This sets the value of the form control to the current value of the "isArtist" property in the formInput state object.
             value={formInput.isArtist}
             required
           >
             <option value={null}>Which Are You?</option>
+            {/* These are the options that the user can select. The value of each option corresponds to a boolean value that represents whether the user is an artist or a fan. */}
             <option value={true}>Artist</option>
             <option value={false}>Fan</option>
           </Form.Select>
@@ -156,6 +183,7 @@ function UserForm({ obj }) {
         )}
 
         <Button type="submit" className="m-2 whiteButton">{obj.firebaseKey ? 'Make A Change' : 'Join MCHH'}</Button>
+        {/* This is a Bootstrap component that renders a button with the text "Make A Change" if obj.firebaseKey is truthy, and "Join MCHH" if it's falsy. */}
       </Form>
     </>
   );
