@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
+/* The !important declaration means that this style will override any other styles applied to the text-shadow property of the element */
+
 html,
 body {
   padding: 0;
@@ -26,42 +28,43 @@ body {
 
 h2 {
   font-family: 'Permanent Marker', cursive;
-  -webkit-text-stroke: 1px black;
+  -webkit-text-stroke: 1px black; /* adds outline around text */
   color:white;
 }
 
 body {
   background-image: url('https://i.imgur.com/MQgRZbZ.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+  background-repeat: no-repeat; /* keeps bg image from repeating */
+  background-size: cover; /* image covers entire background */
+  background-attachment: fixed; /* bg image doesn't scroll when page scrolls */
 }
 
 .signinBG {
   background-image: url('https://i.imgur.com/NsabKhL.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  height: 100vh;
+  background-size: contain; /* image scaled to fit scaled to fit inside container and maintains aspect ratio */
+  background-repeat: no-repeat; /* image doesn't repeate */
+  background-position: center center; /* centers image horizontally and vertically */
+  height: 100vh; /* height of container is equal to viewport height, full-screen background image */
 }
 
 .linkStyle {
-  color: inherit;
-  text-decoration: none;
+  color: inherit; /* the color of the element will be inherited from parent element */
+  text-decoration: none; /* removes underline and other text elements */
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; /* tells the browser to include the padding and border of an element within its total width and height */
 }
 
 .transParent {
-  background-color: transparent !important; 
-  color: white; 
-  margin: 0px !important;
+  background-color: transparent !important; /* makes bg transparent */
+  color: white; /* sets text color to white */
+  margin: 0px !important; /* no margin in the element */
 }
 
 .card-title {
   text-shadow: 2px 2px 2px black; /* add a subtle text shadow */
+  /* horiz offset, vert offset, blur radius, color of shadow */
 }
 
 .FloatingLabel .Form.Control {
@@ -70,52 +73,83 @@ body {
 }
 
 .hoverText:hover {
-  color: #ff9100;
+  color: #ff9100; /* changes color of text when cursor hovers over it */
 }
 
 .linkeventBackground {
-  position: relative !important;
-  overflow: hidden;
+  position: relative !important; /* element positioned relative to its normal position, doesn't affect position of other elements */
+  overflow: hidden; 
+  /* clips any content that goes beyond boundaries of element */
   background-color: rgba(0, 0, 0, 0.5) !important;
+  /* semi-transparent black colored background (opoacity of 0.5) */
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5) !important;
+  /* shadow is 2 px to right, 2 px down from the text, same color as bg */
 }
 
-.linkeventBackground::before {
-  content: '' !important;
+.linkeventBackground::before { /* pseudo element */
+  content: '' !important; /* sets pseudo element's content to empty string */
+  /* content needs to be defined to be displayed on page */
+  /* before/after pseudo elements used to add content before or after an element */
   position: absolute !important;
+  /* absolute position is relative to nearest positioned ancestor */
   top: 0 !important;
   left: 0 !important;
+  /* top/left sets position of pseudo-element to top left corner of container element */
   width: 100% !important;
   height: 100% !important;
+  /* sets width and height of pseudo-element to 100% of container element */
   background-size: contain !important;
+  /* bg image scaled to fit within container, aspect ratio maintained */
   background-position: center !important;
+  /* bg image in container set to center */
   opacity: 0.5 !important; /* Adjust the opacity value as per your preference */
   z-index: -1 !important; /* Position the pseudo-element behind the content */
   box-shadow: 0px 0px 20px 10px rgba(255, 255, 255, 0.3) !important;
+  /* horiz/vert offsets 0px */
+  /* blur-radius 20px, spread-radius 10px */
+  /* color of white with alpha value of 0.3 creates soft glow effect around edges of element */
 }
+
+/* offset is distance between shadow and element horiz L to R, vert U to D */
+/* In CSS, a blur radius is a property used to create a blur effect on an element, where the degree of blurriness is specified in pixels */
+/* In CSS, the spread radius is a property used in box-shadow declarations to define how much the shadow should be extended or spread outside of the border of the element */
 
 .linkeventBackground > div {
   position: relative !important; /* Make the child elements position relative so that they stack on top of the pseudo-element */
-  z-index: 1 !important; /* Position the child elements above the pseudo-element */
+  /* makes the position of the child elements relative to their original position, instead of the parent element. This is important when you want to position elements within the parent element, but not affect the position of other elements outside of the parent element. */
+  z-index: 1 !important; /* Position the child elements above the pseudo-element created by the ::before selector */
 }
+
+/* In CSS, the z-index property specifies the stacking order of positioned elements that overlap. It is used to control how elements are positioned on top of each other in the z-axis of the web page.
+
+Elements with a higher z-index value will be displayed on top of elements with a lower z-index value. If two elements have the same z-index value, the one that appears later in the HTML source code will be displayed on top of the other.
+
+The z-index property only works on positioned elements, which are elements that have a position value of absolute, fixed, relative, or sticky. */
 
 .userBackground {
   position: relative !important;
   background-color: rgba(0, 0, 0, 0.3) !important;
+  /* rgba(red, green, blue, opacity) 0 is transparent 1 is opaque */
 }
+
+/* By default, HTML elements are positioned in the order they appear in the HTML document, from top to bottom and from left to right. When an element is positioned relatively, it can be moved from its original position in the normal flow of the document, but it still occupies the same space as it would have if it had not been moved.
+
+For example, if an element is positioned relatively and a top value of 20px is set, it will be moved 20px down from its original position in the normal flow of the document. However, the other elements on the page will still be positioned as if the element had not been moved. */
 
 .userBackground::before {
   content: '';
-  position: absolute !important;
+  position: absolute !important; /* positioned independent of parent element */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  /* dimensions/position of pseudo-element cover entire .userBackground element */
   background-image: url("https://i.imgur.com/6PQduGe.png") !important;
   background-size: cover;
   background-position: center;
+  /* These lines set the background image of the pseudo-element to the specified URL, and adjust the sizing and positioning of the image to cover the entire pseudo-element and keep it centered. */
   opacity: 0.5 !important; /* Adjust the opacity value as per your preference */
-  z-index: -1 !important; /* Position the pseudo-element behind the content */
+  z-index: -1 !important; /* Position the pseudo-element behind the content of userBackground element */
   box-shadow: 0px 0px 20px 10px rgba(255, 255, 255, 0.3) !important;
 }
 
@@ -124,9 +158,14 @@ body {
   z-index: 1; /* Position the child elements above the pseudo-element */
 }
 
+/* In CSS, the > symbol is called a "child combinator" and is used to select the immediate child elements of a parent element. So in the code .userBackground > div, the selector is targeting any div element that is a direct child of an element with the class userBackground.
+
+The purpose of this code is to apply CSS styles to the child div element, specifically to position it relative to the userBackground element and to place it above the pseudo-element created by the ::before selector. */
+
 .userHeader {
   position: relative;
   padding: 15px 15px 15px 15px;
+  /* top, left, bottom, right padding */
   background-color: rgba(0, 0, 0, 0.4);
 }
 
@@ -151,8 +190,9 @@ body {
 }
 
 .followBackground {
-  position: relative;
+  position: relative; /* Position the background relative to other elements */
   background-color: rgba(0, 0, 0, 0.5);
+  /* Set the background color and make it semi-transparent */
   text-shadow: 10px 5px 10px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -175,57 +215,67 @@ body {
   z-index: 1; /* Position the child elements above the pseudo-element */
 }
 
+/* This block of code sets the styles for a button with class "whiteButton" */
 .whiteButton {
-  background-color: rgba(34, 34, 34, 0.6) !important; 
-  color: #ffffff !important;
-  border: 2px solid #ffffff !important;
-  margin-left: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  font-size: 18px !important;
-  padding: 10px 20px !important;
+  background-color: rgba(34, 34, 34, 0.6) !important; /* Sets the background color to a semi-transparent dark gray */
+  color: #ffffff !important; /* Sets the text color to white */
+  border: 2px solid #ffffff !important; /* Sets the border to a solid white line */
+  margin-left: 20px; /* Sets the left margin to 20 pixels */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Adds a shadow to the button */
+  font-size: 18px !important; /* Sets the font size to 18 pixels */
+  padding: 10px 20px !important; /* Adds padding of 10 pixels on top and bottom, and 20 pixels on the sides */
 }
 
+/* This block of code sets the styles for the hover state of a button with class "whiteButton" */
 .whiteButton:hover {
-  background-color: rgba(34, 34, 34, 0.6) !important; 
-  color: #ff9100 !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
-  border-color: #ff9100 !important;
+  background-color: rgba(34, 34, 34, 0.6) !important; /* Sets the background color to a semi-transparent dark gray */
+  color: #ff9100 !important; /* Sets the text color to a shade of orange */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important; /* Adds a shadow to the button */
+  border-color: #ff9100 !important; /* Sets the border color to a shade of orange */
 }
 
+/* This block of code sets the styles for a button with class "redButton" */
 .redButton {
-  background-color: rgba(34, 34, 34, 0.6) !important; 
-  color: #ffffff !important;
-  border: 2px solid #d01d1d !important;
-  margin-left: 10px !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
-  font-size: 18px !important;
-  padding: 10px 20px !important;
+  background-color: rgba(34, 34, 34, 0.6) !important; /* Sets the background color to a semi-transparent dark gray */
+  color: #ffffff !important; /* Sets the text color to white */
+  border: 2px solid #d01d1d !important; /* Sets the border to a solid red line */
+  margin-left: 10px !important; /* Sets the left margin to 10 pixels */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important; /* Adds a shadow to the button */
+  font-size: 18px !important; /* Sets the font size to 18 pixels */
+  padding: 10px 20px !important; /* Adds padding of 10 pixels on top and bottom, and 20 pixels on the sides */
 }
 
+/* This block of code sets the styles for the hover state of a button with class "redButton" */
 .redButton:hover {
-  background-color: rgba(34, 34, 34, 0.6) !important; 
-  color: #d01d1d !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
-  border-color: #d01d1d !important;
+  background-color: rgba(34, 34, 34, 0.6) !important; /* Sets the background color to a semi-transparent dark gray */
+  color: #d01d1d !important; /* Sets the text color to red */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important; /* Adds a shadow to the button */
+  border-color: #d01d1d !important; /* Sets the border color to red */
 }
 
+/* This block of code sets the styles for the header of a modal with class "event-modal" */
 .event-modal .modal-header {
-  background-color: #de7402;
-  color: white;
+  background-color: #de7402; /* Sets the background color to a shade of orange */
+  color: white; /* Sets the text color to white */
+  
+  /* The following line of code creates a linear gradient background using the "linear-gradient" function.
+The gradient starts from the left side of the element and goes towards the right side.
+The first color in the gradient is "rgb(255, 115, 0)" which is a shade of orange color.
+The second color in the gradient is "white".
+The color stops are not defined, so the gradient will be evenly distributed across the element. */
   background: linear-gradient(to right, rgb(255, 115, 0), white);
 }
 
 .modal-header button.close {
   color: white;
-}
+} 
 
-.event-modal .modal-body {
-  font-size: 24px;
-  background-image: url("https://cdn.vox-cdn.com/thumbor/G58mfK9d2Zo7vupbAy4HIx3VcWY=/433x136:1800x820/fit-in/1200x600/cdn.vox-cdn.com/uploads/chorus_asset/file/23635627/shutterstock_1652120377.jpg");
-}
-
+/* The following code is for the navigation bar with id "mchh-navbar" */
 #mchh-navbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Set the display property to "flex" to enable flexible box layout */
+display: flex;
+/* Set the horizontal alignment of the flex items to center */
+justify-content: center;
+/* Set the vertical alignment of the flex items to center */
+align-items: center;
 }
