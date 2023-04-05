@@ -270,6 +270,11 @@ The color stops are not defined, so the gradient will be evenly distributed acro
   color: white;
 } 
 
+.event-modal .modal-body {
+  font-size: 24px;
+  background-image: url("https://i.imgur.com/tzC02FW.jpg");
+}
+
 /* The following code is for the navigation bar with id "mchh-navbar" */
 #mchh-navbar {
 /* Set the display property to "flex" to enable flexible box layout */
