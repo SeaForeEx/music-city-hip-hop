@@ -117,6 +117,7 @@ function UserForm({ obj }) {
             value={formInput.name}
             onChange={handleChange}
             required
+            style={{ width: '40%' }}
           />
         </FloatingLabel>
 
@@ -129,6 +130,7 @@ function UserForm({ obj }) {
             value={formInput.bio}
             onChange={handleChange}
             required
+            style={{ width: '40%' }}
           />
         </FloatingLabel>
 
@@ -140,6 +142,7 @@ function UserForm({ obj }) {
               onChange={handleImageChange}
               className="me-3"
               required
+              style={{ width: '40%' }}
             />
             {/* type="file" - This sets the input type to "file", which allows the user to select a file from their local file system */}
             {/* accept="image/*": This attribute limits the types of files that the user can select to image files only. The * is a wildcard that allows any file type that starts with "image/" to be accepted. For example, "image/jpeg" or "image/png". */}
@@ -173,6 +176,7 @@ function UserForm({ obj }) {
         // This sets the value of the form control to the current value of the "isArtist" property in the formInput state object.
             value={formInput.isArtist}
             required
+            style={{ width: '40%' }}
           >
             <option value={null}>Which Are You?</option>
             {/* These are the options that the user can select. The value of each option corresponds to a boolean value that represents whether the user is an artist or a fan. */}

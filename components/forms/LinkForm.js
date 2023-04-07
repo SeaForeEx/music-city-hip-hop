@@ -55,7 +55,7 @@ function LinkForm({ obj }) { // define functional component and pass in props
   return (
     <Form onSubmit={handleSubmit} className="formTextStyle">
       {/* This displays a heading depending on whether obj.artistId exists or not. */}
-      <h2 className="text-white mt-5">{obj.artistId ? 'Need To Change the Deets?  Great!' : 'Let Us Hear Your New Music'}</h2>
+      <h2 className="text-white mt-5">{obj.artistId ? 'Change the Deets' : 'Gimme The Link'}</h2>
 
       {/* This is a Bootstrap component that creates a label and input field with floating labels. */}
       {/* The label text is "Website Name" and the input field value is taken from formInput.name. */}
@@ -68,6 +68,7 @@ function LinkForm({ obj }) { // define functional component and pass in props
           value={formInput.name}
           onChange={handleChange}
           required
+          style={{ width: '40%' }}
         />
       </FloatingLabel>
 
@@ -82,6 +83,7 @@ function LinkForm({ obj }) { // define functional component and pass in props
           value={formInput.link}
           onChange={handleChange}
           required
+          style={{ width: '40%' }}
         />
       </FloatingLabel>
 

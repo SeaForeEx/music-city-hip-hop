@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 // hook that accesses URL and query parameters
 import React, { useEffect, useState } from 'react';
 // useState component state, useEffect side effects
+import Head from 'next/head';
 import { getArtist, getFans } from '../../api/userData';
 // API function that retrieves users data
 import UserCard from '../../components/UserCard';
@@ -45,6 +46,10 @@ export default function SearchBar() {
 
   return (
     <>
+      {/* Set the page title to "Search Results" using Next.js Head component */}
+      <Head>
+        <title>Search Results</title>
+      </Head>
       <div className="d-flex flex-wrap">
         {/* mapping over filtered artists and rendering UserCard component for each */}
         {searchArtists.map((emcee) => <UserCard key={emcee.firebaseKey} userObj={emcee} onUpdate={searchAllArtists} />)}

@@ -64,7 +64,7 @@ function EventForm({ obj }) { // Declaring functional component and passing in p
   // A form element that will call the handleSubmit function when submitted
     <Form onSubmit={handleSubmit} className="formTextStyle">
       {/* A header that displays different text depending on whether an artistId exists in the 'obj' prop */}
-      <h2 className="text-white mt-5">{obj.artistId ? 'Need To Change the Deets?  Great!' : 'Tell Us About Your New Gig'}</h2>
+      <h2 className="text-white mt-5">{obj.artistId ? 'Need To Change the Deets?  Great!' : 'Your New Gig'}</h2>
 
       {/* A form input element with a label for the venue */}
       <FloatingLabel controlId="floatingInput1" label="Venue" className="mb-3">
@@ -75,6 +75,7 @@ function EventForm({ obj }) { // Declaring functional component and passing in p
           value={formInput.venue} // Value of the 'venue' field in the 'formInput' state
           onChange={handleChange} // Function called when the value in the input field changes
           required
+          style={{ width: '30%' }}
         />
       </FloatingLabel>
 
@@ -87,6 +88,7 @@ function EventForm({ obj }) { // Declaring functional component and passing in p
           value={formInput.date} // Value of the 'date' field in the 'formInput' state
           onChange={handleChange} // Function called when the value in the input field changes
           required // This field is required for form submission
+          style={{ width: '30%' }}
         />
       </FloatingLabel>
 
@@ -100,6 +102,7 @@ function EventForm({ obj }) { // Declaring functional component and passing in p
           onChange={handleChange} // Function called when the value in the input field changes
           required // This field is required for form submission
           format="hh:mm A" // Format of the time input
+          style={{ width: '30%' }}
         />
       </FloatingLabel>
 
@@ -112,6 +115,7 @@ function EventForm({ obj }) { // Declaring functional component and passing in p
           value={formInput.price} // Value of the 'price' field in the 'formInput' state
           onChange={handleChange} // Function called when the value in the input field changes
           required
+          style={{ width: '30%' }}
         />
       </FloatingLabel>
 
