@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'; // provides access to Next.js router that navigates to different pages in the app
 import React, { useState } from 'react'; // useState hook manages state of component
-import Head from 'next/head';
 import { Form, FormControl } from 'react-bootstrap'; // these components used to create search bar form
 
 // SearchBar component definition
@@ -33,10 +32,6 @@ export default function SearchBar() {
   // Return the JSX for the SearchBar component
   return (
     <>
-      {/* Set the page title to "Search Results" using Next.js Head component */}
-      <Head>
-        <title>Search Results</title>
-      </Head>
       {/* Render the search bar form */}
       <Form className="searchbar" onSubmit={handleSubmit}>
         {/* Render the input field for the search bar */}
