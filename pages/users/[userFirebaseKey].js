@@ -244,6 +244,7 @@ Finally, the retrieved data is set as the state of the component using the setUs
           {/* If the user is an artist, show their links and events */}
           {userLinks.isArtist && (
           <div className="linkeventBackground">
+            {userLinks.links && userLinks.links.length > 0 && (
             <div>
               <h2 style={{ marginTop: '1%', marginLeft: '1%' }}>LINKS</h2>
               {/* Map through the user's links and display them */}
@@ -251,6 +252,8 @@ Finally, the retrieved data is set as the state of the component using the setUs
                 <LinkCard key={link.firebaseKey} linkObj={link} onUpdate={onlyBuiltForUserLinks} />
               ))}
             </div>
+            )}
+            {userEvents.events && userEvents.events.length > 0 && (
             <div style={{ marginTop: '1%' }}>
               <h2 style={{ marginTop: '1%', marginLeft: '1%' }}>EVENTS</h2>
               {/* Map through the user's events and display them */}
@@ -258,18 +261,21 @@ Finally, the retrieved data is set as the state of the component using the setUs
                 <EventCard key={event.firebaseKey} eventObj={event} onUpdate={onlyBuiltForUserEvents} />
               ))}
             </div>
+            )}
           </div>
           )}
         </section>
         {/* The aside element is used for content that is only indirectly related to the main content */}
         <aside className="followBackground" style={{ flex: '1', display: 'flex', flexDirection: 'column' }}>
-          <h2>FOLLOWS</h2>
+          {follows.length > 0 && (
           <div>
+            <h2>FOLLOWS</h2>
             {/* Map through all follows and display them */}
             {follows.map((follow) => (
               <FollowCard key={follow.firebaseKey} followObj={follow} onUpdate={getAllFollows} appUser={profileOwner} />
             ))}
           </div>
+          )}
         </aside>
       </div>
     </>
